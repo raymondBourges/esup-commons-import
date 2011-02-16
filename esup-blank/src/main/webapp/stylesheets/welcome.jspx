@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:t="http://myfaces.apache.org/tomahawk"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:e="http://commons.esup-portail.org"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+	<ui:composition template="/stylesheets/template.jspx">
+		<ui:define name="content">
+			<h1><h:outputText value="#{applicationService.name}" /></h1>
+			<t:htmlTag value="br" />
+			<t:htmlTag value="br" />
+
+			<h:form id="myform">
+				<h:panelGrid columns="2">
+					<h:inputText id="myinput" value="#{welcomeController.name}">
+						<a4j:support event="onkeyup" reRender="outtext" />
+					</h:inputText>
+					<h:outputText id="outtext" value="Hello #{welcomeController.name}!" />
+				</h:panelGrid>
+			</h:form>
+
+		</ui:define>
+	</ui:composition>
+</jsp:root>
+

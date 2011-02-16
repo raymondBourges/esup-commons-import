@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+<head>
+<title>Esup Example</title>
+<meta name="keywords" lang="fr" content="" />
+<meta name="description"
+    content="Interrogation en JSON de l'application Example, Affichage en JQuery" />
+<script src="http://code.jquery.com/jquery-1.4.4.js"></script>
+</head>
+<body>
+
+<ul>    
+</ul>
+
+<form id="myForm">
+    <p>Ceci n'est qu'une apllication de test...</p>
+    <p><input type="submit" value="Voir les adminsitrateurs" /><input type="reset" value="Annuler" onclick="resetForm();"/></p>
+</form>
+
+<script>
+    var list = $('ul');     
+  
+    $("#myForm").submit(function() {        
+            $("li").remove()
+            $.get("http://localhost:8080/json?", 
+                    function(data){
+                       $.each(data , 
+                          function(i, item) {
+                             $('<li>' + item.displayName + '</li>').appendTo(list);
+                          });
+                    });
+            return false;        
+    });
+       
+    function resetForm() {
+    	$("li").remove()
+    }
+    
+</script>
+</body>
+</html>

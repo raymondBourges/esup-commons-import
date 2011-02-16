@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<!--
+		/properties/web/controllers.xml This file declares the visual beans
+		used by the web interface. It should not be modified but by the
+		developers. This file is referenced by
+		/properties/applicationContext.xml.
+	-->
+
+	<bean id="sessionController" class="org.esupportail.example.web.controllers.SessionController"
+		scope="session">
+		<property name="authenticator" ref="authenticator" />
+		<property name="version" value="${misc.version}" />
+		<property name="site" value="nothing" />
+		<property name="domainService" ref="domainService" />
+		<property name="casLogoutUrl" value="${cas.url}/logout?service=%s" />
+        <property name="defaultLocale" value="fr" />
+	</bean>
+
+	<bean id="administrationController"
+		class="org.esupportail.example.web.controllers.AdministrationController"
+		scope="session">
+		<property name="domainService" ref="domainService" />
+        <property name="administrationUrl" value="stylesheets/print/administration.pdf.jsf" />
+	</bean>
+
+	<bean id="preferencesController"
+		class="org.esupportail.example.web.controllers.PreferencesController"
+		scope="session">
+		<property name="domainService" ref="domainService" />
+	</bean>
+
+	<bean id="helpController" class="org.esupportail.example.web.controllers.HelpController"
+		scope="session">
+		<property name="helpUrl" value="stylesheets/print/help.pdf.jsf" />
+	</bean>
+
+</beans>

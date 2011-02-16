@@ -1,0 +1,30 @@
+@page { 
+size: A4;
+margin: 0.25in; 
+-fs-flow-top: "header";
+-fs-flow-bottom: "footer";
+-fs-flow-left: "left";
+-fs-flow-right: "right";
+border: thin solid black;
+padding: 1em;
+}
+
+#header {
+font: bold serif; text-decoration: underline;
+position: absolute; top: 0; left: 0;
+-fs-move-to-flow: header;
+}
+
+#footer {
+font-size: 90%; font-style: italic;
+position: absolute; top: 27cm; right: 0;
+-fs-move-to-flow: "footer";
+}
+
+#pagenumber:before {
+content: counter(page); 
+}
+
+#pagecount:before {
+content: counter(pages);  
+}

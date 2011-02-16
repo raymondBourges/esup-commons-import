@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<!-- 
+		/properties/dao/hibernate/hibernate.cfg.xml
+		The main Hibernate configuration file.
+		It is referenced from /properties/dao/dao.xml. 
+	-->
+	<session-factory>
+		<property name="hibernate.connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property>
+		<property name="hibernate.connection.driver_class">${hibernate.connection.driver_class}</property>
+		<property name="hibernate.dialect">${hibernate.dialect}</property>
+		<property name="hibernate.connection.url">${hibernate.connection.jdbc.url}</property>
+		<property name="hibernate.connection.username">${hibernate.connection.jdbc.username}</property>
+		<property name="hibernate.connection.password">${hibernate.connection.jdbc.password}</property>
+		<property name="hibernate.query.substitutions">true 1, false 0</property>
+		<property name="hibernate.c3p0.min_size">4</property>
+		<property name="hibernate.c3p0.max_size">11</property>
+		<property name="hibernate.c3p0.timeout">61</property>
+		<property name="hibernate.c3p0.max_statements">50</property>
+		
+		<mapping class="org.esupportail.example.domain.beans.User"></mapping>
+				
+	</session-factory>
+</hibernate-configuration>
+

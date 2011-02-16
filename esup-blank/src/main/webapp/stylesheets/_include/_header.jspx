@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0"
+	xmlns:t="http://myfaces.apache.org/tomahawk"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+	<t:div id="header" styleClass="app-header fl-container-auto">  
+	<t:div styleClass="header_suite">
+		<t:div id="titreAppli" styleClass="titreAppli">
+			<t:outputText value="#{msgs['FIELD_LABEL.APPLICATION.TITLE']}" styleClass="span_bigTitre"/>
+			<t:htmlTag value="br"/>
+			<t:outputText value="#{msgs['FIELD_LABEL.APPLICATION.SUB_TITLE']}"
+				styleClass="span_titre"/>
+		</t:div>
+		
+		<t:div styleClass="version">
+			<t:outputText value="#{msgs['EXCEPTION.INFORMATION.VERSION']} #{applicationService.version}"
+					styleClass="span_version"/>
+		</t:div>
+	</t:div>
+</t:div>
+</jsp:root>
+
+

@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions name="CXFServiceImplService" targetNamespace="http://cxf.web.example.esupportail.org/" xmlns:ns1="http://cxf.apache.org/bindings/xformat" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://cxf.web.example.esupportail.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+<xs:schema elementFormDefault="unqualified" targetNamespace="http://cxf.web.example.esupportail.org/" version="1.0" xmlns:tns="http://cxf.web.example.esupportail.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element name="getAdministrators" type="tns:getAdministrators" />
+<xs:element name="getAdministratorsResponse" type="tns:getAdministratorsResponse" />
+<xs:complexType name="getAdministrators">
+    <xs:sequence />
+  </xs:complexType>
+<xs:complexType name="getAdministratorsResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:user" />
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="user">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="accessibilityMode" type="xs:string" />
+      <xs:element name="admin" type="xs:boolean" />
+      <xs:element minOccurs="0" name="displayName" type="xs:string" />
+      <xs:element minOccurs="0" name="id" type="xs:string" />
+      <xs:element minOccurs="0" name="language" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getAdministratorsResponse">
+    <wsdl:part element="tns:getAdministratorsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAdministrators">
+    <wsdl:part element="tns:getAdministrators" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="CXFService">
+    <wsdl:operation name="getAdministrators">
+      <wsdl:input message="tns:getAdministrators" name="getAdministrators">
+    </wsdl:input>
+      <wsdl:output message="tns:getAdministratorsResponse" name="getAdministratorsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CXFServiceImplServiceSoapBinding" type="tns:CXFService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getAdministrators">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="getAdministrators">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getAdministratorsResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CXFServiceImplService">
+    <wsdl:port binding="tns:CXFServiceImplServiceSoapBinding" name="CXFServiceImplPort">
+      <soap:address location="http://localhost:8080/cxf/" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

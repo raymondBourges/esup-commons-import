@@ -1,0 +1,114 @@
+Index: core/pom.xml
+===================================================================
+--- core/pom.xml	(révision 1030471)
++++ core/pom.xml	(copie de travail)
+@@ -26,13 +26,13 @@
+ 	<name>core</name>
+ 	<groupId>org.apache.commons</groupId>
+ 	<artifactId>commons-vfs</artifactId>
+-	<version>1.0</version>
++	<version>svn-tag-vfs-1.0</version>
+ 	<description>VFS is a Virtual File System library.</description>
+ 
+ 	<parent>
+ 		<groupId>org.apache.commons</groupId>
+ 		<artifactId>commons-vfs-project</artifactId>
+-		<version>1.0</version>
++		<version>svn-tag-vfs-1.0</version>
+ 	</parent>
+ 
+ 
+Index: pom.xml
+===================================================================
+--- pom.xml	(révision 1030471)
++++ pom.xml	(copie de travail)
+@@ -31,7 +31,7 @@
+   <name>Commons VFS (project)</name>
+   <description>VFS is a Virtual File System library.</description>
+   <packaging>pom</packaging>
+-  <version>1.0</version>
++  <version>svn-tag-vfs-1.0</version>
+ 
+   <url>http://jakarta.apache.org/commons/vfs/</url>
+   <inceptionYear>2002</inceptionYear>
+@@ -114,19 +114,10 @@
+ 
+   <distributionManagement>
+     <repository>
+-      <id>apache.releases</id>
+-      <name>Apache Release Distribution Repository</name>
+-      <url>scp://people.apache.org/www/www.apache.org/dist/maven-repository</url>
++      <id>esup</id>
++      <name>esup</name>
++      <url>https://mvn.esup-portail.org/content/repositories/thirdparty</url>
+     </repository>
+-    <snapshotRepository>
+-      <id>apache.snapshots</id>
+-      <name>Apache Development Snapshot Repository</name>
+-      <url>scp://people.apache.org/www/cvs.apache.org/maven-snapshot-repository</url>
+-    </snapshotRepository>
+-    <site>
+-      <id>apache.website</id>
+-      <url>scp://people.apache.org/www/jakarta.apache.org/commons/vfs/</url>
+-    </site>
+   </distributionManagement>
+ 
+ </project>
+Index: sandbox/pom.xml
+===================================================================
+--- sandbox/pom.xml	(révision 1030471)
++++ sandbox/pom.xml	(copie de travail)
+@@ -26,13 +26,13 @@
+ 	<name>sandbox</name>
+ 	<groupId>org.apache.commons</groupId>
+ 	<artifactId>commons-vfs-sandbox</artifactId>
+-	<version>1.0-SNAPSHOT</version>
++	<version>svn-tag-vfs-1.0</version>
+ 	<description>VFS is a Virtual File System library - Sandbox.</description>
+ 
+ 	<parent>
+ 		<groupId>org.apache.commons</groupId>
+ 		<artifactId>commons-vfs-project</artifactId>
+-		<version>1.0</version>
++		<version>svn-tag-vfs-1.0</version>
+ 	</parent>
+ 
+ 	<organization>
+@@ -57,7 +57,7 @@
+ 		<dependency>
+ 			<groupId>org.apache.commons</groupId>
+ 			<artifactId>commons-vfs</artifactId>
+-			<version>1.0</version>
++			<version>svn-tag-vfs-1.0</version>
+ 		</dependency>
+ 
+ 		<dependency>
+@@ -87,7 +87,7 @@
+ 		<dependency>
+ 			<groupId>org.apache.commons</groupId>
+ 			<artifactId>commons-vfs</artifactId>
+-			<version>1.0</version>
++			<version>svn-tag-vfs-1.0</version>
+ 			<scope>test</scope>
+ 			<type>test-jar</type>
+ 		</dependency>
+Index: examples/pom.xml
+===================================================================
+--- examples/pom.xml	(révision 1030471)
++++ examples/pom.xml	(copie de travail)
+@@ -26,13 +26,13 @@
+   <name>examples</name>
+   <groupId>org.apache.commons</groupId>
+   <artifactId>commons-vfs-examples</artifactId>
+-  <version>1.0</version>
++  <version>svn-tag-vfs-1.0</version>
+   <description>VFS is a Virtual File System library - Examples.</description>
+ 
+   <parent>
+     <groupId>org.apache.commons</groupId>
+     <artifactId>commons-vfs-project</artifactId>
+-    <version>1.0</version>
++    <version>svn-tag-vfs-1.0</version>
+   </parent>
+ 
+   <organization>

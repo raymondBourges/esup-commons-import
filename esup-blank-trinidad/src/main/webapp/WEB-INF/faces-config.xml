@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<faces-config xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd"
+	version="1.2">
+	<application>
+		<default-render-kit-id>org.apache.myfaces.trinidad.core</default-render-kit-id>
+		<locale-config>
+			<default-locale>fr</default-locale>
+			<supported-locale>fr</supported-locale>
+			<supported-locale>en</supported-locale>
+		</locale-config>
+		<resource-bundle>
+			<base-name>properties.i18n.bundles.Messages</base-name>
+			<var>msgs</var>
+		</resource-bundle>
+		<el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
+	</application>
+
+	<!-- desktop navigation -->
+	<navigation-rule>
+		<navigation-case>
+			<from-outcome>desktopWelcome</from-outcome>
+			<to-view-id>/stylesheets/desktop/welcome.jsp</to-view-id>
+			<redirect/>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/stylesheets/desktop/*</from-view-id>
+		<navigation-case>
+			<from-outcome>welcome</from-outcome>
+			<to-view-id>/stylesheets/desktop/welcome.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/stylesheets/desktop/*</from-view-id>
+		<navigation-case>
+			<from-outcome>preferences</from-outcome>
+			<to-view-id>/stylesheets/desktop/preferences.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/stylesheets/desktop/*</from-view-id>
+		<navigation-case>
+			<from-outcome>about</from-outcome>
+			<to-view-id>/stylesheets/desktop/about.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/stylesheets/desktop/*</from-view-id>
+		<navigation-case>
+			<from-outcome>help</from-outcome>
+			<to-view-id>/stylesheets/desktop/help.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<!-- mobile navigation -->
+	<navigation-rule>
+		<navigation-case>
+			<from-outcome>mobileWelcome</from-outcome>
+			<to-view-id>/stylesheets/mobile/welcome.jsp</to-view-id>
+			<redirect/>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/stylesheets/mobile/*</from-view-id>
+		<navigation-case>
+			<from-outcome>welcome</from-outcome>
+			<to-view-id>/stylesheets/mobile/welcome.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/stylesheets/mobile/*</from-view-id>
+		<navigation-case>
+			<from-outcome>preferences</from-outcome>
+			<to-view-id>/stylesheets/mobile/preferences.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/stylesheets/mobile/*</from-view-id>
+		<navigation-case>
+			<from-outcome>about</from-outcome>
+			<to-view-id>/stylesheets/mobile/about.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/stylesheets/mobile/*</from-view-id>
+		<navigation-case>
+			<from-outcome>help</from-outcome>
+			<to-view-id>/stylesheets/mobile/help.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+</faces-config>
