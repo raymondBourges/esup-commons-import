@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<beans 
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd"
+	>
+
+	<!-- 
+		/properties/urlGeneration/urlGeneration.xml
+		The configuration file that gives the basic URLs of the application.
+		This file is referenced by /properties/applicationContext.xml.
+	-->
+	
+	<!-- 
+		rename one of the beans urlGenerator.servlet or urlGenerator.portlet  
+		to urlGenerator and adapt to your own needs.
+	-->
+
+    <bean 
+    	id="urlGenerator.servlet"
+    	class="org.esupportail.commons.services.urlGeneration.ServletUrlGeneratorImpl"
+    	>
+    	<description>
+    		This bean is used to generate URLs to the application in servlet installations.
+    	</description>
+    	<property name="casLoginUrl" value="https://cas.domain.edu/login?service=%s" >
+	    	<description>
+	    		The CAS login URL.
+	    	</description>
+    	</property>
+    	<property name="servletLoginUrl" value="http://application.domain.edu/login.faces" >
+	    	<description>
+	    		The Login URL of servlet installations.
+	    	</description>
+    	</property>
+    	<property name="servletGuestUrl" value="http://application.domain.edu/welcome.faces" >
+	    	<description>
+	    		The Guest URL of servlet installations.
+	    	</description>
+    	</property>
+    </bean>
+
+    <bean 
+    	id="urlGenerator.uPortal"
+    	class="org.esupportail.commons.services.urlGeneration.UportalUrlGeneratorImpl"
+    	>
+    	<description>
+    		This bean is used to generate URLs to the application for portlets deplyed into uPortal.
+    	</description>
+    	<property name="casLoginUrl" value="https://cas.domain.edu/login?service=%s" >
+	    	<description>
+	    		The CAS login URL.
+	    	</description>
+    	</property>
+    	<property name="uportalFunctionnalName" value="fname" >
+	    	<description>
+	    		The id used to publish the channel in uPortal.
+	    		Required if urlType is set to 'uportal', ignored otherwise.
+	    	</description>
+    	</property>
+    	<property name="uportalLoginUrl" value="http://uportal.domain.edu/Login" >
+	    	<description>
+	    		The login URL of the portal (the entry point of the portal).
+	    	</description>
+    	</property>
+    	<property name="uportalGuestUrl" value="http://uportal.domain.edu/Guest" >
+	    	<description>
+	    		The guest URL of the portal (the entry point of the portal).
+	    	</description>
+    	</property>
+    </bean>
+
+</beans>

@@ -1,0 +1,12 @@
+<project name="esup-commons-devel-missing-targets" basedir=".">
+
+	<target name="check-log4j-batch-config" depends="missing-target-error" />
+	<target name="compile-batch" depends="missing-target-error" />
+
+	<target name="missing-target-error" >
+		<fail>Do not fire this target, it is just here to prevent from eclipse warning.</fail>
+	</target>
+
+</project>
+
+

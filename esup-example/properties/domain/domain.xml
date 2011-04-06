@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<beans 
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd"
+	>
+
+	<bean
+		id="domainService"
+		class="org.esupportail.example.domain.DomainServiceImpl"
+		>
+		<property name="daoService" ref="daoService" />
+		<property name="ldapUserService" ref="ldapUserService" />
+		<property name="displayNameLdapAttribute" value="displayName" />
+		<property name="uploadDirectory" value="${uploadedFiles.path}" />
+	</bean>
+
+	<bean id="remoteInformation"
+		lazy-init="true"
+		class="org.codehaus.xfire.spring.remoting.XFireClientFactoryBean">
+		<property name="serviceClass" value="org.esupportail.example.services.remote.Information" />
+		<property name="wsdlDocumentUrl" value="${remote.url}?WSDL" />
+		<property name="url" value="${remote.url}/Information" />
+		<property name="lookupServiceOnStartup" value="false" />
+	</bean>
+
+</beans>

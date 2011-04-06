@@ -1,0 +1,43 @@
+<project name="esup-commons-devel" default="compile" basedir=".">
+
+	<property name="utils.dir" value="${basedir}/utils"/>
+
+	<property name="webapp.dir" value="${basedir}/webapp"/>
+	<property name="lib.dir" value="${webapp.dir}/WEB-INF/lib"/>
+	<property name="build.dir" value="${basedir}/build"/>
+	<property name="build.classes" value="${build.dir}/WEB-INF/classes"/>
+
+	<path id="compile.classpath">
+		<fileset dir="${lib.dir}" includes="**/*.jar" />
+		<fileset dir="${utils.dir}/lib" includes="**/*.jar" />
+	</path>
+	
+	<target name="prepare" >
+		<mkdir dir="${build.dir}" />
+		<mkdir dir="${build.classes}" />
+	</target>
+	
+	<target name="clean" description="clean everything">
+		<delete dir="${build.dir}" />
+		<delete dir="${javadoc.dir}" />
+	</target>
+	
+	<target name="_clean" depends="clean" />
+
+	<target name="compile" depends="prepare">
+		<property name="compile.debug" value="true" />
+		<property name="compile.deprecation" value="true" />
+		<property name="compile.optimize" value="true" />
+		<javac 
+			srcdir="${src.dir}" 
+			destdir="${build.classes}" 
+			debug="${compile.debug}" 
+			deprecation="${compile.deprecation}" 
+			optimize="${compile.optimize}">
+			<classpath refid="compile.classpath" />
+		</javac>
+	</target>
+	
+</project>
+
+

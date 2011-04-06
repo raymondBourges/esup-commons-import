@@ -1,0 +1,26 @@
+Chainedit
+
+La chaîne éditoriale au service des usagers.
+
+Chainedit est une application fonctionnant sur un serveur Web qui permet :
+
+- d'éditer des contenus selon une sémantique paramétrable.
+- de sauvegarder le contenu au format XML.
+- de générer plusieurs formats de sortie en fonction des traitements définis (OpenOffice, Html, Flash, ..).
+- de le faire depuis un simple navigateur (IE, FireFox, ..)
+- d'accéder à ces contenus depuis le portail de son établissement s'il en possède un.
+- de ne pas avoir d'installation à faire (nécessite une connection à internet).
+- qui traite les formules Latex (si l'option est installée sur le serveur).
+ 
+
+Techniquement ChainEdit c'est  une application :
+
+- développée en java sur une base esup-commons.
+- indépendante de esup-portal qui peut fonctionner de façon autonome ou dans un Environnement Numérique de Travail.
+- qui utilise des feuilles de transformation XSL pour produire les résultats.
+- qui est multi-plateforme (JAVA).
+- qui s'installe comme les autres applications basées sur esup-commons (facilite le travail des services informatiques).
+- qui fonctionne avec Apache/Tomcat.
+- qui peut être adaptée graphiquement à l'établissement (CSS)
+
+Attention ! Lors de l'installation vous pouvez avoir un message vous indiquant l'impossibilité de désinstaller Tomcat5ChainEdit. Ce message est normal. Cliquez sur Ok.

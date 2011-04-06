@@ -1,0 +1,117 @@
+<html>
+<head>
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>ESUP-Portail Example Application</title>
+<!-- TemplateEndEditable --> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+<meta name="keywords" content="esup-example esup-portail commons jsf spring hibernate free open source application web">
+<link rel="stylesheet" type="text/css" href="../style.css"/>
+<!-- TemplateBeginEditable name="navigation" -->
+
+<script language="JavaScript1.2">
+navigationItem = '';
+sidebarItem = '';
+</script>
+
+<!-- TemplateEndEditable -->
+
+<script language="JavaScript1.2">
+
+var menu_list = new Array("main");
+
+function hide_menus(menu_to_display) {
+	for (i = 0; i < menu_list.length ; i++) {
+		if (menu_list[i] ==  menu_to_display) {
+		    setStyleById(menu_list[i] + '_menu', 'display', 'block');
+		}
+	}	
+}
+
+function show_current_part(part){
+	setStyleById(part + '_button', 'background', 'transparent url(../pictures/button_current2.gif) repeat-x top left');
+	setStyleById(part + '_button', 'color', 'Black');
+}
+
+function show_current_section(current_section){
+        document.getElementById(current_section).className = "current";
+}
+
+function setStyleById(id, property, value) {
+	var element = document.getElementById(id);
+	element.style[property] = value;
+}
+
+function init(){
+	if (navigationItem != '') hide_menus(navigationItem);
+	if (navigationItem != '') show_current_part(navigationItem);
+	if (sidebarItem != '') show_current_section(sidebarItem);
+}
+
+</script>
+</head>
+<body>
+<table id="header" cellspacing="0">
+	<tr>
+		<td id="logo_app">&nbsp;
+			
+		</td>
+		<td id="version_info" nowrap="true">&nbsp;
+		</td>
+		<td id="logo_esup">
+			<a href="http://www.esup-portail.org/" target="_blank"><img src="../pictures/logo_esupportail.jpg" alt="logo esup-portail"/></a>
+		</td>
+	</tr>
+	<tr>
+		<td id="navbar" colspan="3">
+			<ul id="navigation">
+				<li><a id="main_button" href="../main/index.html">Overview</a></li>
+			</ul>
+		</td>
+	</tr>
+	</table>
+	<table id="main" cellspacing="0">
+	<tr>
+		<td id="sidebar" nowrap="true">
+		<div class="top_separator">&nbsp;</div>
+		<div id="main_menu">
+			<h1>Overview</h1>
+			<ul>
+				<li><a id="ma_intro" href="../main/index.html">Introduction</a></li>
+				<li><a id="ad_source" href="../api/index.html" target="source">Source doc</a></li>
+			</ul>
+		</div>
+		<div id="devel_menu"></div>
+		<div class="bottom_separator">&nbsp;</div>
+		<p class="sidebar_lien_img">
+			${app.name}<br/>
+			is hosted by<br/>
+			<a href="http://sourcesup.cru.fr/projects/${app.name}" target="_blank">
+			<img src="../pictures/logo-cru-80x40.gif" width="80" height="38" border="0" alt="Sourcesup.cru.fr Logo" />
+			</a>
+		</p>
+		</td>
+<script language="JavaScript1.2">
+init();
+</script>
+    	<td id="content">		<!-- TemplateBeginEditable name="body" -->
+		
+		<!-- TemplateEndEditable --> 
+    	</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+		<table width="100%">
+			<tr>
+				<td id="footer" align="left" nowrap="true">
+					Web design by Julien Le Thuaut
+				</td>
+				<td id="footer" align="right" width="100%" nowrap="true">
+					Copyright &copy; 2006 - ESUP-Portail consortium
+				</td>
+			</tr>
+		</table>
+		</td>
+	</tr>
+	</table>
+</body>
+</html>
