@@ -3,7 +3,6 @@
  */
 package org.esupportail.commons.services.ldap;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -18,14 +17,13 @@ import org.esupportail.commons.services.logging.LoggerImpl;
 import org.esupportail.commons.utils.Assert;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.ldap.LdapTemplate;
-import org.springframework.ldap.support.filter.OrFilter;
 import org.springframework.ldap.support.filter.WhitespaceWildcardsFilter;
 import org.springframework.util.StringUtils;
 
 /**
  * An implementation of LdapUserService that delegates to a CachingLdapEntityServiceImpl.
  */
-public class SearchableLdapUserServiceImpl implements LdapUserService, InitializingBean, Serializable {
+public class SearchableLdapUserServiceImpl implements LdapUserService, InitializingBean {
 
 	/**
 	 * The serialization id.
@@ -75,6 +73,7 @@ public class SearchableLdapUserServiceImpl implements LdapUserService, Initializ
 	/**
 	 * @see org.springframework.beans.factory.InitializingBean#afterPropertiesSet()
 	 */
+	@Override
 	public void afterPropertiesSet() {
 		if (searchAttribute == null) {
 			logger.info("property searchAttribute is not set, method getLdapUsersFromToken() will fail");
@@ -99,6 +98,7 @@ public class SearchableLdapUserServiceImpl implements LdapUserService, Initializ
 	/**
 	 * @see org.esupportail.commons.services.ldap.LdapUserService#getLdapUser(java.lang.String)
 	 */
+	@Override
 	public LdapUser getLdapUser(final String id) throws LdapException, UserNotFoundException {
 		try {
 			return LdapUserImpl.createLdapUser(service.getLdapEntity(id));
@@ -110,6 +110,7 @@ public class SearchableLdapUserServiceImpl implements LdapUserService, Initializ
 	/**
 	 * @see org.esupportail.commons.services.ldap.LdapUserService#getLdapUsersFromFilter(java.lang.String)
 	 */
+	@Override
 	public List<LdapUser> getLdapUsersFromFilter(final String filterExpr) throws LdapException {
 		return LdapUserImpl.createLdapUsers(service.getLdapEntitiesFromFilter(filterExpr));
 	}
@@ -117,10 +118,12 @@ public class SearchableLdapUserServiceImpl implements LdapUserService, Initializ
 	/**
 	 * @see org.esupportail.commons.services.ldap.LdapUserService#getLdapUsersFromToken(java.lang.String)
 	 */
+	@Override
 	public List<LdapUser> getLdapUsersFromToken(final String token) throws LdapException {
-		OrFilter filter = new OrFilter();
-		filter.or(new WhitespaceWildcardsFilter(searchAttribute, token));
-		filter.or(new WhitespaceWildcardsFilter(service.getIdAttribute(), token));
+		//OrFilter filter = new OrFilter();
+		//filter.or(new WhitespaceWildcardsFilter(searchAttribute, token));
+		//filter.or(new WhitespaceWildcardsFilter(service.getIdAttribute(), token));
+		WhitespaceWildcardsFilter filter = new WhitespaceWildcardsFilter(searchAttribute, token);
 		return getLdapUsersFromFilter(filter.encode());
 	}
 
@@ -128,6 +131,7 @@ public class SearchableLdapUserServiceImpl implements LdapUserService, Initializ
 	 * @see org.esupportail.commons.services.ldap.LdapUserService#userMatchesFilter(
 	 * java.lang.String, java.lang.String)
 	 */
+	@Override
 	public boolean userMatchesFilter(final String id, final String filter) throws LdapException {
 		return service.entityMatchesFilter(id, filter);
 	}
@@ -135,6 +139,7 @@ public class SearchableLdapUserServiceImpl implements LdapUserService, Initializ
 	/**
 	 * @see org.esupportail.commons.services.ldap.BasicLdapService#getStatistics(java.util.Locale)
 	 */
+	@Override
 	public List<String> getStatistics(final Locale locale) {
 		return service.getStatistics(locale);
 	}
@@ -142,6 +147,7 @@ public class SearchableLdapUserServiceImpl implements LdapUserService, Initializ
 	/**
 	 * @see org.esupportail.commons.services.ldap.BasicLdapService#resetStatistics()
 	 */
+	@Override
 	public void resetStatistics() {
 		service.resetStatistics();
 	}
@@ -237,6 +243,7 @@ public class SearchableLdapUserServiceImpl implements LdapUserService, Initializ
 	/**
 	 * @see org.esupportail.commons.services.ldap.BasicLdapService#supportStatistics()
 	 */
+	@Override
 	public boolean supportStatistics() {
 		return service.supportStatistics();
 	}
@@ -244,6 +251,7 @@ public class SearchableLdapUserServiceImpl implements LdapUserService, Initializ
 	/**
 	 * @see org.esupportail.commons.services.ldap.BasicLdapService#supportsTest()
 	 */
+	@Override
 	public boolean supportsTest() {
 		return service.supportsTest();
 	}
@@ -251,6 +259,7 @@ public class SearchableLdapUserServiceImpl implements LdapUserService, Initializ
 	/**
 	 * @see org.esupportail.commons.services.ldap.BasicLdapService#test()
 	 */
+	@Override
 	public void test() {
 		service.test();
 	}
@@ -258,6 +267,7 @@ public class SearchableLdapUserServiceImpl implements LdapUserService, Initializ
 	/**
 	 * @see org.esupportail.commons.services.ldap.BasicLdapService#testLdapFilter(java.lang.String)
 	 */
+	@Override
 	public String testLdapFilter(final String filterExpr) throws LdapException {
 		return service.testLdapFilter(filterExpr);
 	}
@@ -265,6 +275,7 @@ public class SearchableLdapUserServiceImpl implements LdapUserService, Initializ
 	/**
 	 * @see org.esupportail.commons.services.ldap.LdapUserService#getSearchDisplayedAttributes()
 	 */
+	@Override
 	public List<String> getSearchDisplayedAttributes() {
 		return searchDisplayedAttributes;
 	}
