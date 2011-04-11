@@ -3,7 +3,6 @@
  */
 package org.esupportail.commons.services.ldap;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -25,7 +24,7 @@ import org.springframework.util.StringUtils;
 /**
  * An implementation of LdapGroupService that delegates to a CachingLdapEntityServiceImpl.
  */
-public class SearchableLdapGroupServiceImpl implements LdapGroupService, InitializingBean, Serializable {
+public class SearchableLdapGroupServiceImpl implements LdapGroupService, InitializingBean {
 
 	/**
 	 * The serialization id.
@@ -75,6 +74,7 @@ public class SearchableLdapGroupServiceImpl implements LdapGroupService, Initial
 	/**
 	 * @see org.springframework.beans.factory.InitializingBean#afterPropertiesSet()
 	 */
+	@Override
 	public void afterPropertiesSet() {
 		if (searchAttribute == null) {
 			logger.info("property searchAttribute is not set, method getLdapGroupsFromToken() will fail");
@@ -87,6 +87,7 @@ public class SearchableLdapGroupServiceImpl implements LdapGroupService, Initial
 	/**
 	 * @see org.esupportail.commons.services.ldap.LdapGroupService#getLdapGroup(java.lang.String)
 	 */
+	@Override
 	public LdapGroup getLdapGroup(final String id) throws LdapException, GroupNotFoundException {
 		try {
 			return LdapGroupImpl.createLdapGroup(service.getLdapEntity(id));
@@ -98,6 +99,7 @@ public class SearchableLdapGroupServiceImpl implements LdapGroupService, Initial
 	/**
 	 * @see org.esupportail.commons.services.ldap.LdapGroupService#getLdapGroupsFromFilter(java.lang.String)
 	 */
+	@Override
 	public List<LdapGroup> getLdapGroupsFromFilter(final String filterExpr) throws LdapException {
 		return LdapGroupImpl.createLdapGroups(service.getLdapEntitiesFromFilter(filterExpr));
 	}
@@ -105,6 +107,7 @@ public class SearchableLdapGroupServiceImpl implements LdapGroupService, Initial
 	/**
 	 * @see org.esupportail.commons.services.ldap.LdapGroupService#getLdapGroupsFromToken(java.lang.String)
 	 */
+	@Override
 	public List<LdapGroup> getLdapGroupsFromToken(final String token) throws LdapException {
 		Filter filter = new WhitespaceWildcardsFilter(searchAttribute, token);
 		return getLdapGroupsFromFilter(filter.encode());
@@ -114,6 +117,7 @@ public class SearchableLdapGroupServiceImpl implements LdapGroupService, Initial
 	 * @see org.esupportail.commons.services.ldap.LdapGroupService#groupMatchesFilter(
 	 * java.lang.String, java.lang.String)
 	 */
+	@Override
 	public boolean groupMatchesFilter(final String id, final String filter) throws LdapException {
 		return service.entityMatchesFilter(id, filter);
 	}
@@ -121,6 +125,7 @@ public class SearchableLdapGroupServiceImpl implements LdapGroupService, Initial
 	/**
 	 * @see org.esupportail.commons.services.ldap.BasicLdapService#getStatistics(java.util.Locale)
 	 */
+	@Override
 	public List<String> getStatistics(final Locale locale) {
 		return service.getStatistics(locale);
 	}
@@ -128,6 +133,7 @@ public class SearchableLdapGroupServiceImpl implements LdapGroupService, Initial
 	/**
 	 * @see org.esupportail.commons.services.ldap.BasicLdapService#resetStatistics()
 	 */
+	@Override
 	public void resetStatistics() {
 		service.resetStatistics();
 	}
@@ -207,6 +213,7 @@ public class SearchableLdapGroupServiceImpl implements LdapGroupService, Initial
 	/**
 	 * @see org.esupportail.commons.services.ldap.BasicLdapService#supportStatistics()
 	 */
+	@Override
 	public boolean supportStatistics() {
 		return service.supportStatistics();
 	}
@@ -214,6 +221,7 @@ public class SearchableLdapGroupServiceImpl implements LdapGroupService, Initial
 	/**
 	 * @see org.esupportail.commons.services.ldap.BasicLdapService#supportsTest()
 	 */
+	@Override
 	public boolean supportsTest() {
 		return service.supportsTest();
 	}
@@ -221,6 +229,7 @@ public class SearchableLdapGroupServiceImpl implements LdapGroupService, Initial
 	/**
 	 * @see org.esupportail.commons.services.ldap.BasicLdapService#test()
 	 */
+	@Override
 	public void test() {
 		service.test();
 	}
@@ -228,6 +237,7 @@ public class SearchableLdapGroupServiceImpl implements LdapGroupService, Initial
 	/**
 	 * @see org.esupportail.commons.services.ldap.BasicLdapService#testLdapFilter(java.lang.String)
 	 */
+	@Override
 	public String testLdapFilter(final String filterExpr) throws LdapException {
 		return service.testLdapFilter(filterExpr);
 	}
@@ -235,6 +245,7 @@ public class SearchableLdapGroupServiceImpl implements LdapGroupService, Initial
 	/**
 	 * @see org.esupportail.commons.services.ldap.LdapGroupService#getSearchDisplayedAttributes()
 	 */
+	@Override
 	public List<String> getSearchDisplayedAttributes() {
 		return searchDisplayedAttributes;
 	}

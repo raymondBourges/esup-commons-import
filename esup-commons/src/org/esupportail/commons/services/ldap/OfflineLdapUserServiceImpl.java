@@ -56,6 +56,7 @@ public class OfflineLdapUserServiceImpl extends AbstractLdapService implements L
 	/**
 	 * @see org.springframework.beans.factory.InitializingBean#afterPropertiesSet()
 	 */
+	@Override
 	public void afterPropertiesSet() {
 		if (!StringUtils.hasText(uidAttribute)) {
 			logger.info(getClass() + ": no uid attribute set, '" 
@@ -67,6 +68,7 @@ public class OfflineLdapUserServiceImpl extends AbstractLdapService implements L
 	/**
 	 * @see org.esupportail.commons.services.ldap.LdapUserService#getLdapUsersFromToken(java.lang.String)
 	 */
+	@Override
 	public List<LdapUser> getLdapUsersFromToken(
 			@SuppressWarnings("unused")
 			final String token) throws LdapException {
@@ -77,6 +79,7 @@ public class OfflineLdapUserServiceImpl extends AbstractLdapService implements L
 	/**
 	 * @see org.esupportail.commons.services.ldap.LdapUserService#getLdapUsersFromFilter(java.lang.String)
 	 */
+	@Override
 	public List<LdapUser> getLdapUsersFromFilter(
 			@SuppressWarnings("unused")
 			final String filterExpr) throws LdapException {
@@ -87,6 +90,7 @@ public class OfflineLdapUserServiceImpl extends AbstractLdapService implements L
 	/**
 	 * @see org.esupportail.commons.services.ldap.LdapUserService#testLdapFilter(java.lang.String)
 	 */
+	@Override
 	public String testLdapFilter(
 			@SuppressWarnings("unused")
 			final String filterExpr) throws LdapException {
@@ -97,6 +101,7 @@ public class OfflineLdapUserServiceImpl extends AbstractLdapService implements L
 	/**
 	 * @see org.esupportail.commons.services.ldap.LdapUserService#getLdapUser(java.lang.String)
 	 */
+	@Override
 	public LdapUser getLdapUser(final String id) throws LdapException, UserNotFoundException {
 		LdapUser ldapUser = new LdapUserImpl();
 		ldapUser.setId(id);
@@ -112,6 +117,7 @@ public class OfflineLdapUserServiceImpl extends AbstractLdapService implements L
 	 * @see org.esupportail.commons.services.ldap.LdapUserService#userMatchesFilter(
 	 * java.lang.String, java.lang.String)
 	 */
+	@Override
 	public boolean userMatchesFilter(
 			@SuppressWarnings("unused")
 			final String id, 
@@ -131,6 +137,7 @@ public class OfflineLdapUserServiceImpl extends AbstractLdapService implements L
 	/**
 	 * @see org.esupportail.commons.services.ldap.LdapUserService#getSearchDisplayedAttributes()
 	 */
+	@Override
 	public List<String> getSearchDisplayedAttributes() {
 		throw new UnsupportedOperationException(
 				"class [" + getClass().getSimpleName() + "] does not support LDAP searches.");

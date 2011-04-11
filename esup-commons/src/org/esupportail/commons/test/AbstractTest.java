@@ -64,10 +64,13 @@ public abstract class AbstractTest extends AbstractTransactionalSpringContextTes
 	 */
 	private WebApplicationEnvironment webApplicationUtils = new WebApplicationEnvironment();
 
-        public WebApplicationEnvironment getWebApplicationUtils() {
-	    return webApplicationUtils;
+	/**
+	 * @return the WebApplicationEnvironment
+	 */
+	public WebApplicationEnvironment getWebApplicationUtils() {
+		return webApplicationUtils;
 	}
-        
+
 
 	/**
 	 * Reinitialize a new request/response for every test method => a new WebApplicationUtils.

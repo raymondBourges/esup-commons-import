@@ -66,7 +66,8 @@ public class SMIMEMessageSignerImpl implements InitializingBean, Serializable, M
     /**
      * @see org.springframework.beans.factory.InitializingBean#afterPropertiesSet()
      */
-    public void afterPropertiesSet() {
+    @Override
+	public void afterPropertiesSet() {
         if (isEnabled()) {
             if (certificateFile == null) {
                 logger.warn(getClass() + ": certificate file not set, disabling signing.");
@@ -92,7 +93,8 @@ public class SMIMEMessageSignerImpl implements InitializingBean, Serializable, M
     /**
      * @see org.esupportail.commons.services.smtp.signing.MessageSigner#sign(javax.mail.Session, javax.mail.internet.MimeMessage)
      */
-    public MimeMessage sign(final Session session, final MimeMessage mimeMessage) {
+    @Override
+	public MimeMessage sign(final Session session, final MimeMessage mimeMessage) {
         if (isEnabled()) {
             MimeMessage signedMessage;
             try {

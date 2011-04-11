@@ -90,6 +90,7 @@ public abstract class AbstractUrlGenerator implements UrlGenerator {
 	/**
 	 * @see org.esupportail.commons.services.urlGeneration.UrlGenerator#guestUrl(java.util.Map)
 	 */
+	@Override
 	public String guestUrl(
 			final Map<String, String> params) {
 		return url(AuthUtils.APPLICATION, params);
@@ -98,6 +99,7 @@ public abstract class AbstractUrlGenerator implements UrlGenerator {
 	/**
 	 * @see org.esupportail.commons.services.urlGeneration.UrlGenerator#guestUrl()
 	 */
+	@Override
 	public String guestUrl() {
 		return guestUrl(null);
 	}
@@ -105,6 +107,7 @@ public abstract class AbstractUrlGenerator implements UrlGenerator {
 	/**
 	 * @see org.esupportail.commons.services.urlGeneration.UrlGenerator#casUrl(java.util.Map)
 	 */
+	@Override
 	public String casUrl(
 			final Map<String, String> params) {
 		return url(AuthUtils.CAS, params);
@@ -113,6 +116,7 @@ public abstract class AbstractUrlGenerator implements UrlGenerator {
 	/**
 	 * @see org.esupportail.commons.services.urlGeneration.UrlGenerator#casUrl()
 	 */
+	@Override
 	public String casUrl() {
 		return casUrl(null);
 	}
@@ -120,6 +124,7 @@ public abstract class AbstractUrlGenerator implements UrlGenerator {
 	/**
 	 * @see org.esupportail.commons.services.urlGeneration.UrlGenerator#shibbolethUrl(java.util.Map)
 	 */
+	@Override
 	public String shibbolethUrl(
 			final Map<String, String> params) {
 		return url(AuthUtils.SHIBBOLETH, params);
@@ -128,6 +133,7 @@ public abstract class AbstractUrlGenerator implements UrlGenerator {
 	/**
 	 * @see org.esupportail.commons.services.urlGeneration.UrlGenerator#shibbolethUrl()
 	 */
+	@Override
 	public String shibbolethUrl() {
 		return shibbolethUrl(null);
 	}

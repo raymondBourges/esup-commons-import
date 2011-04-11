@@ -38,10 +38,10 @@ public class SystemUtils {
 	/**
 	 * @return The system properties, as a set of strings.
 	 */
-	@SuppressWarnings("unchecked")
 	public static Set<String> getSystemPropertiesStrings() {
 		Properties properties = System.getProperties();
 		Set<String> sortedPropertiesStrings = new TreeSet<String>();   
+		@SuppressWarnings("rawtypes")
 		Enumeration keys = properties.keys();
 		while (keys.hasMoreElements()) {
 			String key = (String) keys.nextElement();

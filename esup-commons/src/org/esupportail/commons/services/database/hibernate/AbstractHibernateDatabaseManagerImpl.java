@@ -59,6 +59,7 @@ implements InitializingBean {
 	/**
 	 * @see org.springframework.beans.factory.InitializingBean#afterPropertiesSet()
 	 */
+	@Override
 	public void afterPropertiesSet() throws Exception {
 		if (jdbcSessionFactoryBeanName == null && jndiSessionFactoryBeanName == null) {
 			throw new ConfigException("properties [jdbcSessionFactoryBeanName] "
@@ -92,6 +93,7 @@ implements InitializingBean {
 	/**
 	 * @see org.esupportail.commons.services.database.DatabaseManager#openSession()
 	 */
+	@Override
 	public void openSession() {
 		String sessionFactoryBeanName = getSessionFactoryBeanName();
 		HibernateThreadData td = ts.get();
@@ -115,6 +117,7 @@ implements InitializingBean {
 	/**
 	 * @see org.esupportail.commons.services.database.DatabaseManager#beginTransaction()
 	 */
+	@Override
 	public void beginTransaction() {
 		String sessionFactoryBeanName = getSessionFactoryBeanName();
 		if (!isTransactionnal()) {
@@ -142,6 +145,7 @@ implements InitializingBean {
 	/**
 	 * @see org.esupportail.commons.services.database.DatabaseManager#endTransaction(boolean)
 	 */
+	@Override
 	public void endTransaction(
 			final boolean commit) {
 		String sessionFactoryBeanName = getSessionFactoryBeanName();
@@ -172,6 +176,7 @@ implements InitializingBean {
 	/**
 	 * @see org.esupportail.commons.services.database.DatabaseManager#closeSession()
 	 */
+	@Override
 	public void closeSession() {
 		String sessionFactoryBeanName = getSessionFactoryBeanName();
 		HibernateThreadData td = ts.get();
@@ -194,6 +199,7 @@ implements InitializingBean {
 	/**
 	 * @see org.esupportail.commons.services.database.DatabaseManager#test()
 	 */
+	@Override
 	public void test() {
 		openSession();
 		beginTransaction();

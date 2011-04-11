@@ -68,7 +68,8 @@ extends org.codehaus.xfire.transport.http.XFireServletController implements Seri
     	 * @see org.codehaus.xfire.handler.Handler#invoke(org.codehaus.xfire.MessageContext)
     	 * @param context
     	 */
-    	public void invoke(final MessageContext context) {
+    	@Override
+		public void invoke(final MessageContext context) {
     		XFireFault fault = (XFireFault) context.getExchange().getFaultMessage().getBody();
     		ExceptionUtils.catchException(fault);
     	}    

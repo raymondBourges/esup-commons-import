@@ -29,6 +29,7 @@ abstract class AbstractLdapService implements BasicLdapService {
 	/**
 	 * @see org.esupportail.commons.services.ldap.BasicLdapService#getStatistics(java.util.Locale)
 	 */
+	@Override
 	public List<String> getStatistics(@SuppressWarnings("unused") final Locale locale) {
 		throw unsupportedExcepion;
 	}
@@ -36,6 +37,7 @@ abstract class AbstractLdapService implements BasicLdapService {
 	/**
 	 * @see org.esupportail.commons.services.ldap.BasicLdapService#resetStatistics()
 	 */
+	@Override
 	public void resetStatistics() {
 		throw unsupportedExcepion;
 	}
@@ -43,6 +45,7 @@ abstract class AbstractLdapService implements BasicLdapService {
 	/**
 	 * @see org.esupportail.commons.services.ldap.BasicLdapService#supportStatistics()
 	 */
+	@Override
 	public boolean supportStatistics() {
 		return false;
 	}
@@ -50,6 +53,7 @@ abstract class AbstractLdapService implements BasicLdapService {
 	/**
 	 * @see org.esupportail.commons.services.ldap.BasicLdapService#supportsTest()
 	 */
+	@Override
 	public boolean supportsTest() {
 		return false;
 	}
@@ -57,6 +61,7 @@ abstract class AbstractLdapService implements BasicLdapService {
 	/**
 	 * @see org.esupportail.commons.services.ldap.BasicLdapService#test()
 	 */
+	@Override
 	public void test() {
 		throw unsupportedExcepion;
 	}

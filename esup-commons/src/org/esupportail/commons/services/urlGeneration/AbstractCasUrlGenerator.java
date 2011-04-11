@@ -39,6 +39,7 @@ public abstract class AbstractCasUrlGenerator extends AbstractUrlGenerator imple
  	/**
 	 * @see org.springframework.beans.factory.InitializingBean#afterPropertiesSet()
 	 */
+	@Override
 	public void afterPropertiesSet() {
 		if (casLoginUrl == null) {
 			if (casUrl == null) {

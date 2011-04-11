@@ -51,6 +51,7 @@ public class DelegatingAuthenticationService extends AbstractAuthenticationServi
 	/**
 	 * @see org.esupportail.commons.services.authentication.AuthenticationService#getAuthInfo()
 	 */
+	@Override
 	public AuthInfo getAuthInfo() {
 		for (AuthenticationService authenticationService : authenticationServices) {
 			AuthInfo authInfo = authenticationService.getAuthInfo();

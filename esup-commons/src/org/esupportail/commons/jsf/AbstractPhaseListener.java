@@ -42,6 +42,7 @@ public abstract class AbstractPhaseListener implements PhaseListener {
 	/**
 	 * @see javax.faces.event.PhaseListener#getPhaseId()
 	 */
+	@Override
 	public PhaseId getPhaseId() {
 		return PhaseId.ANY_PHASE;
 	}
@@ -97,6 +98,7 @@ public abstract class AbstractPhaseListener implements PhaseListener {
 	/**
 	 * @see javax.faces.event.PhaseListener#afterPhase(javax.faces.event.PhaseEvent)
 	 */
+	@Override
 	public final void afterPhase(final PhaseEvent event) {
 		debugEvent(event, "AFTER");
 		afterPhaseInternal(event);
@@ -107,14 +109,14 @@ public abstract class AbstractPhaseListener implements PhaseListener {
 	 * @param event
 	 */
 	protected void afterPhaseInternal(
-			@SuppressWarnings("unused")
-			final PhaseEvent event) {
+			@SuppressWarnings("unused") final PhaseEvent event) {
 		//
 	}
 
 	/**
 	 * @see javax.faces.event.PhaseListener#beforePhase(javax.faces.event.PhaseEvent)
 	 */
+	@Override
 	public final void beforePhase(final PhaseEvent event) {
 		debugEvent(event, "BEFORE");
 		beforePhaseInternal(event);
@@ -125,8 +127,7 @@ public abstract class AbstractPhaseListener implements PhaseListener {
 	 * @param event
 	 */
 	protected void beforePhaseInternal(
-			@SuppressWarnings("unused")
-			final PhaseEvent event) {
+			@SuppressWarnings("unused") final PhaseEvent event) {
 		//
 	}
 

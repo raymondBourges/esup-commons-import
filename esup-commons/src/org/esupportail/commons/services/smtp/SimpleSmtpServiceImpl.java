@@ -97,6 +97,7 @@ public class SimpleSmtpServiceImpl extends AbstractSmtpService implements Initia
 	/**
 	 * @see org.springframework.beans.factory.InitializingBean#afterPropertiesSet()
 	 */
+	@Override
 	public void afterPropertiesSet() {
 		if (CollectionUtils.isEmpty(servers)) {
 			logger.info(getClass() + ": no SMTP server set, '" + SmtpServer.DEFAULT_HOST + ":" 
@@ -210,6 +211,7 @@ public class SimpleSmtpServiceImpl extends AbstractSmtpService implements Initia
 	 * @see org.esupportail.commons.services.smtp.SmtpService#send(
 	 * javax.mail.internet.InternetAddress, java.lang.String, java.lang.String, java.lang.String, java.lang.String)
 	 */
+	@Override
 	public void send(
 			final InternetAddress to, 
 			final String subject, 
@@ -225,6 +227,7 @@ public class SimpleSmtpServiceImpl extends AbstractSmtpService implements Initia
 	 * javax.mail.internet.InternetAddress, java.lang.String, java.lang.String, java.lang.String, java.util.List,
 	 *  java.lang.String)
 	 */
+	@Override
 	public void send(
 			final InternetAddress to, 
 			final String subject, 
@@ -243,6 +246,7 @@ public class SimpleSmtpServiceImpl extends AbstractSmtpService implements Initia
 	 * java.lang.String, 
 	 * java.lang.String, java.lang.String, java.util.List, java.lang.String)
 	 */
+	@Override
 	public void sendtocc(
 			final InternetAddress[] tos,
 			final InternetAddress[] ccs, 
@@ -259,6 +263,7 @@ public class SimpleSmtpServiceImpl extends AbstractSmtpService implements Initia
 	 * @see org.esupportail.commons.services.smtp.SmtpService#sendDoNotIntercept(
 	 * javax.mail.internet.InternetAddress, java.lang.String, java.lang.String, java.lang.String, java.lang.String)
 	 */
+	@Override
 	public void sendDoNotIntercept(
 			final InternetAddress to, 
 			final String subject, 
@@ -275,6 +280,7 @@ public class SimpleSmtpServiceImpl extends AbstractSmtpService implements Initia
 	 * javax.mail.internet.InternetAddress, java.lang.String, java.lang.String, 
 	 * java.lang.String, java.util.List, java.lang.String)
 	 */
+	@Override
 	public void sendDoNotIntercept(
 			final InternetAddress to,
 			final String subject,

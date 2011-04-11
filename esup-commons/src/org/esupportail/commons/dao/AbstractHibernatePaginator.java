@@ -47,6 +47,7 @@ public abstract class AbstractHibernatePaginator<E> extends AbstractPaginator<E>
 	/**
 	 * @see org.springframework.beans.factory.InitializingBean#afterPropertiesSet()
 	 */
+	@Override
 	public void afterPropertiesSet() {
 		Assert.notNull(this.daoService, 
 				"property daoService of class " + this.getClass().getName() + " can not be null");

@@ -35,6 +35,7 @@ public class HibernateSequenceUpdater implements HibernateCallback {
 	 * @return null.
 	 * @throws HibernateException
 	 */
+	@Override
 	public Object doInHibernate(final Session session) throws HibernateException {
 		if (sequenceId != null) {
 			session.createSQLQuery(

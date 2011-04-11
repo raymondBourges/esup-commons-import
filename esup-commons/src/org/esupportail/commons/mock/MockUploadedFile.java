@@ -43,6 +43,7 @@ public class MockUploadedFile implements UploadedFile {
 	/**
 	 * @see org.apache.myfaces.custom.fileupload.UploadedFile#getBytes()
 	 */
+	@Override
 	public byte[] getBytes() {
 		return null;
 	}
@@ -50,6 +51,7 @@ public class MockUploadedFile implements UploadedFile {
 	/**
 	 * @see org.apache.myfaces.custom.fileupload.UploadedFile#getContentType()
 	 */
+	@Override
 	public String getContentType() {
 		return null;
 	}
@@ -57,6 +59,7 @@ public class MockUploadedFile implements UploadedFile {
 	/**
 	 * @see org.apache.myfaces.custom.fileupload.UploadedFile#getInputStream()
 	 */
+	@Override
 	public InputStream getInputStream() {
 		return stream;
 	}
@@ -64,6 +67,7 @@ public class MockUploadedFile implements UploadedFile {
 	/**
 	 * @see org.apache.myfaces.custom.fileupload.UploadedFile#getName()
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -71,6 +75,7 @@ public class MockUploadedFile implements UploadedFile {
 	/**
 	 * @see org.apache.myfaces.custom.fileupload.UploadedFile#getSize()
 	 */
+	@Override
 	public long getSize() {
 		return 0;
 	}

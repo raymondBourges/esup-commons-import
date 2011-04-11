@@ -55,6 +55,7 @@ public class UserPasswordManagerImpl implements UserPasswordManager, Initializin
 	/**
 	 * @see org.springframework.beans.factory.InitializingBean#afterPropertiesSet()
 	 */
+	@Override
 	public void afterPropertiesSet() {
 		Assert.notNull(i18nService, "property i18nService can not be null");
 		if (passwordMaxLength == null || passwordMaxLength < 1) {
@@ -68,6 +69,7 @@ public class UserPasswordManagerImpl implements UserPasswordManager, Initializin
 	/**
 	 * @see org.esupportail.commons.domain.UserPasswordManager#generate()
 	 */
+	@Override
 	public String generate() {
 		StringBuffer sb = new StringBuffer(8);
 		Math.random();
@@ -88,6 +90,7 @@ public class UserPasswordManagerImpl implements UserPasswordManager, Initializin
 	/**
 	 * @see org.esupportail.commons.domain.UserPasswordManager#check(java.lang.String, java.util.Locale)
 	 */
+	@Override
 	public void check(final String password, final Locale locale) throws PasswordException {
 		if (password == null) {
 			throw new PasswordException(i18nService.getString("PASSWORD_ERROR.NULL", locale));

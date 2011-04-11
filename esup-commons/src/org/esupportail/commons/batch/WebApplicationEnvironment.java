@@ -42,20 +42,44 @@ import org.springframework.web.filter.RequestContextFilter;
  */
 public class WebApplicationEnvironment {
 	
+	/**
+	 * the location of configs.
+	 */
 	public static final String[] CONFIG_LOCATIONS = new String[]{"classpath:properties/applicationContext.xml" };
 
+	/**
+	 * 
+	 */
 	private static MockHttpSession session;
 
+	/**
+	 * 
+	 */
 	private static RequestContextFilter contextFilter;
 
+	/**
+	 * 
+	 */
 	private static MockFacesContext facesContext;
 
+	/**
+	 * 
+	 */
 	private static MockServletContext context;
 
+	/**
+	 * 
+	 */
 	private final Log log = LogFactory.getLog(getClass());
 	
+	/**
+	 * 
+	 */
 	private MockHttpServletResponse response;
 
+	/**
+	 * 
+	 */
 	private MockHttpServletRequest request;
 
 	static {
@@ -143,6 +167,7 @@ public class WebApplicationEnvironment {
 		ctx.refresh();
 
 		MockExternalContext externalContext = (MockExternalContext) facesContext.getExternalContext();
+		@SuppressWarnings("rawtypes")
 		Map applicationMap = new HashMap();
 		applicationMap.put(WebApplicationContext.ROOT_WEB_APPLICATION_CONTEXT_ATTRIBUTE, ctx);
 		externalContext.setApplicationMap(applicationMap);

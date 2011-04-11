@@ -56,6 +56,7 @@ public abstract class AbstractI18nAwareBean implements InitializingBean, Seriali
 	/**
 	 * @see org.springframework.beans.factory.InitializingBean#afterPropertiesSet()
 	 */
+	@Override
 	public void afterPropertiesSet() {
 		Assert.notNull(this.i18nService, 
 				"property i18nService of class " + this.getClass().getName() 

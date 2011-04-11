@@ -52,13 +52,13 @@ public class EmailExceptionServiceFactoryImpl extends SimpleExceptionServiceFact
 	/**
 	 * No email sent for these exceptions.
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "rawtypes" })
 	private List<Class> noEmailExceptions;
 
 	/**
 	 * Bean constructor.
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "rawtypes" })
 	public EmailExceptionServiceFactoryImpl() {
 		super();
 		this.noEmailExceptions = new ArrayList<Class>();
@@ -74,6 +74,7 @@ public class EmailExceptionServiceFactoryImpl extends SimpleExceptionServiceFact
 	/**
 	 * @see org.springframework.beans.factory.InitializingBean#afterPropertiesSet()
 	 */
+	@SuppressWarnings("unused")
 	@Override
 	public void afterPropertiesSet() {
 		super.afterPropertiesSet();
@@ -153,9 +154,9 @@ public class EmailExceptionServiceFactoryImpl extends SimpleExceptionServiceFact
 	 * Add a 'no email' exception.
 	 * @param className 
 	 */
-	@SuppressWarnings("unchecked")
 	private void addNoEmailException(final String className) {
 		try {
+			@SuppressWarnings("rawtypes")
 			Class clazz = Class.forName(className);
 			if (!(Exception.class.isAssignableFrom(clazz))) {
 				throw new ConfigException("class [" + className 
@@ -179,7 +180,7 @@ public class EmailExceptionServiceFactoryImpl extends SimpleExceptionServiceFact
 	/**
 	 * @return the noEmailExceptions
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	protected List<Class> getNoEmailExceptions() {
 		return noEmailExceptions;
 	}

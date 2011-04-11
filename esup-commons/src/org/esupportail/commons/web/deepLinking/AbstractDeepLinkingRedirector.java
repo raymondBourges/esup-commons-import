@@ -34,6 +34,7 @@ extends AbstractI18nAwareBean implements DeepLinkingRedirector, Resettable {
 	/**
 	 * @see org.esupportail.commons.web.controllers.Resettable#reset()
 	 */
+	@Override
 	public void reset() {
 		called = false;
 	}
@@ -41,6 +42,7 @@ extends AbstractI18nAwareBean implements DeepLinkingRedirector, Resettable {
 	/**
 	 * @see org.esupportail.commons.web.deepLinking.DeepLinkingRedirector#firstCall()
 	 */
+	@Override
 	public boolean firstCall() {
 		boolean oldCalled = called;
 		called = true;

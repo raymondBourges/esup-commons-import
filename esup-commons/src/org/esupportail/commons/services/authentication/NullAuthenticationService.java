@@ -21,6 +21,7 @@ public class NullAuthenticationService extends AbstractAuthenticationService {
 	/**
 	 * @see org.esupportail.commons.services.authentication.AuthenticationService#getAuthInfo()
 	 */
+	@Override
 	public AuthInfo getAuthInfo() {
 		return null;
 	}

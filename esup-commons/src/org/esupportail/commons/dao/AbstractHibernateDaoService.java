@@ -35,9 +35,9 @@ implements HibernateDaoService {
 	/**
 	 * @see org.esupportail.commons.dao.HibernateDaoService#getQuery(java.lang.String)
 	 */
+	@Override
 	public Query getQuery(
-			@SuppressWarnings("unused")
-			final String hqlQuery) {
+			@SuppressWarnings("unused") final String hqlQuery) {
 		throw exception();
 	}
 	
@@ -47,8 +47,7 @@ implements HibernateDaoService {
 	 * @return an integer.
 	 */
 	protected int getQueryIntResult(
-			@SuppressWarnings("unused")
-			final String countQuery) {
+			@SuppressWarnings("unused") final String countQuery) {
 		throw exception();
 	}
 	
@@ -57,17 +56,16 @@ implements HibernateDaoService {
 	 * @param queryString
 	 */
 	protected void executeUpdate(
-			@SuppressWarnings("unused")
-			final String queryString) {
+			@SuppressWarnings("unused") final String queryString) {
 		throw exception();
 	}
 	
 	/**
 	 * @see org.esupportail.commons.dao.HibernateDaoService#getSqlQuery(java.lang.String)
 	 */
+	@Override
 	public SQLQuery getSqlQuery(
-			@SuppressWarnings("unused")
-			final String sqlQuery) {
+			@SuppressWarnings("unused") final String sqlQuery) {
 		throw exception();
 	}
 	
@@ -80,8 +78,7 @@ implements HibernateDaoService {
 	 * @param object 
 	 */
 	protected void addObject(
-			@SuppressWarnings("unused")
-			final Object object) {
+			@SuppressWarnings("unused") final Object object) {
 		throw exception();
 	}
 
@@ -90,8 +87,7 @@ implements HibernateDaoService {
 	 * @param object 
 	 */
 	protected void updateObject(
-			@SuppressWarnings("unused")
-			final Object object) {
+			@SuppressWarnings("unused") final Object object) {
 		throw exception();
 	}
 
@@ -100,8 +96,7 @@ implements HibernateDaoService {
 	 * @param object 
 	 */
 	protected void deleteObject(
-			@SuppressWarnings("unused")
-			final Object object) {
+			@SuppressWarnings("unused") final Object object) {
 		throw exception();
 	}
 
@@ -109,10 +104,8 @@ implements HibernateDaoService {
 	 * Delete a list of objects from the database.
 	 * @param objects 
 	 */
-	@SuppressWarnings("unchecked")
 	protected void deleteObjects(
-			@SuppressWarnings("unused")
-			final List objects) {
+			@SuppressWarnings({ "rawtypes", "unused" }) final List objects) {
 		throw exception();
 	}
 

@@ -39,6 +39,7 @@ public class AbstractIpProtectedWebService extends AbstractClientProviderWebServ
 	/**
 	 * @see org.springframework.beans.factory.InitializingBean#afterPropertiesSet()
 	 */
+	@Override
 	public void afterPropertiesSet() {
 		if (authorizedClientNames == null || authorizedClientNames.isEmpty()) {
 			authorizedClientNames = null;

@@ -4,11 +4,9 @@
 package org.esupportail.commons.services.smtp;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.ConnectException;
 import java.net.UnknownHostException;
-import java.security.Key;
 import java.util.List;
 import java.util.Properties;
 
@@ -31,9 +29,6 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 import javax.mail.internet.MimeUtility;
 
-import net.suberic.crypto.EncryptionKeyManager;
-import net.suberic.crypto.EncryptionManager;
-import net.suberic.crypto.EncryptionUtils;
 import org.esupportail.commons.services.logging.Logger;
 import org.esupportail.commons.services.logging.LoggerImpl;
 import org.esupportail.commons.services.smtp.signing.MessageSigner;
@@ -368,6 +363,7 @@ public class SmtpUtils {
 	 * @param textBody
 	 * @param files
 	 * @param charset
+	 * @param messageSigner 
 	 * @param messageId
 	 * @throws SmtpException
 	 */

@@ -61,7 +61,7 @@ public class MockFacesContext extends FacesContext {
 	 * @see javax.faces.context.FacesContext#getClientIdsWithMessages()
 	 */
 	@Override
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	public Iterator getClientIdsWithMessages() {
 		return null;
 	}
@@ -92,7 +92,7 @@ public class MockFacesContext extends FacesContext {
 	/**
 	 * @see javax.faces.context.FacesContext#getMessages()
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	@Override
 	public Iterator getMessages() {
 		return null;
@@ -101,7 +101,7 @@ public class MockFacesContext extends FacesContext {
 	/**
 	 * @see javax.faces.context.FacesContext#getMessages(java.lang.String)
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	@Override
 	public Iterator getMessages(
 			@SuppressWarnings("unused")

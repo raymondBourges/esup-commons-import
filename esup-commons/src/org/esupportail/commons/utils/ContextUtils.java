@@ -90,7 +90,7 @@ public class ContextUtils {
 	}
 
 	/**
-	 * @param portletRequest 
+	 * @param oPortletRequest 
 	 * @return The HttpServletRequest instance that corresponds to a PortletRequest, or null if not possible.
 	 */
 	static HttpServletRequest getHttpServletRequestFromPortletRequest(final Object oPortletRequest) {

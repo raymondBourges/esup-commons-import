@@ -158,7 +158,7 @@ implements ExceptionService {
 	/**
 	 * The views to redirect to.
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	private Map<Class, String> exceptionViews;
 	
 	/**
@@ -179,11 +179,10 @@ implements ExceptionService {
 	 * @param authenticationService 
 	 * @param logLevel 
 	 */
-	@SuppressWarnings("unchecked")
 	public SimpleExceptionServiceImpl(
 			final I18nService i18nService,
 			final ApplicationService applicationService,
-			final Map<Class, String> exceptionViews,
+			@SuppressWarnings("rawtypes") final Map<Class, String> exceptionViews,
 			final AuthenticationService authenticationService,
 			final String logLevel) {
 		super();
@@ -398,6 +397,7 @@ implements ExceptionService {
 	 * @see org.esupportail.commons.services.exceptionHandling.ExceptionService#setParameters(
 	 * java.lang.Throwable)
 	 */
+	@Override
 	public void setParameters(
 			final Throwable t) throws ExceptionHandlingException {
 		try {
@@ -478,6 +478,7 @@ implements ExceptionService {
 	/**
 	 * @see org.esupportail.commons.services.exceptionHandling.ExceptionService#handleException()
 	 */
+	@Override
 	public void handleException() throws ExceptionHandlingException {
 		// try to log the throwable
 		try {
@@ -492,6 +493,7 @@ implements ExceptionService {
 	/**
 	 * @see org.esupportail.commons.services.exceptionHandling.ExceptionService#getApplicationName()
 	 */
+	@Override
 	public String getApplicationName() {
 		return applicationName;
 	}
@@ -499,6 +501,7 @@ implements ExceptionService {
 	/**
 	 * @see org.esupportail.commons.services.exceptionHandling.ExceptionService#getApplicationVersion()
 	 */
+	@Override
 	public Version getApplicationVersion() {
 		return applicationVersion;
 	}
@@ -506,6 +509,7 @@ implements ExceptionService {
 	/**
 	 * @see org.esupportail.commons.services.exceptionHandling.ExceptionService#getClient()
 	 */
+	@Override
 	public String getClient() {
 		return client;
 	}
@@ -513,6 +517,7 @@ implements ExceptionService {
 	/**
 	 * @see org.esupportail.commons.services.exceptionHandling.ExceptionService#getCookies()
 	 */
+	@Override
 	public Set<String> getCookies() {
 		return cookies;
 	}
@@ -520,6 +525,7 @@ implements ExceptionService {
 	/**
 	 * @see org.esupportail.commons.services.exceptionHandling.ExceptionService#getDate()
 	 */
+	@Override
 	public Long getDate() {
 		return date;
 	}
@@ -527,6 +533,7 @@ implements ExceptionService {
 	/**
 	 * @see org.esupportail.commons.services.exceptionHandling.ExceptionService#getPortal()
 	 */
+	@Override
 	public String getPortal() {
 		return portal;
 	}
@@ -534,6 +541,7 @@ implements ExceptionService {
 	/**
 	 * @see org.esupportail.commons.services.exceptionHandling.ExceptionService#getQueryString()
 	 */
+	@Override
 	public String getQueryString() {
 		return queryString;
 	}
@@ -541,6 +549,7 @@ implements ExceptionService {
 	/**
 	 * @see org.esupportail.commons.services.exceptionHandling.ExceptionService#getQuickStart()
 	 */
+	@Override
 	public Boolean getQuickStart() {
 		return quickStart;
 	}
@@ -548,6 +557,7 @@ implements ExceptionService {
 	/**
 	 * @see org.esupportail.commons.services.exceptionHandling.ExceptionService#getRequestHeaders()
 	 */
+	@Override
 	public Set<String> getRequestHeaders() {
 		return requestHeaders;
 	}
@@ -555,6 +565,7 @@ implements ExceptionService {
 	/**
 	 * @see org.esupportail.commons.services.exceptionHandling.ExceptionService#getRequestParameters()
 	 */
+	@Override
 	public Set<String> getRequestParameters() {
 		return requestParameters;
 	}
@@ -562,6 +573,7 @@ implements ExceptionService {
 	/**
 	 * @see org.esupportail.commons.services.exceptionHandling.ExceptionService#getServer()
 	 */
+	@Override
 	public String getServer() {
 		return server;
 	}
@@ -569,6 +581,7 @@ implements ExceptionService {
 	/**
 	 * @see org.esupportail.commons.services.exceptionHandling.ExceptionService#getRequestAttributes()
 	 */
+	@Override
 	public Set<String> getRequestAttributes() {
 		return requestAttributes;
 	}
@@ -576,6 +589,7 @@ implements ExceptionService {
 	/**
 	 * @see org.esupportail.commons.services.exceptionHandling.ExceptionService#getSessionAttributes()
 	 */
+	@Override
 	public Set<String> getSessionAttributes() {
 		return sessionAttributes;
 	}
@@ -583,6 +597,7 @@ implements ExceptionService {
 	/**
 	 * @see org.esupportail.commons.services.exceptionHandling.ExceptionService#getGlobalSessionAttributes()
 	 */
+	@Override
 	public Set<String> getGlobalSessionAttributes() {
 		return globalSessionAttributes;
 	}
@@ -590,6 +605,7 @@ implements ExceptionService {
 	/**
 	 * @see org.esupportail.commons.services.exceptionHandling.ExceptionService#getSystemProperties()
 	 */
+	@Override
 	public Set<String> getSystemProperties() {
 		return systemProperties;
 	}
@@ -597,6 +613,7 @@ implements ExceptionService {
 	/**
 	 * @see org.esupportail.commons.services.exceptionHandling.ExceptionService#getThrowable()
 	 */
+	@Override
 	public Throwable getThrowable() {
 		return throwable;
 	}
@@ -604,6 +621,7 @@ implements ExceptionService {
 	/**
 	 * @see org.esupportail.commons.services.exceptionHandling.ExceptionService#getUserAgent()
 	 */
+	@Override
 	public String getUserAgent() {
 		return userAgent;
 	}
@@ -611,6 +629,7 @@ implements ExceptionService {
 	/**
 	 * @see org.esupportail.commons.services.exceptionHandling.ExceptionService#getUserId()
 	 */
+	@Override
 	public String getUserId() {
 		return userId;
 	}
@@ -618,6 +637,7 @@ implements ExceptionService {
 	/**
 	 * @see org.esupportail.commons.services.exceptionHandling.ExceptionService#getRecipientEmail()
 	 */
+	@Override
 	public String getRecipientEmail() {
 		return null;
 	}
@@ -626,10 +646,12 @@ implements ExceptionService {
 	 * @see org.esupportail.commons.services.exceptionHandling.ExceptionService#getExceptionView()
 	 */
 	@SuppressWarnings("unchecked")
+	@Override
 	public String getExceptionView() {
 		if (throwable != null) {
-			for (Class clazz : exceptionViews.keySet()) {
+			for (@SuppressWarnings("rawtypes") Class clazz : exceptionViews.keySet()) {
 				for (Throwable cause : ExceptionUtils.getCauses(throwable)) {
+					@SuppressWarnings("rawtypes")
 					Class causeClass = cause.getClass(); 
 					if (clazz.isAssignableFrom(causeClass)) {
 						return exceptionViews.get(clazz);

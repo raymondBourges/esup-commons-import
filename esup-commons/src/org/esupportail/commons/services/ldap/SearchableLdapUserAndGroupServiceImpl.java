@@ -106,6 +106,7 @@ public class SearchableLdapUserAndGroupServiceImpl implements LdapUserAndGroupSe
 	/**
 	 * @see org.springframework.beans.factory.InitializingBean#afterPropertiesSet()
 	 */
+	@Override
 	public void afterPropertiesSet() {
 		if (userSearchAttribute == null) {
 			logger.info("property userSearchAttribute is not set, " 
@@ -133,6 +134,7 @@ public class SearchableLdapUserAndGroupServiceImpl implements LdapUserAndGroupSe
 	/**
 	 * @see org.esupportail.commons.services.ldap.LdapUserAndGroupService#getLdapUser(java.lang.String)
 	 */
+	@Override
 	public LdapUser getLdapUser(final String id) throws LdapException, UserNotFoundException {
 		return userService.getLdapUser(id);
 	}
@@ -140,6 +142,7 @@ public class SearchableLdapUserAndGroupServiceImpl implements LdapUserAndGroupSe
 	/**
 	 * @see org.esupportail.commons.services.ldap.LdapUserAndGroupService#getLdapUsersFromFilter(java.lang.String)
 	 */
+	@Override
 	public List<LdapUser> getLdapUsersFromFilter(final String filterExpr) throws LdapException {
 		return userService.getLdapUsersFromFilter(filterExpr);
 	}
@@ -147,6 +150,7 @@ public class SearchableLdapUserAndGroupServiceImpl implements LdapUserAndGroupSe
 	/**
 	 * @see org.esupportail.commons.services.ldap.LdapUserAndGroupService#getLdapUsersFromToken(java.lang.String)
 	 */
+	@Override
 	public List<LdapUser> getLdapUsersFromToken(final String token) throws LdapException {
 		return userService.getLdapUsersFromFilter(token);
 	}
@@ -155,6 +159,7 @@ public class SearchableLdapUserAndGroupServiceImpl implements LdapUserAndGroupSe
 	 * @see org.esupportail.commons.services.ldap.LdapUserAndGroupService#userMatchesFilter(
 	 * java.lang.String, java.lang.String)
 	 */
+	@Override
 	public boolean userMatchesFilter(final String id, final String filter) throws LdapException {
 		return userService.userMatchesFilter(id, filter);
 	}
@@ -162,6 +167,7 @@ public class SearchableLdapUserAndGroupServiceImpl implements LdapUserAndGroupSe
 	/**
 	 * @see org.esupportail.commons.services.ldap.LdapUserAndGroupService#getUserStatistics(java.util.Locale)
 	 */
+	@Override
 	public List<String> getUserStatistics(final Locale locale) {
 		return userService.getStatistics(locale);
 	}
@@ -169,6 +175,7 @@ public class SearchableLdapUserAndGroupServiceImpl implements LdapUserAndGroupSe
 	/**
 	 * @see org.esupportail.commons.services.ldap.LdapUserAndGroupService#resetUserStatistics()
 	 */
+	@Override
 	public void resetUserStatistics() {
 		userService.resetStatistics();
 	}
@@ -224,6 +231,7 @@ public class SearchableLdapUserAndGroupServiceImpl implements LdapUserAndGroupSe
 	/**
 	 * @see org.esupportail.commons.services.ldap.LdapUserAndGroupService#supportUserStatistics()
 	 */
+	@Override
 	public boolean supportUserStatistics() {
 		return userService.supportStatistics();
 	}
@@ -231,6 +239,7 @@ public class SearchableLdapUserAndGroupServiceImpl implements LdapUserAndGroupSe
 	/**
 	 * @see org.esupportail.commons.services.ldap.LdapUserAndGroupService#supportsUserTest()
 	 */
+	@Override
 	public boolean supportsUserTest() {
 		return userService.supportsTest();
 	}
@@ -238,6 +247,7 @@ public class SearchableLdapUserAndGroupServiceImpl implements LdapUserAndGroupSe
 	/**
 	 * @see org.esupportail.commons.services.ldap.LdapUserAndGroupService#userTest()
 	 */
+	@Override
 	public void userTest() {
 		userService.test();
 	}
@@ -245,6 +255,7 @@ public class SearchableLdapUserAndGroupServiceImpl implements LdapUserAndGroupSe
 	/**
 	 * @see org.esupportail.commons.services.ldap.LdapUserAndGroupService#testUserLdapFilter(java.lang.String)
 	 */
+	@Override
 	public String testUserLdapFilter(final String filterExpr) throws LdapException {
 		return userService.testLdapFilter(filterExpr);
 	}
@@ -252,6 +263,7 @@ public class SearchableLdapUserAndGroupServiceImpl implements LdapUserAndGroupSe
 	/**
 	 * @see org.esupportail.commons.services.ldap.LdapUserAndGroupService#getUserSearchDisplayedAttributes()
 	 */
+	@Override
 	public List<String> getUserSearchDisplayedAttributes() {
 		return userService.getSearchDisplayedAttributes();
 	}
@@ -273,6 +285,7 @@ public class SearchableLdapUserAndGroupServiceImpl implements LdapUserAndGroupSe
 	/**
 	 * @see org.esupportail.commons.services.ldap.LdapUserAndGroupService#getLdapGroup(java.lang.String)
 	 */
+	@Override
 	public LdapGroup getLdapGroup(final String id) throws LdapException, GroupNotFoundException {
 		return groupService.getLdapGroup(id);
 	}
@@ -280,6 +293,7 @@ public class SearchableLdapUserAndGroupServiceImpl implements LdapUserAndGroupSe
 	/**
 	 * @see org.esupportail.commons.services.ldap.LdapUserAndGroupService#getLdapGroupsFromFilter(java.lang.String)
 	 */
+	@Override
 	public List<LdapGroup> getLdapGroupsFromFilter(final String filterExpr) throws LdapException {
 		return groupService.getLdapGroupsFromFilter(filterExpr);
 	}
@@ -287,6 +301,7 @@ public class SearchableLdapUserAndGroupServiceImpl implements LdapUserAndGroupSe
 	/**
 	 * @see org.esupportail.commons.services.ldap.LdapUserAndGroupService#getLdapGroupsFromToken(java.lang.String)
 	 */
+	@Override
 	public List<LdapGroup> getLdapGroupsFromToken(final String token) throws LdapException {
 		return groupService.getLdapGroupsFromFilter(token);
 	}
@@ -320,6 +335,7 @@ public class SearchableLdapUserAndGroupServiceImpl implements LdapUserAndGroupSe
 	 * @see org.esupportail.commons.services.ldap.LdapUserAndGroupService#getMemberIds(
 	 * org.esupportail.commons.services.ldap.LdapGroup)
 	 */
+	@Override
 	public List<String> getMemberIds(final LdapGroup group) {
 		if (groupMemberAttribute == null) {
 			throw new UnsupportedOperationException("property groupMemberAttribute is not set");
@@ -340,6 +356,7 @@ public class SearchableLdapUserAndGroupServiceImpl implements LdapUserAndGroupSe
 	 * @see org.esupportail.commons.services.ldap.LdapUserAndGroupService#getMembers(
 	 * org.esupportail.commons.services.ldap.LdapGroup)
 	 */
+	@Override
 	public List<LdapUser> getMembers(final LdapGroup group) {
 		List<LdapUser> members = new ArrayList<LdapUser>();
 		for (String uid : getMemberIds(group)) {
@@ -356,6 +373,7 @@ public class SearchableLdapUserAndGroupServiceImpl implements LdapUserAndGroupSe
 	 * @see org.esupportail.commons.services.ldap.LdapUserAndGroupService#groupMatchesFilter(
 	 * java.lang.String, java.lang.String)
 	 */
+	@Override
 	public boolean groupMatchesFilter(final String id, final String filter) throws LdapException {
 		return groupService.groupMatchesFilter(id, filter);
 	}
@@ -363,6 +381,7 @@ public class SearchableLdapUserAndGroupServiceImpl implements LdapUserAndGroupSe
 	/**
 	 * @see org.esupportail.commons.services.ldap.LdapUserAndGroupService#getGroupStatistics(java.util.Locale)
 	 */
+	@Override
 	public List<String> getGroupStatistics(final Locale locale) {
 		return groupService.getStatistics(locale);
 	}
@@ -370,6 +389,7 @@ public class SearchableLdapUserAndGroupServiceImpl implements LdapUserAndGroupSe
 	/**
 	 * @see org.esupportail.commons.services.ldap.LdapUserAndGroupService#resetGroupStatistics()
 	 */
+	@Override
 	public void resetGroupStatistics() {
 		groupService.resetStatistics();
 	}
@@ -425,6 +445,7 @@ public class SearchableLdapUserAndGroupServiceImpl implements LdapUserAndGroupSe
 	/**
 	 * @see org.esupportail.commons.services.ldap.LdapUserAndGroupService#supportGroupStatistics()
 	 */
+	@Override
 	public boolean supportGroupStatistics() {
 		return groupService.supportStatistics();
 	}
@@ -432,6 +453,7 @@ public class SearchableLdapUserAndGroupServiceImpl implements LdapUserAndGroupSe
 	/**
 	 * @see org.esupportail.commons.services.ldap.LdapUserAndGroupService#supportsGroupTest()
 	 */
+	@Override
 	public boolean supportsGroupTest() {
 		return groupService.supportsTest();
 	}
@@ -439,6 +461,7 @@ public class SearchableLdapUserAndGroupServiceImpl implements LdapUserAndGroupSe
 	/**
 	 * @see org.esupportail.commons.services.ldap.LdapUserAndGroupService#groupTest()
 	 */
+	@Override
 	public void groupTest() {
 		groupService.test();
 	}
@@ -446,6 +469,7 @@ public class SearchableLdapUserAndGroupServiceImpl implements LdapUserAndGroupSe
 	/**
 	 * @see org.esupportail.commons.services.ldap.LdapUserAndGroupService#testGroupLdapFilter(java.lang.String)
 	 */
+	@Override
 	public String testGroupLdapFilter(final String filterExpr) throws LdapException {
 		return groupService.testLdapFilter(filterExpr);
 	}
@@ -453,6 +477,7 @@ public class SearchableLdapUserAndGroupServiceImpl implements LdapUserAndGroupSe
 	/**
 	 * @see org.esupportail.commons.services.ldap.LdapUserAndGroupService#getGroupSearchDisplayedAttributes()
 	 */
+	@Override
 	public List<String> getGroupSearchDisplayedAttributes() {
 		return groupService.getSearchDisplayedAttributes();
 	}

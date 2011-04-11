@@ -53,11 +53,13 @@ public class FileUtils {
      * @throws ConfigException 
      */
     public static byte[] getFileContent(final File file) throws ConfigException {
+		InputStream is; 
 		try {
-			InputStream is = new FileInputStream(file); 
-			if (is == null) {
-				throw new ConfigException("could not read [" + file.getName() + "]");
-			}
+			is = new FileInputStream(file); 
+		} catch (IOException e) {
+			throw new ConfigException("could not read [" + file.getName() + "]", e);
+		}
+		try {
 			return getFileContent(is);
 		} catch (IOException e) {
 			throw new ConfigException(e);
@@ -66,7 +68,7 @@ public class FileUtils {
 
 	/**
 	 * @param is
-	 * @return
+	 * @return the content of the input stream.
 	 * @throws IOException
 	 */
 	private static byte[] getFileContent(InputStream is) throws IOException {

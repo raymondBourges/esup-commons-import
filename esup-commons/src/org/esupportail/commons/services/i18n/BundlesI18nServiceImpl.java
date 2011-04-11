@@ -40,6 +40,7 @@ public class BundlesI18nServiceImpl extends AbstractI18nService implements Initi
 	/**
 	 * @see org.springframework.beans.factory.InitializingBean#afterPropertiesSet()
 	 */
+	@Override
 	public void afterPropertiesSet() {
 		Assert.notEmpty(bundleBasenames, 
 				"property bundleBasenames of class " + getClass().getName() + " can not be empty");
@@ -48,6 +49,7 @@ public class BundlesI18nServiceImpl extends AbstractI18nService implements Initi
 	/**
 	 * @see org.esupportail.commons.services.i18n.I18nService#getStrings(java.util.Locale)
 	 */
+	@Override
 	public Map<String, String> getStrings(final Locale locale) {
 		Map<String, String> result = new BundleMap(locale);
 		for (String bundleBasename : bundleBasenames) {

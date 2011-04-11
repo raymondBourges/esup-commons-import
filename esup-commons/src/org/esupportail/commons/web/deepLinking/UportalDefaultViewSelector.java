@@ -113,6 +113,7 @@ public class UportalDefaultViewSelector implements DefaultViewSelector {
 	 * @see org.apache.myfaces.portlet.DefaultViewSelector#selectViewId(
 	 * javax.portlet.RenderRequest, javax.portlet.RenderResponse)
 	 */
+	@Override
 	public String selectViewId(
 			final RenderRequest renderRequest, 
 			@SuppressWarnings("unused")
@@ -123,6 +124,7 @@ public class UportalDefaultViewSelector implements DefaultViewSelector {
 	/**
 	 * @see org.apache.myfaces.portlet.DefaultViewSelector#setPortletContext(javax.portlet.PortletContext)
 	 */
+	@Override
 	public void setPortletContext(final PortletContext portletContext) {
 		this.portletContext = portletContext;
 	}

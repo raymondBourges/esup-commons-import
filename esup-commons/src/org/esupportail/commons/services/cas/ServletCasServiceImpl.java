@@ -33,6 +33,7 @@ public class ServletCasServiceImpl implements InitializingBean, CasService {
 	/**
 	 * @see org.springframework.beans.factory.InitializingBean#afterPropertiesSet()
 	 */
+	@Override
 	public void afterPropertiesSet() {
 		// nothing to check
 	}
@@ -40,6 +41,7 @@ public class ServletCasServiceImpl implements InitializingBean, CasService {
 	/**
 	 * @see org.esupportail.commons.services.cas.CasService#getProxyTicket(java.lang.String)
 	 */
+	@Override
 	public String getProxyTicket(final String targetService) throws CasException {
 		CASReceipt receipt = (CASReceipt) ContextUtils.getSessionAttribute(CASFilter.CAS_FILTER_RECEIPT);
 		String pgtIou = receipt.getPgtIou();
@@ -57,6 +59,7 @@ public class ServletCasServiceImpl implements InitializingBean, CasService {
 	/**
 	 * @see org.esupportail.commons.services.cas.CasService#validate()
 	 */
+	@Override
 	public void validate() throws CasException {
 		// nothing to validate
 	}

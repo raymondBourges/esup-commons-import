@@ -117,6 +117,7 @@ public abstract class AbstractHtmlFormatRenderer extends HtmlFormatRenderer {
 		if (htmlOutputFormat.getChildCount() == 0) {
 			args = EMPTY_ARGS;
 		} else {
+			@SuppressWarnings("rawtypes")
 			List argsList = new ArrayList();
 			for (Object child : htmlOutputFormat.getChildren()) {
 				if (child instanceof UIParameter) {

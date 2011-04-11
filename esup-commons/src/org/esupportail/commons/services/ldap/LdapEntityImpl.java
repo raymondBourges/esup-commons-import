@@ -52,6 +52,7 @@ public class LdapEntityImpl implements LdapEntity {
 	/**
 	 * @see org.esupportail.commons.services.ldap.LdapEntity#getId()
 	 */
+	@Override
 	public String getId() {
 		return id;
 	}
@@ -59,6 +60,7 @@ public class LdapEntityImpl implements LdapEntity {
 	/**
 	 * @see org.esupportail.commons.services.ldap.LdapEntity#setId(java.lang.String)
 	 */
+	@Override
 	public void setId(final String id) {
 		this.id = id;
 	}
@@ -66,6 +68,7 @@ public class LdapEntityImpl implements LdapEntity {
 	/**
 	 * @see org.esupportail.commons.services.ldap.LdapEntity#getAttributes()
 	 */
+	@Override
 	public Map<String, List<String>> getAttributes() {
 		return attributes;
 	}
@@ -73,6 +76,7 @@ public class LdapEntityImpl implements LdapEntity {
 	/**
 	 * @see org.esupportail.commons.services.ldap.LdapEntity#setAttributes(java.util.Map)
 	 */
+	@Override
 	public void setAttributes(
 			final Map<String, List<String>> attributes) {
 		this.attributes = attributes;
@@ -81,6 +85,7 @@ public class LdapEntityImpl implements LdapEntity {
 	/**
 	 * @see org.esupportail.commons.services.ldap.LdapEntity#getAttributeNames()
 	 */
+	@Override
 	public List<String> getAttributeNames() {
 		return new ArrayList<String>(attributes.keySet()); 
 	}
@@ -88,6 +93,7 @@ public class LdapEntityImpl implements LdapEntity {
 	/**
 	 * @see org.esupportail.commons.services.ldap.LdapEntity#getAttributes(java.lang.String)
 	 */
+	@Override
 	public List<String> getAttributes(final String name) {
 		List<String> result = attributes.get(name);
 		if (result == null) {
@@ -99,6 +105,7 @@ public class LdapEntityImpl implements LdapEntity {
 	/**
 	 * @see org.esupportail.commons.services.ldap.LdapEntity#getAttribute(java.lang.String)
 	 */
+	@Override
 	public String getAttribute(final String name) {
 		List<String> values = getAttributes(name);
 		if (values.size() < 1) {

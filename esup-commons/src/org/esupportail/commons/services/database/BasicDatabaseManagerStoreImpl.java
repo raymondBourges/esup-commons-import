@@ -33,6 +33,7 @@ public class BasicDatabaseManagerStoreImpl extends AbstractDatabaseManagerStore 
 	/**
 	 * @see org.springframework.beans.factory.InitializingBean#afterPropertiesSet()
 	 */
+	@Override
 	public void afterPropertiesSet() {
 		Assert.notNull(databaseManagers, 
 				"property [databaseManagers] of class [" 

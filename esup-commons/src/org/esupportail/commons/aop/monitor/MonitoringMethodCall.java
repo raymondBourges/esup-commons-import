@@ -55,6 +55,7 @@ public class MonitoringMethodCall implements Comparable<MonitoringMethodCall> {
 	 * @return an int
 	 * @see java.lang.Comparable#compareTo(java.lang.Object)
 	 */
+	@Override
 	public int compareTo(final MonitoringMethodCall o) {
 		int classVal = className.compareTo(o.className);
 		if (classVal != 0) {

@@ -95,6 +95,7 @@ public class SimpleLdapEntityServiceImpl extends AbstractLdapService implements 
 	/**
 	 * @see org.springframework.beans.factory.InitializingBean#afterPropertiesSet()
 	 */
+	@Override
 	public void afterPropertiesSet() {
 		Assert.notNull(ldapTemplate, 
 				"property ldapTemplate of class " + getClass().getName() + " can not be null");
@@ -210,6 +211,7 @@ public class SimpleLdapEntityServiceImpl extends AbstractLdapService implements 
 	/**
 	 * @see org.esupportail.commons.services.ldap.LdapEntityService#getLdapEntitiesFromFilter(java.lang.String)
 	 */
+	@Override
 	public List<LdapEntity> getLdapEntitiesFromFilter(final String filterExpr) throws LdapException {
 		return getLdapEntitiesFromFilter(new StringFilter(filterExpr));
 	}
@@ -217,6 +219,7 @@ public class SimpleLdapEntityServiceImpl extends AbstractLdapService implements 
 	/**
 	 * @see org.esupportail.commons.services.ldap.LdapEntityService#testLdapFilter(java.lang.String)
 	 */
+	@Override
 	public String testLdapFilter(final String filterExpr) throws LdapException {
 		try {
 			getLdapEntitiesFromFilter(new StringFilter(filterExpr));
@@ -229,6 +232,7 @@ public class SimpleLdapEntityServiceImpl extends AbstractLdapService implements 
 	/**
 	 * @see org.esupportail.commons.services.ldap.LdapEntityService#getLdapEntity(java.lang.String)
 	 */
+	@Override
 	public LdapEntity getLdapEntity(final String id) throws LdapException, ObjectNotFoundException {
 		List<LdapEntity> ldapEntities = getLdapEntitiesFromFilter(new EqualsFilter(idAttribute, id));
 		if (ldapEntities.isEmpty()) {
@@ -244,6 +248,7 @@ public class SimpleLdapEntityServiceImpl extends AbstractLdapService implements 
 	 * @see org.esupportail.commons.services.ldap.LdapEntityService#entityMatchesFilter(
 	 * java.lang.String, java.lang.String)
 	 */
+	@Override
 	public boolean entityMatchesFilter(final String id, final String filterExpr) throws LdapException {
 		AndFilter filter = new AndFilter();
 		filter.and(new EqualsFilter(idAttribute, id));

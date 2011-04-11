@@ -25,6 +25,7 @@ public class VoidVersionningServiceImpl implements VersionningService {
 	/**
 	 * @see org.esupportail.commons.services.application.VersionningService#checkVersion(boolean, boolean)
 	 */
+	@Override
 	public void checkVersion(
 			@SuppressWarnings("unused")
 			final boolean throwException, 
@@ -37,6 +38,7 @@ public class VoidVersionningServiceImpl implements VersionningService {
 	/**
 	 * @see org.esupportail.commons.services.application.VersionningService#initDatabase()
 	 */
+	@Override
 	public void initDatabase() {
 		// nothing to do here
 	}
@@ -44,6 +46,7 @@ public class VoidVersionningServiceImpl implements VersionningService {
 	/**
 	 * @see org.esupportail.commons.services.application.VersionningService#upgradeDatabase()
 	 */
+	@Override
 	public boolean upgradeDatabase() {
 		return false;
 	}

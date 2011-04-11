@@ -98,7 +98,7 @@ public final class BeanUtils {
 	 */
 	@SuppressWarnings("unchecked")
 	public static Map<String, Object> getBeansOfClass(
-			final Class type) throws ConfigException {
+			@SuppressWarnings("rawtypes") final Class type) throws ConfigException {
 		BeanFactory beanFactory = getBeanFactory();
 		if (!(beanFactory instanceof ListableBeanFactory)) {
 			throw new ConfigException(

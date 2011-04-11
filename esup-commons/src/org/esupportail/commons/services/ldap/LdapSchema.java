@@ -81,6 +81,7 @@ public class LdapSchema implements InitializingBean, Serializable {
 	/**
 	 * @see org.springframework.beans.factory.InitializingBean#afterPropertiesSet()
 	 */
+	@Override
 	public void afterPropertiesSet() {
 		Assert.notNull(this.displayName, 
 				"property displayName of class " + this.getClass().getName() + " can not be null");

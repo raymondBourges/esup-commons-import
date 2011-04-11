@@ -8,7 +8,6 @@ import javax.servlet.FilterChain;
 import org.esupportail.commons.services.database.DatabaseUtils;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
-import org.springframework.mock.web.MockServletContext;
 import org.springframework.web.filter.RequestContextFilter;
 
 /**
@@ -18,7 +17,7 @@ import org.springframework.web.filter.RequestContextFilter;
  * 
  * To use it you can write something like this in Batch.java for exemple :
  * 
- * <PRE>{@code
+ * <PRE>@code
   protected static void updateAcls() {
 		try {
 			WebApplicationEnvironment webApplicationUtils = new WebApplicationEnvironment();
@@ -35,17 +34,29 @@ import org.springframework.web.filter.RequestContextFilter;
 			e.printStackTrace();
 		}
 	}
- *}}</PRE>
+ *}</PRE>
  * 
  * @see WebApplicationEnvironment
  */
 public final class WebApplicationFilter {
 
+	/**
+	 * 
+	 */
 	private static RequestContextFilter contextFilter;
+	/**
+	 * 
+	 */
 	private FilterChain chain;
 	//TODO VB: what is this attribute for (never read)?
-	private MockServletContext context;
+	//private MockServletContext context;
+	/**
+	 * 
+	 */
 	private MockHttpServletResponse response;
+	/**
+	 * 
+	 */
 	private MockHttpServletRequest request;
 
 	/**
@@ -56,7 +67,7 @@ public final class WebApplicationFilter {
 			final WebApplicationEnvironment webApplicationUtils, 
 			final FilterChain chain) {
 		this.chain = chain;
-		context = webApplicationUtils.getContext();
+//		context = webApplicationUtils.getContext();
 		response = webApplicationUtils.getResponse();
 		request = webApplicationUtils.getRequest();
 		contextFilter = webApplicationUtils.getContextFilter();

@@ -109,7 +109,7 @@ public class UIPaginatorStyle extends UIAbstractPaginatorStyle {
 	 */
 	@SuppressWarnings("unchecked")
 	private Div makePages(final Div divPagination,
-					final Paginator pagi, 
+					@SuppressWarnings("rawtypes") final Paginator pagi, 
 					final HtmlTag ul1, final Application a) {
 		Div divTemp = divPagination;
 		if (!pagi.getFirstPagesNumber().isEmpty()) {

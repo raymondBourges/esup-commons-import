@@ -30,6 +30,7 @@ extends AbstractHibernateDatabaseManagerImpl {
 	/**
 	 * @see org.esupportail.commons.services.database.DatabaseManager#isTransactionnal()
 	 */
+	@Override
 	public boolean isTransactionnal() {
 		return transactionnal;
 	}

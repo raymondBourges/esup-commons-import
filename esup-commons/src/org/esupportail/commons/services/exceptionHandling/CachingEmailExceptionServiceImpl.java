@@ -61,12 +61,11 @@ public class CachingEmailExceptionServiceImpl extends EmailExceptionServiceImpl 
 	 * @param cache 
 	 * @param logLevel 
 	 */
-	@SuppressWarnings("unchecked")
 	public CachingEmailExceptionServiceImpl(
 			final I18nService i18nService,
 			final ApplicationService applicationService,
-			final Map<Class, String> exceptionViews,
-			final List<Class> noEmailExceptions,
+			@SuppressWarnings("rawtypes") final Map<Class, String> exceptionViews,
+			@SuppressWarnings("rawtypes") final List<Class> noEmailExceptions,
 			final AuthenticationService authenticationService,
 			final SmtpService smtpService,
 			final String recipientEmail,

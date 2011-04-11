@@ -24,6 +24,7 @@ public abstract class AbstractAuthenticationService implements AuthenticationSer
 	/**
 	 * @see org.springframework.beans.factory.InitializingBean#afterPropertiesSet()
 	 */
+	@Override
 	public void afterPropertiesSet() {
 		// nothing to check
 	}
@@ -31,6 +32,7 @@ public abstract class AbstractAuthenticationService implements AuthenticationSer
 	/**
 	 * @return the enabled
 	 */
+	@Override
 	public boolean isEnabled() {
 		return enabled;
 	}

@@ -67,6 +67,7 @@ public class SmtpServer implements InitializingBean, Serializable {
 	/**
 	 * @see org.springframework.beans.factory.InitializingBean#afterPropertiesSet()
 	 */
+	@Override
 	public void afterPropertiesSet() {
 		if (this.host == null) {
 			logger.info(getClass() + ": host not set, " + DEFAULT_HOST + " will be used.");

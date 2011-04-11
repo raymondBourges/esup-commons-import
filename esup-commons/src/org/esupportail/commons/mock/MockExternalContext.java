@@ -44,13 +44,13 @@ public class MockExternalContext extends ExternalContext {
 	/**
 	 * The application map.
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	private Map applicationMap;
 
 	/**
 	 * The session map.
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	private Map sessionMap;
 
 //	/**
@@ -62,7 +62,7 @@ public class MockExternalContext extends ExternalContext {
 	/**
 	 * The request parameter map.
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	private Map requestParameterMap;
 
 	/**
@@ -85,8 +85,7 @@ public class MockExternalContext extends ExternalContext {
 	 */
 	@Override
 	public Object getSession(
-			@SuppressWarnings("unused")
-			final boolean create) {
+			@SuppressWarnings("unused") final boolean create) {
 		throw new UnsupportedOperationException();
 	}
 
@@ -143,8 +142,8 @@ public class MockExternalContext extends ExternalContext {
 	/**
 	 * @see javax.faces.context.ExternalContext#getApplicationMap()
 	 */
+	@SuppressWarnings("rawtypes")
 	@Override
-	@SuppressWarnings("unchecked")
 	public Map getApplicationMap() {
 		if (applicationMap == null) {
 			return new HashMap();
@@ -155,7 +154,7 @@ public class MockExternalContext extends ExternalContext {
 	/**
 	 * @param applicationMap
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	public void setApplicationMap(final Map applicationMap) {
 		this.applicationMap = applicationMap;
 	}
@@ -163,7 +162,7 @@ public class MockExternalContext extends ExternalContext {
 	/**
 	 * @see javax.faces.context.ExternalContext#getSessionMap()
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	@Override
 	public Map getSessionMap() {
 		if (sessionMap == null) {
@@ -178,7 +177,7 @@ public class MockExternalContext extends ExternalContext {
 	/**
 	 * @see javax.faces.context.ExternalContext#getRequestMap()
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	@Override
 	public Map getRequestMap() {
 		/*
@@ -192,7 +191,7 @@ public class MockExternalContext extends ExternalContext {
 	 * @see javax.faces.context.ExternalContext#getRequestParameterMap()
 	 */
 	@Override
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	public Map getRequestParameterMap() {
 		if (requestParameterMap != null) {
 			return requestParameterMap;
@@ -203,7 +202,7 @@ public class MockExternalContext extends ExternalContext {
 	/**
 	 * @param requestParameterMap
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	public void setRequestParameterMap(final Map requestParameterMap) {
 		this.requestParameterMap = requestParameterMap;
 	}
@@ -218,7 +217,7 @@ public class MockExternalContext extends ExternalContext {
 	/**
 	 * @see javax.faces.context.ExternalContext#getRequestParameterValuesMap()
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	@Override
 	public Map getRequestParameterValuesMap() {
 		throw new UnsupportedOperationException();
@@ -227,7 +226,7 @@ public class MockExternalContext extends ExternalContext {
 	/**
 	 * @see javax.faces.context.ExternalContext#getRequestParameterNames()
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	@Override
 	public Iterator getRequestParameterNames() {
 		throw new UnsupportedOperationException();
@@ -237,7 +236,7 @@ public class MockExternalContext extends ExternalContext {
 	 * @see javax.faces.context.ExternalContext#getRequestHeaderMap()
 	 */
 	@Override
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	public Map getRequestHeaderMap() {
 		throw new UnsupportedOperationException();
 	}
@@ -246,7 +245,7 @@ public class MockExternalContext extends ExternalContext {
 	 * @see javax.faces.context.ExternalContext#getRequestHeaderValuesMap()
 	 */
 	@Override
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	public Map getRequestHeaderValuesMap() {
 		throw new UnsupportedOperationException();
 	}
@@ -255,7 +254,7 @@ public class MockExternalContext extends ExternalContext {
 	 * @see javax.faces.context.ExternalContext#getRequestCookieMap()
 	 */
 	@Override
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	public Map getRequestCookieMap() {
 		throw new UnsupportedOperationException();
 	}
@@ -271,7 +270,7 @@ public class MockExternalContext extends ExternalContext {
 	/**
 	 * @see javax.faces.context.ExternalContext#getRequestLocales()
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	@Override
 	public Iterator getRequestLocales() {
 		return new LocalesIterator(request.getLocales());
@@ -347,7 +346,7 @@ public class MockExternalContext extends ExternalContext {
 	 * @see javax.faces.context.ExternalContext#getInitParameterMap()
 	 */
 	@Override
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	public Map getInitParameterMap() {
 		throw new UnsupportedOperationException();
 	}
@@ -356,7 +355,7 @@ public class MockExternalContext extends ExternalContext {
 	 * @see javax.faces.context.ExternalContext#getResourcePaths(java.lang.String)
 	 */
 	@Override
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	public Set getResourcePaths(
 			@SuppressWarnings("unused")
 			final String path) {
@@ -483,7 +482,7 @@ public class MockExternalContext extends ExternalContext {
 	/**
 	 * An iterator for Locale.
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	private class LocalesIterator implements Iterator {
 
 		/**
@@ -503,6 +502,7 @@ public class MockExternalContext extends ExternalContext {
 		/**
 		 * @see java.util.Iterator#hasNext()
 		 */
+		@Override
 		public boolean hasNext() {
 			return locales.hasMoreElements();
 		}
@@ -510,6 +510,7 @@ public class MockExternalContext extends ExternalContext {
 		/**
 		 * @see java.util.Iterator#next()
 		 */
+		@Override
 		public Object next() {
 			return locales.nextElement();
 		}
@@ -517,6 +518,7 @@ public class MockExternalContext extends ExternalContext {
 		/**
 		 * @see java.util.Iterator#remove()
 		 */
+		@Override
 		public void remove() {
 			throw new UnsupportedOperationException();
 		}

@@ -29,6 +29,7 @@ public class VoidSmtpServiceImpl extends AbstractSmtpService {
 	 * @see org.esupportail.commons.services.smtp.SmtpService#send(
 	 * javax.mail.internet.InternetAddress, java.lang.String, java.lang.String, java.lang.String, java.lang.String)
 	 */
+	@Override
 	public void send(
 			@SuppressWarnings("unused")
 			final InternetAddress to, 
@@ -49,6 +50,7 @@ public class VoidSmtpServiceImpl extends AbstractSmtpService {
 	 * javax.mail.internet.InternetAddress, java.lang.String, java.lang.String, 
 	 * java.lang.String, java.util.List, java.lang.String)
 	 */
+	@Override
 	public void send(
 			@SuppressWarnings("unused")
 			final InternetAddress to, 
@@ -73,6 +75,7 @@ public class VoidSmtpServiceImpl extends AbstractSmtpService {
 	 * java.lang.String, 
 	 * java.lang.String, java.lang.String, java.util.List, java.lang.String)
 	 */
+	@Override
 	public void sendtocc(
 			@SuppressWarnings("unused")
 			final InternetAddress[] tos,
@@ -98,6 +101,7 @@ public class VoidSmtpServiceImpl extends AbstractSmtpService {
 	 * @see org.esupportail.commons.services.smtp.SmtpService#sendDoNotIntercept(
 	 * javax.mail.internet.InternetAddress, java.lang.String, java.lang.String, java.lang.String, java.lang.String)
 	 */
+	@Override
 	public void sendDoNotIntercept(
 			@SuppressWarnings("unused")
 			final InternetAddress to, 
@@ -119,6 +123,7 @@ public class VoidSmtpServiceImpl extends AbstractSmtpService {
 	 * javax.mail.internet.InternetAddress, java.lang.String, java.lang.String, 
 	 * java.lang.String, java.util.List, java.lang.String)
 	 */
+	@Override
 	public void sendDoNotIntercept(
 			@SuppressWarnings("unused")
 			final InternetAddress to,

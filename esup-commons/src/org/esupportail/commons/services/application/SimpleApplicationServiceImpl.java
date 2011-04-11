@@ -107,6 +107,7 @@ public class SimpleApplicationServiceImpl implements ApplicationService, Initial
 	/**
 	 * @see org.springframework.beans.factory.InitializingBean#afterPropertiesSet()
 	 */
+	@Override
 	public void afterPropertiesSet() {
 		Assert.notNull(this.name, "property name of class " + this.getClass().getName() 
 				+ " can not be null");
@@ -139,6 +140,7 @@ public class SimpleApplicationServiceImpl implements ApplicationService, Initial
 	/**
 	 * @see org.esupportail.commons.services.application.ApplicationService#getLatestVersion()
 	 */
+	@Override
 	public Version getLatestVersion() {
 		if (latestVersionBaseUrl == null) {
 			return null;
@@ -182,6 +184,7 @@ public class SimpleApplicationServiceImpl implements ApplicationService, Initial
 	/**
 	 * @see org.esupportail.commons.services.application.ApplicationService#getVersion()
 	 */
+	@Override
 	public Version getVersion() {
 		return new Version(versionMajorNumber + "." + versionMinorNumber + "." + versionUpdate);
 	}
@@ -210,6 +213,7 @@ public class SimpleApplicationServiceImpl implements ApplicationService, Initial
 	/**
 	 * @see org.esupportail.commons.services.application.ApplicationService#getName()
 	 */
+	@Override
 	public String getName() {
 		return this.name;
 	}
@@ -223,6 +227,7 @@ public class SimpleApplicationServiceImpl implements ApplicationService, Initial
 	/**
 	 * @see org.esupportail.commons.services.application.ApplicationService#getCopyright()
 	 */
+	@Override
 	public String getCopyright() {
 		return copyright;
 	}
@@ -237,6 +242,7 @@ public class SimpleApplicationServiceImpl implements ApplicationService, Initial
 	/**
 	 * @return the vendor
 	 */
+	@Override
 	public String getVendor() {
 		return vendor;
 	}
@@ -258,6 +264,7 @@ public class SimpleApplicationServiceImpl implements ApplicationService, Initial
 	/**
 	 * @see org.esupportail.commons.services.application.ApplicationService#isQuickStart()
 	 */
+	@Override
 	public boolean isQuickStart() {
 		if (quickStart == null) {
 			logger.error("property quickStart is not set!");
@@ -276,6 +283,7 @@ public class SimpleApplicationServiceImpl implements ApplicationService, Initial
 	/**
 	 * @see org.esupportail.commons.services.application.ApplicationService#getDeployType()
 	 */
+	@Override
 	public String getDeployType() {
 		if (deployType == null) {
 			logger.error("property deployType is not set!");
@@ -294,6 +302,7 @@ public class SimpleApplicationServiceImpl implements ApplicationService, Initial
 	/**
 	 * @see org.esupportail.commons.services.application.ApplicationService#getDatabaseDriver()
 	 */
+	@Override
 	public String getDatabaseDriver() {
 		if (databaseDriver == null) {
 			logger.error("property databaseDriver is not set!");
@@ -312,6 +321,7 @@ public class SimpleApplicationServiceImpl implements ApplicationService, Initial
 	/**
 	 * @see org.esupportail.commons.services.application.ApplicationService#getDatabaseDialect()
 	 */
+	@Override
 	public String getDatabaseDialect() {
 		if (databaseDialect == null) {
 			logger.error("property databaseDialect is not set!");
@@ -330,6 +340,7 @@ public class SimpleApplicationServiceImpl implements ApplicationService, Initial
 	/**
 	 * @see org.esupportail.commons.services.application.ApplicationService#isDatabaseUseJndi()
 	 */
+	@Override
 	public boolean isDatabaseUseJndi() {
 		if (databaseUseJndi == null) {
 			logger.error("property databaseUseJndi is not set!");

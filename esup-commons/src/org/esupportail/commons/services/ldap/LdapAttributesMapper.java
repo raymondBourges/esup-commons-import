@@ -65,7 +65,7 @@ public class LdapAttributesMapper implements AttributesMapper, Serializable {
 	 * ldapUser attribute name as the key. String and byte[] may be values.
 	 * @see org.springframework.ldap.AttributesMapper#mapFromAttributes(javax.naming.directory.Attributes)
 	 */
-	@SuppressWarnings("unchecked")
+	@Override
 	public Object mapFromAttributes(final Attributes attrs) throws NamingException {
 		LdapUserImpl ldapUser = new LdapUserImpl();
 		Attribute uidAttr = attrs.get(uidAttribute);
@@ -78,6 +78,7 @@ public class LdapAttributesMapper implements AttributesMapper, Serializable {
 			List<String> listAttr = new ArrayList<String>();
 			// The attribute exists
 			if (attribute != null) {
+				@SuppressWarnings("unchecked")
 				NamingEnumeration<Object> attrValueEnum = 
 					(NamingEnumeration<Object>) attribute.getAll();
 				while (attrValueEnum.hasMore()) {
@@ -88,9 +89,11 @@ public class LdapAttributesMapper implements AttributesMapper, Serializable {
 						listAttr.add(attributeValue.toString());
 					}
 				}
+				@SuppressWarnings("rawtypes")
 				Set attributeNames = Collections.singleton(ldapAttributeName);
 				// Run through the mapped attribute names
-				for (Iterator attrNameItr = attributeNames .iterator(); attrNameItr.hasNext();) {
+				for (@SuppressWarnings("rawtypes")
+				Iterator attrNameItr = attributeNames .iterator(); attrNameItr.hasNext();) {
 					String attributeName = (String) attrNameItr .next();
 					ldapUser.getAttributes().put(attributeName.toString(), listAttr);
 				}

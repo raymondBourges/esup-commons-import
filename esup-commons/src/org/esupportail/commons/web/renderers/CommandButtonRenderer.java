@@ -173,6 +173,7 @@ public class CommandButtonRenderer extends HtmlButtonRendererBase {
 		if (commandButton.getChildCount() == 0) {
 			args = EMPTY_ARGS;
 		} else {
+			@SuppressWarnings("rawtypes")
 			List argsList = new ArrayList();
 			for (Object child : commandButton.getChildren()) {
 				if (child instanceof UIParameter) {

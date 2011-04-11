@@ -66,6 +66,7 @@ public class LdapSearchController extends AbstractApplicationAwareBean implement
 	/**
 	 * @see org.esupportail.commons.web.controllers.Resettable#reset()
 	 */
+	@Override
 	public void reset() {
 		caller = null;
 		searchInput = null;

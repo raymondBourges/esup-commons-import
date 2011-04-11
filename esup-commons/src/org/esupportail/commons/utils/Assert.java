@@ -128,8 +128,7 @@ public abstract class Assert {
 	 * @param collection the collection to check
 	 * @param message the exception message to use if the assertion fails
 	 */
-	@SuppressWarnings("unchecked")
-	public static void notEmpty(final Collection collection, final String message) {
+	public static void notEmpty(@SuppressWarnings("rawtypes") final Collection collection, final String message) {
 		if (CollectionUtils.isEmpty(collection)) {
 			throw new ConfigException(message);
 		}
@@ -142,8 +141,7 @@ public abstract class Assert {
 	 * @param map the map to check
 	 * @param message the exception message to use if the assertion fails
 	 */
-	@SuppressWarnings("unchecked")
-	public static void notEmpty(final Map map, final String message) {
+	public static void notEmpty(@SuppressWarnings("rawtypes") final Map map, final String message) {
 		if (CollectionUtils.isEmpty(map)) {
 			throw new ConfigException(message);
 		}
@@ -160,8 +158,7 @@ public abstract class Assert {
 	 * ok when prepended to it.
 	 * @see Class#isInstance
 	 */
-	@SuppressWarnings("unchecked")
-	public static void isInstanceOf(final Class clazz, final Object obj, final String message) {
+	public static void isInstanceOf(@SuppressWarnings("rawtypes") final Class clazz, final Object obj, final String message) {
 		Assert.notNull(clazz, "The clazz to perform the instanceof assertion cannot be null");
 		if (obj == null) {
 			Assert.isTrue(clazz.isInstance(obj), message 
@@ -185,7 +182,7 @@ public abstract class Assert {
 	 * ok when prepended to it.
 	 */
 	@SuppressWarnings("unchecked")
-	public static void isAssignable(final Class superType, final Class subType, final String message) {
+	public static void isAssignable(@SuppressWarnings("rawtypes") final Class superType, @SuppressWarnings("rawtypes") final Class subType, final String message) {
 		Assert.notNull(superType, "superType cannot be null");
 		Assert.notNull(subType, "subType cannot be null");
 		Assert.isTrue(superType.isAssignableFrom(subType), message + "Type [" + subType.getName()

@@ -30,6 +30,7 @@ public class UlTag extends HtmlTagTag {
 	@Override
 	protected void setProperties(final UIComponent component) {
 		super.setProperties(component);
+		@SuppressWarnings("rawtypes")
 		Map componentAttributes = component.getAttributes(); 
 		componentAttributes.put(JSFAttr.VALUE_ATTR, HTML.UL_ELEM);
 	}

@@ -272,7 +272,6 @@ public class HttpUtils {
 	 * @return the real IP address, not localhost.
 	 * @throws UnknownHostException 
 	 */
-	@SuppressWarnings("unchecked")
 	private static InetAddress getRealInetAddress(final String name) 
 	throws UnknownHostException {
 		if (!name.equals("localhost") && !name.equals("127.0.0.1") && !name.equals("0:0:0:0:0:0:0:1")) {
@@ -281,6 +280,7 @@ public class HttpUtils {
 			return host;
 		}
 		try {
+			@SuppressWarnings("rawtypes")
 			Enumeration interfaces = NetworkInterface.getNetworkInterfaces();
 			if (interfaces == null) {
 				InetAddress host = InetAddress.getByName(name);
@@ -288,6 +288,7 @@ public class HttpUtils {
 			}	
 			while (interfaces.hasMoreElements()) {
 				NetworkInterface card = (NetworkInterface) interfaces.nextElement();
+				@SuppressWarnings("rawtypes")
 				Enumeration addresses = card.getInetAddresses();
 				if (addresses == null) {
 					continue;

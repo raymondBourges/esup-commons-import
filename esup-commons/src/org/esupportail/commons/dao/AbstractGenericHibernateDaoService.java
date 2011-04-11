@@ -37,6 +37,7 @@ implements HibernateDaoService, InitializingBean {
 	/**
 	 * @see org.springframework.beans.factory.InitializingBean#afterPropertiesSet()
 	 */
+	@Override
 	public final void afterPropertiesSet() throws Exception {
 		initDao();
 	}
@@ -55,10 +56,12 @@ implements HibernateDaoService, InitializingBean {
 	/**
 	 * @see org.esupportail.commons.dao.HibernateDaoService#getQuery(java.lang.String)
 	 */
+	@Override
 	public Query getQuery(
 			final String hqlQuery) {
 		return (Query) getHibernateTemplate().execute(
 				new HibernateCallback() {
+					@Override
 					public Object doInHibernate(final Session session) throws HibernateException {
 						return session.createQuery(hqlQuery);
 					}
@@ -86,10 +89,12 @@ implements HibernateDaoService, InitializingBean {
 	/**
 	 * @see org.esupportail.commons.dao.HibernateDaoService#getSqlQuery(java.lang.String)
 	 */
+	@Override
 	public SQLQuery getSqlQuery(
 			final String sqlQuery) {
 		return (SQLQuery) getHibernateTemplate().execute(
 				new HibernateCallback() {
+					@Override
 					public Object doInHibernate(final Session session) throws HibernateException {
 						return session.createSQLQuery(sqlQuery);
 					}
@@ -155,8 +160,7 @@ implements HibernateDaoService, InitializingBean {
 	 * Delete a list of objects from the database.
 	 * @param objects 
 	 */
-	@SuppressWarnings("unchecked")
-	protected void deleteObjects(final List objects) {
+	protected void deleteObjects(@SuppressWarnings("rawtypes") final List objects) {
 		getHibernateTemplate().deleteAll(objects);
 	}
 

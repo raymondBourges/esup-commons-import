@@ -17,6 +17,7 @@ public abstract class AbstractSmtpService implements SmtpService {
 	/**
 	 * @see org.esupportail.commons.services.smtp.SmtpService#supportsTest()
 	 */
+	@Override
 	public boolean supportsTest() {
 		return false;
 	}
@@ -24,6 +25,7 @@ public abstract class AbstractSmtpService implements SmtpService {
 	/**
 	 * @see org.esupportail.commons.services.smtp.SmtpService#test()
 	 */
+	@Override
 	public void test() {
 		throw new UnsupportedOperationException();
 	}
@@ -32,6 +34,7 @@ public abstract class AbstractSmtpService implements SmtpService {
 	 * @see org.esupportail.commons.services.smtp.SmtpService#send(javax.mail.internet.InternetAddress,
 	 *  java.lang.String, java.lang.String, java.lang.String)
 	 */
+	@Override
 	public void send(
 			final InternetAddress to, 
 			final String subject, 
@@ -44,6 +47,7 @@ public abstract class AbstractSmtpService implements SmtpService {
 	 * @see org.esupportail.commons.services.smtp.SmtpService#send(javax.mail.internet.InternetAddress,
 	 *  java.lang.String, java.lang.String, java.lang.String, java.util.List)
 	 */
+	@Override
 	public void send(
 			final InternetAddress to, 
 			final String subject, 
@@ -58,6 +62,7 @@ public abstract class AbstractSmtpService implements SmtpService {
 	 *  javax.mail.internet.InternetAddress[], javax.mail.internet.InternetAddress[], java.lang.String,
 	 *   java.lang.String, java.lang.String, java.util.List)
 	 */
+	@Override
 	public void sendtocc(
 			final InternetAddress [] tos, 
 			final InternetAddress [] ccs, 
@@ -73,6 +78,7 @@ public abstract class AbstractSmtpService implements SmtpService {
 	 * @see org.esupportail.commons.services.smtp.SmtpService#sendDoNotIntercept(
 	 * javax.mail.internet.InternetAddress, java.lang.String, java.lang.String, java.lang.String)
 	 */
+	@Override
 	public void sendDoNotIntercept(
 			final InternetAddress to, 
 			final String subject, 
@@ -85,6 +91,7 @@ public abstract class AbstractSmtpService implements SmtpService {
 	 * @see org.esupportail.commons.services.smtp.SmtpService#sendDoNotIntercept(
 	 * javax.mail.internet.InternetAddress, java.lang.String, java.lang.String, java.lang.String, java.util.List)
 	 */
+	@Override
 	public void sendDoNotIntercept(
 			final InternetAddress to, 
 			final String subject, 

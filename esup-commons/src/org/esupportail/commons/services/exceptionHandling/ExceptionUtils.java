@@ -202,7 +202,7 @@ public final class ExceptionUtils {
 	 * @param exceptionClass
 	 */
 	@SuppressWarnings("unchecked")
-	public static boolean hasCause(final Throwable t, final Class exceptionClass) {
+	public static boolean hasCause(final Throwable t, @SuppressWarnings("rawtypes") final Class exceptionClass) {
 		for (Throwable cause : getCauses(t)) {
 			if (exceptionClass.isAssignableFrom(cause.getClass())) {
 				return true;
@@ -216,9 +216,8 @@ public final class ExceptionUtils {
 	 * @param t
 	 * @param exceptionClasses
 	 */
-	@SuppressWarnings("unchecked")
-	public static boolean hasCause(final Throwable t, final Class [] exceptionClasses) {
-		for (Class clazz : exceptionClasses) {
+	public static boolean hasCause(final Throwable t, @SuppressWarnings("rawtypes") final Class [] exceptionClasses) {
+		for (@SuppressWarnings("rawtypes") Class clazz : exceptionClasses) {
 			if (hasCause(t, clazz)) {
 				return true;
 			}

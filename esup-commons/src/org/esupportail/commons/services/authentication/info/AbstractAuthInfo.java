@@ -3,7 +3,6 @@
  */
 package org.esupportail.commons.services.authentication.info;
 
-import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
@@ -14,7 +13,7 @@ import org.esupportail.commons.utils.strings.StringUtils;
  * An abstract implementation of AuthInfo.
  */
 @SuppressWarnings("serial")
-public abstract class AbstractAuthInfo implements Serializable, AuthInfo {
+public abstract class AbstractAuthInfo implements AuthInfo {
 	
 	/**
 	 * The authenticated id.
@@ -50,6 +49,7 @@ public abstract class AbstractAuthInfo implements Serializable, AuthInfo {
 	/**
 	 * @see org.esupportail.commons.services.authentication.info.AuthInfo#getId()
 	 */
+	@Override
 	public String getId() {
 		return id;
 	}
@@ -64,6 +64,7 @@ public abstract class AbstractAuthInfo implements Serializable, AuthInfo {
 	/**
 	 * @see org.esupportail.commons.services.authentication.info.AuthInfo#getType()
 	 */
+	@Override
 	public String getType() {
 		return type;
 	}
@@ -78,6 +79,7 @@ public abstract class AbstractAuthInfo implements Serializable, AuthInfo {
 	/**
 	 * @see org.esupportail.commons.services.authentication.info.AuthInfo#getAttributes()
 	 */
+	@Override
 	public Map<String, List<String>> getAttributes() {
 		return attributes;
 	}

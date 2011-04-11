@@ -37,6 +37,7 @@ public abstract class AbstractRealAuthenticationService extends AbstractAuthenti
 	/**
 	 * @see org.esupportail.commons.services.authentication.AuthenticationService#getAuthInfo()
 	 */
+	@Override
 	public AuthInfo getAuthInfo() {
 		if (!ContextUtils.isWeb()) {
 			return null;

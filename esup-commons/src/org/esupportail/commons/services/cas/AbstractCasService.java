@@ -97,6 +97,7 @@ public abstract class AbstractCasService implements CasService {
 	/**
 	 * @see org.esupportail.commons.services.cas.CasService#validate()
 	 */
+	@Override
 	public void validate() throws CasException {
 		String serviceTicket = getServiceTicket();
 		validator = new ProxyTicketValidator();
@@ -210,6 +211,7 @@ public abstract class AbstractCasService implements CasService {
 	/**
 	 * @see org.esupportail.commons.services.cas.CasService#getProxyTicket(java.lang.String)
 	 */
+	@Override
 	public String getProxyTicket(final String targetService) throws CasException {
 		if (validator == null) {
 			validate();

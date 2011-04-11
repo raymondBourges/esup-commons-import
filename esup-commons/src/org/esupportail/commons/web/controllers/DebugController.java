@@ -50,6 +50,7 @@ public class DebugController implements InitializingBean, Serializable {
 	/**
 	 * @see org.springframework.beans.factory.InitializingBean#afterPropertiesSet()
 	 */
+	@Override
 	public void afterPropertiesSet() {
 		Assert.notNull(applicationService, "property applicationService of class " 
 				+ this.getClass().getName() 

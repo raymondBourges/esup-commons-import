@@ -68,7 +68,7 @@ implements ExceptionServiceFactory {
 	/**
 	 * The exception views.
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	private Map<Class, String> exceptionViews;
 	
 	/**
@@ -79,7 +79,7 @@ implements ExceptionServiceFactory {
 	/**
 	 * Constructor.
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	public SimpleExceptionServiceFactoryImpl() {
 		super();
 		exceptionViews = new HashMap<Class, String>();
@@ -110,6 +110,7 @@ implements ExceptionServiceFactory {
 	/**
 	 * @see org.esupportail.commons.services.exceptionHandling.ExceptionServiceFactory#getExceptionService()
 	 */
+	@Override
 	public ExceptionService getExceptionService() {
 		return new SimpleExceptionServiceImpl(
 				getI18nService(), getApplicationService(), 
@@ -136,9 +137,9 @@ implements ExceptionServiceFactory {
 	 * @param className 
 	 * @param exceptionView 
 	 */
-	@SuppressWarnings("unchecked")
 	private void addExceptionView(final String className, final String exceptionView) {
 		try {
+			@SuppressWarnings("rawtypes")
 			Class clazz = Class.forName(className);
 			if (!(Throwable.class.isAssignableFrom(clazz))) {
 				throw new ConfigException("class [" + className 
@@ -169,7 +170,7 @@ implements ExceptionServiceFactory {
 	/**
 	 * @return the exceptionView
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	protected Map<Class, String> getExceptionViews() {
 		return exceptionViews;
 	}

@@ -46,6 +46,7 @@ public class NotSupportedPortalServiceImpl extends AbstractPortalService impleme
 	/**
 	 * @see org.esupportail.portal.ws.client.PortalService#getUser(java.lang.String)
 	 */
+	@Override
 	public PortalUser getUser(
 			@SuppressWarnings("unused")
 			final String userId) {
@@ -55,6 +56,7 @@ public class NotSupportedPortalServiceImpl extends AbstractPortalService impleme
 	/**
 	 * @see org.esupportail.portal.ws.client.PortalService#searchUsers(java.lang.String)
 	 */
+	@Override
 	public List<PortalUser> searchUsers(
 			@SuppressWarnings("unused")
 			final String token)
@@ -69,6 +71,7 @@ public class NotSupportedPortalServiceImpl extends AbstractPortalService impleme
 	/**
 	 * @see org.esupportail.portal.ws.client.PortalService#getGroupById(java.lang.String)
 	 */
+	@Override
 	public PortalGroup getGroupById(
 			@SuppressWarnings("unused")
 			final String groupId) {
@@ -78,6 +81,7 @@ public class NotSupportedPortalServiceImpl extends AbstractPortalService impleme
 	/**
 	 * @see org.esupportail.portal.ws.client.PortalService#getGroupByName(java.lang.String)
 	 */
+	@Override
 	public PortalGroup getGroupByName(
 			@SuppressWarnings("unused")
 			final String groupName) {
@@ -87,6 +91,7 @@ public class NotSupportedPortalServiceImpl extends AbstractPortalService impleme
 	/**
 	 * @see org.esupportail.portal.ws.client.PortalService#searchGroupsByName(java.lang.String)
 	 */
+	@Override
 	public List<PortalGroup> searchGroupsByName(
 			@SuppressWarnings("unused")
 			final String token) {
@@ -96,6 +101,7 @@ public class NotSupportedPortalServiceImpl extends AbstractPortalService impleme
 	/**
 	 * @see org.esupportail.portal.ws.client.PortalService#getSubGroupsById(java.lang.String)
 	 */
+	@Override
 	public List<PortalGroup> getSubGroupsById(
 			@SuppressWarnings("unused")
 			final String arg0)
@@ -106,6 +112,7 @@ public class NotSupportedPortalServiceImpl extends AbstractPortalService impleme
 	/**
 	 * @see org.esupportail.portal.ws.client.PortalService#getSubGroupsByName(java.lang.String)
 	 */
+	@Override
 	public List<PortalGroup> getSubGroupsByName(
 			@SuppressWarnings("unused")
 			final String arg0)
@@ -120,6 +127,7 @@ public class NotSupportedPortalServiceImpl extends AbstractPortalService impleme
 	/**
 	 * @see org.esupportail.portal.ws.client.PortalService#getGroupHierarchyById(java.lang.String)
 	 */
+	@Override
 	public PortalGroupHierarchy getGroupHierarchyById(
 			@SuppressWarnings("unused")
 			final String arg0)
@@ -130,6 +138,7 @@ public class NotSupportedPortalServiceImpl extends AbstractPortalService impleme
 	/**
 	 * @see org.esupportail.portal.ws.client.PortalService#getGroupHierarchyByName(java.lang.String)
 	 */
+	@Override
 	public PortalGroupHierarchy getGroupHierarchyByName(
 			@SuppressWarnings("unused")
 			final String arg0)
@@ -140,6 +149,7 @@ public class NotSupportedPortalServiceImpl extends AbstractPortalService impleme
 	/**
 	 * @see org.esupportail.portal.ws.client.PortalService#getRootGroup()
 	 */
+	@Override
 	public PortalGroup getRootGroup() {
 		throw notSupported();
 	}
@@ -147,6 +157,7 @@ public class NotSupportedPortalServiceImpl extends AbstractPortalService impleme
 	/**
 	 * @see org.esupportail.portal.ws.client.PortalService#getGroupHierarchy()
 	 */
+	@Override
 	public PortalGroupHierarchy getGroupHierarchy() {
 		throw notSupported();
 	}
@@ -158,6 +169,7 @@ public class NotSupportedPortalServiceImpl extends AbstractPortalService impleme
 	/**
 	 * @see org.esupportail.portal.ws.client.PortalService#getUserGroups(java.lang.String)
 	 */
+	@Override
 	public List<PortalGroup> getUserGroups(
 			@SuppressWarnings("unused")
 			final String userId) {
@@ -167,6 +179,7 @@ public class NotSupportedPortalServiceImpl extends AbstractPortalService impleme
 	/**
 	 * @see org.esupportail.portal.ws.client.PortalService#getGroupUsers(java.lang.String)
 	 */
+	@Override
 	public List<PortalUser> getGroupUsers(
 			@SuppressWarnings("unused")
 			final String groupId) {
@@ -177,6 +190,7 @@ public class NotSupportedPortalServiceImpl extends AbstractPortalService impleme
 	 * @see org.esupportail.portal.ws.client.PortalService#isUserMemberOfGroup(
 	 * java.lang.String, java.lang.String)
 	 */
+	@Override
 	public boolean isUserMemberOfGroup(
 			@SuppressWarnings("unused")
 			final String userId,
@@ -188,6 +202,7 @@ public class NotSupportedPortalServiceImpl extends AbstractPortalService impleme
 	/**
 	 * @see org.esupportail.portal.ws.client.PortalService#getContainingGroupsById(java.lang.String)
 	 */
+	@Override
 	public List<PortalGroup> getContainingGroupsById(
 			@SuppressWarnings("unused")
 			final String groupId)
@@ -198,6 +213,7 @@ public class NotSupportedPortalServiceImpl extends AbstractPortalService impleme
 	/**
 	 * @see org.esupportail.portal.ws.client.PortalService#getContainingGroupsByName(java.lang.String)
 	 */
+	@Override
 	public List<PortalGroup> getContainingGroupsByName(
 			@SuppressWarnings("unused")
 			final String groupName)

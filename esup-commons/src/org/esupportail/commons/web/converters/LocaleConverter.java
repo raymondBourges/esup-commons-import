@@ -33,6 +33,7 @@ public class LocaleConverter implements Converter, Serializable {
 	 * @see javax.faces.convert.Converter#getAsObject(
 	 * javax.faces.context.FacesContext, javax.faces.component.UIComponent, java.lang.String)
 	 */
+	@Override
 	public Object getAsObject(
 			@SuppressWarnings("unused") final FacesContext context, 
 			@SuppressWarnings("unused") final UIComponent component, 
@@ -47,6 +48,7 @@ public class LocaleConverter implements Converter, Serializable {
 	 * @see javax.faces.convert.Converter#getAsString(
 	 * javax.faces.context.FacesContext, javax.faces.component.UIComponent, java.lang.Object)
 	 */
+	@Override
 	public String getAsString(
 			@SuppressWarnings("unused") final FacesContext context, 
 			@SuppressWarnings("unused") final UIComponent component, 
