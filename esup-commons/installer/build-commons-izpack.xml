@@ -1,0 +1,166 @@
+<project name="esup-common-demo-quickstart" default="exe" basedir=".">
+
+  <property file="${basedir}/installer/build.properties"/>
+
+  <taskdef 
+      resource="net/sf/antcontrib/antlib.xml" 
+      classpath="${commons.basedir}/installer/tools/ant-contrib-1.0.jar"/>
+
+  <taskdef name="izpack" classpath="${commons.basedir}/installer/tools/standalone-compiler.jar"
+	   classname="com.izforge.izpack.ant.IzPackTask"/>
+
+  <property name="esup-packages-zip" value="${app.name}-${app.version}-${app.release}" />
+
+
+  <target name="clean">
+
+    <delete includeEmptyDirs="true" failonerror="false">
+      <fileset dir="${basedir}/installer/build" >
+      	   <exclude name=".svn"/>
+      </fileset>
+    </delete>
+
+  </target>
+
+
+  <target name="prepare" depends="clean">
+
+    <mkdir dir="${basedir}/installer/build" />
+    <mkdir dir="${basedir}/installer/build/prepare" />
+    <mkdir dir="${basedir}/installer/build/jar" />
+    <mkdir dir="${basedir}/installer/build/exe" />
+
+  </target>
+
+
+  <target name="esup.unpack" depends="prepare">
+    
+    <for list="${esup-packages-zip}" param="package">
+      <sequential>
+		<unzip src="${basedir}/dist/@{package}.zip" dest="${basedir}/installer/build/prepare" /> 
+      </sequential>
+    </for>
+
+  </target>
+
+  <target name="esup.customize" depends="esup.unpack">
+    
+    <copy todir="${basedir}/installer/build/prepare/${app.name}-${app.version}" overwrite="yes">
+      <fileset dir="${basedir}/installer/custom/application">
+      	   <exclude name=".svn"/>
+      </fileset>
+    </copy>
+    
+  </target>
+
+
+  <target name="esup.deploy.packages" depends="esup.customize">
+
+    <subant target="deploy" buildpath="${basedir}/installer/build/prepare/${app.name}-${app.version}"/> 
+    <copy todir="${basedir}/installer/build/jar/webapps" overwrite="yes">
+      <fileset dir="${basedir}/installer/build/webapps">
+           	   <exclude name=".svn"/>
+      </fileset>
+    </copy>
+
+  </target>
+
+  <target name="others.deploy.packages">
+
+    <copy todir="${basedir}/installer/build/jar" overwrite="yes">
+      <fileset dir="${commons.basedir}/installer/prebuild">
+           	   <exclude name=".svn"/>
+      </fileset>
+    </copy>
+    <copy todir="${basedir}/installer/build/jar" overwrite="yes">
+      <fileset dir="${basedir}/installer/custom/prebuild">
+           	   <exclude name=".svn"/>
+      </fileset>
+    </copy>
+    
+  </target>
+
+  <target name="izpack.deploy">
+ 	<if>
+		<isset property="app.izpack" />
+ 		<then>
+  				<antcall target="app.izpack.deploy"/>
+		</then>
+		<else>
+			<echo>property app.izpack is not set, no specific izpack deploy package build.</echo>
+		</else>
+	</if>
+    <copy todir="${basedir}/installer/build/jar" overwrite="yes">
+      <fileset dir="${commons.basedir}/installer/config/jar">
+            	   <exclude name=".svn"/>
+      </fileset>
+    </copy>
+    <copy todir="${basedir}/installer/build/jar" overwrite="yes">
+      <fileset dir="${basedir}/installer/config/jar">
+            	   <exclude name=".svn"/>
+      </fileset>
+    </copy>
+
+  </target>
+
+  <target name="rename-app" depends="others.deploy.packages">
+    <replace file="${basedir}/installer/build/jar/apache-tomcat-5.5.23/bin/service.bat" token="@@@app.name@@@" value="${izpack.app.name}"/>
+    <copy file="${basedir}/installer/build/jar/apache-tomcat-5.5.23/bin/tomcat5w.exe" tofile="${basedir}/installer/build/jar/apache-tomcat-5.5.23/bin/tomcat5${izpack.app.name}w.exe" overwrite="yes"/>
+    <replace file="${basedir}/installer/build/jar/install.xml" token="@@@app.name@@@" value="${izpack.app.name}"/>
+    <replace file="${basedir}/installer/build/jar/shortcutSpec.xml" token="@@@app.name@@@" value="${izpack.app.name}"/>
+    <replace file="${basedir}/installer/build/jar/targetPanelDirWindows.txt" token="@@@app.name@@@" value="${izpack.app.name}"/>
+  </target>
+
+
+  <target name="izpack" depends="esup.deploy.packages,izpack.deploy,rename-app">
+ 	<if>
+		<isset property="app.izpack" />
+ 		<then>
+    		<antcall target="app.init-data"/>
+		</then>
+		<else>
+			<echo>property app.izpack is not set, no izpack initialization data call.</echo>
+		</else>
+	</if>
+     
+    <izpack input="${basedir}/installer/build/jar/install.xml"
+	    output="${basedir}/dist/${app.name}-${app.version}-${app.release}-quickstart.jar"
+	    installerType="standard"
+	    basedir="${basedir}/installer/build/jar"/>
+  </target>
+
+
+ <target name="exe" depends="izpack"> 
+    
+    <copy todir="${basedir}/installer/build/exe" overwrite="yes">
+      <fileset dir="${commons.basedir}/installer/config/exe/build">
+            	   <exclude name=".svn"/>
+      </fileset>
+      <fileset file="${basedir}/dist/${app.name}-${app.version}-${app.release}-quickstart.jar"/>
+    </copy>
+
+    <copy todir="${basedir}/installer/build/exe" overwrite="yes">
+      <fileset dir="${basedir}/installer/config/exe/build">
+            	   <exclude name=".svn"/>
+      </fileset>
+    </copy>
+    
+    <replace file="${basedir}/installer/build/exe/launcher.ini" token="@@@app.dist@@@" value="${app.name}-${app.version}-${app.release}"/>
+
+    <exec executable="${7za.exe}" dir="${basedir}/installer/build/exe" failonerror="true" 
+	  resolveExecutable="true">
+      <arg value="a"/>
+      <arg value="-mx=0"/>
+      <arg value="files.7z"/>
+      <arg value="*"/>
+    </exec>
+
+    <concat destfile="${basedir}/dist/${app.name}-${app.version}-${app.release}-quickstart.exe" binary="true">
+      <fileset file="${commons.basedir}/installer/config/exe/7zS.sfx"/>
+      <fileset file="${basedir}/installer/config/exe/config.txt"/>
+      <fileset file="${basedir}/installer/build/exe/files.7z"/>
+    </concat>
+
+  </target>
+
+</project>

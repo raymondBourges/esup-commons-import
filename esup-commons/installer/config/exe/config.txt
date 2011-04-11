@@ -1,0 +1,5 @@
+;!@Install@!UTF-8!
+Title="Esup-Commons"
+BeginPrompt="Voulez-vous installer Esup-commons ?"
+RunProgram="launcher.exe"
+;!@InstallEnd@!

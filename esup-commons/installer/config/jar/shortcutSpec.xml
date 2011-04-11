@@ -1,0 +1,49 @@
+<shortcuts>
+  <skipIfNotSupported/>
+  <programGroup defaultName="ChainEdit"
+                location="applications"/>
+  <shortcut
+    name="ChainEdit Apache Tomcat"
+    target="$INSTALL_PATH\apache-tomcat-5.5.23\bin\Tomcat5Chaineditw.exe"
+    description="Gestion du Serveur Applicatif"
+    iconFile="%SystemRoot%\system32\SHELL32.dll"
+    iconIndex="21"     
+    programGroup="yes"
+    desktop="no"
+    applications="no"
+    startMenu="no"
+    startup="no">
+
+    <createForPack name="Apache Tomcat"/>
+  </shortcut>
+   <shortcut
+     name="LisezMoi"
+     target="$INSTALL_PATH\lisezmoi\index.html"
+     description="Comment démarrer ChainEdit"
+     iconFile="%SystemRoot%\system32\SHELL32.dll"
+     iconIndex="23"
+     programGroup="yes"
+     desktop="no"
+     applications="no"
+     startMenu="no"
+     startup="no">
+
+     <createForPack name="chainEdit"/>
+   </shortcut>
+  <shortcut
+     name="Désinstaller ChainEdit"
+     programGroup="yes"
+     desktop="no"
+     applications="no"
+     startMenu="no"
+     startup="no"
+     target="$INSTALL_PATH\Uninstaller\uninstaller.jar"     
+     iconFile="%SystemRoot%\system32\SHELL32.dll"
+     iconIndex="32" 
+     description="Désinstalle Chainedit">
+     
+     <createForPack name="chainEdit" />
+   </shortcut>
+   
+
+</shortcuts>

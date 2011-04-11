@@ -1,0 +1,198 @@
+<html><!-- InstanceBegin template="/Templates/template.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>esup-example overview</title>
+<!-- InstanceEndEditable --> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+<meta name="keywords" content="esup-example esup-portail commons jsf spring hibernate free open source application web">
+<link rel="stylesheet" type="text/css" href="../style.css"/>
+<!-- InstanceBeginEditable name="navigation" -->
+
+<script language="JavaScript1.2">
+navigationItem = 'main';
+sidebarItem = 'ma_intro';
+</script>
+
+<!-- InstanceEndEditable -->
+
+<script language="JavaScript1.2">
+
+var menu_list = new Array("main");
+
+function hide_menus(menu_to_display) {
+	for (i = 0; i < menu_list.length ; i++) {
+		if (menu_list[i] ==  menu_to_display) {
+		    setStyleById(menu_list[i] + '_menu', 'display', 'block');
+		}
+	}	
+}
+
+function show_current_part(part){
+	setStyleById(part + '_button', 'background', 'transparent url(../pictures/button_current2.gif) repeat-x top left');
+	setStyleById(part + '_button', 'color', 'Black');
+}
+
+function show_current_section(current_section){
+        document.getElementById(current_section).className = "current";
+}
+
+function setStyleById(id, property, value) {
+	var element = document.getElementById(id);
+	element.style[property] = value;
+}
+
+function init(){
+	if (navigationItem != '') hide_menus(navigationItem);
+	if (navigationItem != '') show_current_part(navigationItem);
+	if (sidebarItem != '') show_current_section(sidebarItem);
+}
+
+</script>
+</head>
+<body>
+<table id="header" cellspacing="0">
+	<tr>
+		<td id="logo_app">&nbsp;
+			
+		</td>
+		<td id="version_info" nowrap="true">&nbsp;
+		</td>
+		<td id="logo_esup">
+			<a href="http://www.esup-portail.org/" target="_blank"><img src="../pictures/logo_esupportail.jpg" alt="logo esup-portail"/></a>
+		</td>
+	</tr>
+	<tr>
+		<td id="navbar" colspan="3">
+			<ul id="navigation">
+				<li><a id="main_button" href="index.html">Overview</a></li>
+			</ul>
+		</td>
+	</tr>
+	</table>
+	<table id="main" cellspacing="0">
+	<tr>
+		<td id="sidebar" nowrap="true">
+		<div class="top_separator">&nbsp;</div>
+		<div id="main_menu">
+			<h1>Overview</h1>
+			<ul>
+				<li><a id="ma_intro" href="index.html">Introduction</a></li>
+				<li><a id="ad_source" href="../api/index.html" target="source">Source doc</a></li>
+			</ul>
+		</div>
+		<div id="devel_menu"></div>
+		<div class="bottom_separator">&nbsp;</div>
+		<p class="sidebar_lien_img">
+			${app.name}<br/>
+			is hosted by<br/>
+			<a href="http://sourcesup.cru.fr/projects/${app.name}" target="_blank">
+			<img src="../pictures/logo-cru-80x40.gif" width="80" height="38" border="0" alt="Sourcesup.cru.fr Logo" />
+			</a>
+		</p>
+		</td>
+<script language="JavaScript1.2">
+init();
+</script>
+    	<td id="content">		<!-- InstanceBeginEditable name="body" -->
+          <h1>ESUP-Portail Example Application</h1>
+          <p>esup-example is a web application that illustrates how to use the
+            esup-commons library.</p>
+          <p>esup-example is 100% Java software and uses <a href="http://www.springframework.org/">Spring</a> for
+            bean management, <a href="http://myfaces.apache.org">MyFaces</a> for
+            rendering and <a href="http://www.hibernate.org">Hibernate</a> for
+            database management. It was written by <a href="mailto:pascal.aubry%20at%20univ-rennes1.fr">Pascal
+            Aubry</a> for the ESUP-Portail consortium in
+            2006.</p>
+          <h2>Documentation</h2>
+          <p>Please refer to <a href="http://sourcesup.cru.fr/esup-commons" target="commons">esup-commons</a>.</p>
+          <h2>Download</h2>
+          <p>If you want to simply download the application and test it, go to
+            the <a href="https://sourcesup.cru.fr/frs?group_id=244">download
+                section</a>  of the <a href="https://sourcesup.cru.fr/projects/esup-commons">project
+          page</a>, hosted by <a href="http://sourcesup.cru.fr/">SourceSup</a>.</p>
+          <h2>SVN access</h2>
+          <h3>Anonymous access</h3>
+          <p>If you want to get the latest version of esup-example, get it from
+            the SVN repository:</p>
+          <table>
+            <tr>
+              <td nowrap>Connection type:&nbsp;&nbsp;</td>
+              <td nowrap><code>http</code> or <code>https</code></td>
+            </tr>
+            <tr>
+              <td nowrap>User:</td>
+              <td nowrap><em>anonymous</em></td>
+            </tr>
+            <tr>
+              <td nowrap>Host:</td>
+              <td nowrap><code>subversion.cru.fr</code></td>
+            </tr>
+            <tr>
+              <td nowrap>Port:</td>
+              <td nowrap>default</td>
+            </tr>
+            <tr>
+              <td nowrap>Repository path:</td>
+              <td nowrap><code>/esup-commons/trunk/esup-example</code></td>
+            </tr>
+          </table>
+          <p>You can retrieve the repository anonymously thanks to the following
+            command:<br>
+            <code>svn checkout http://subversion.cru.fr:/esup-example/trunk local_folder
+          OR</code> If you are a esup-commons developer</p>
+          <h3>Developer access</h3>
+          <table>
+            <tr>
+              <td nowrap>Connection type:&nbsp;&nbsp;</td>
+              <td nowrap><code>http</code> or <code>https</code></td>
+            </tr>
+            <tr>
+              <td nowrap>User:</td>
+              <td nowrap>your SourceSup id</td>
+            </tr>
+            <tr>
+              <td nowrap>Host:</td>
+              <td nowrap><code>subversion.cru.fr</code></td>
+            </tr>
+            <tr>
+              <td nowrap>Port:</td>
+              <td nowrap>default</td>
+            </tr>
+            <tr>
+              <td nowrap>Repository path:</td>
+              <td nowrap><code>/esup-commons/trunk/esup-example</code></td>
+            </tr>
+          </table>
+          <p>Note: you must first be granted by the maintainer of the project
+            to be a commiter.</p>
+          <h2>License</h2>
+          <p>esup-example is an open source development.</p>
+          <p>As part of the <a href="http://www.esup-portail.org">ESUP-Portail</a> project,
+              esup-example is distributed under the GPL (<strong>General Public
+              License</strong>). It follows that you can download contents, modify
+              and redistribute them provided you respect the GPL terms.</p>
+          <p>Details on the licensing policy of the ESUP-Portail project can
+            be found at <a href="http://www.esup-portail.org/license">http://www.esup-portail.org/license</a>.</p>
+          <p>Be sure that you have well understood the terms of the license before
+            using the contents it covers.</p>
+          <p>&nbsp;</p>
+		<!-- InstanceEndEditable --> 
+    	</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+		<table width="100%">
+			<tr>
+				<td id="footer" align="left" nowrap="true">
+					Web design by Julien Le Thuaut
+				</td>
+				<td id="footer" align="right" width="100%" nowrap="true">
+					Copyright &copy; 2006 - ESUP-Portail consortium
+				</td>
+			</tr>
+		</table>
+		</td>
+	</tr>
+	</table>
+</body>
+<!-- InstanceEnd --></html>
