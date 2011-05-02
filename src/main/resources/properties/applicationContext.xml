@@ -33,4 +33,5 @@
 	<import resource="tags/tags.xml" />
 	<import resource="web/beans.xml" />
 	<import resource="web/controllers.xml" />
+	<import resource="wurfl/wurfl-conf.xml"/>
 </beans>

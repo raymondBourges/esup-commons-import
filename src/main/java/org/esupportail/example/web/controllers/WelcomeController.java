@@ -4,12 +4,17 @@
  */
 package org.esupportail.example.web.controllers;
 
+import java.util.HashMap;
 import java.util.List;
+
+import javax.faces.context.FacesContext;
+
+import net.sourceforge.wurfl.core.Device;
+import net.sourceforge.wurfl.core.WURFLManager;
 
 import org.esupportail.commons.exceptions.ConfigException;
 import org.esupportail.commons.services.logging.Logger;
 import org.esupportail.commons.services.logging.LoggerImpl;
-import org.esupportail.commons.services.urlGeneration.UrlGenerator;
 import org.esupportail.commons.utils.Assert;
 import org.esupportail.example.domain.beans.User;
 import org.esupportail.example.web.beans.UserBean;
@@ -39,7 +44,7 @@ public class WelcomeController  extends AbstractContextAwareController {
 	 * Name.
 	 */
 	private String name;
-	
+
 
 	/**
 	 * The user.
@@ -50,7 +55,8 @@ public class WelcomeController  extends AbstractContextAwareController {
 	 * The user paginator used to display users informations
 	 */
 	private UserPaginator userPaginator;
-	
+ 
+	private WURFLManager wurflManager;
 
 	/*
 	 ******************* INIT ******************** */
@@ -77,7 +83,7 @@ public class WelcomeController  extends AbstractContextAwareController {
 	public void reset() {
 		super.reset();
 		name = "toto";
-		
+
 	}
 
 	/**
@@ -89,6 +95,8 @@ public class WelcomeController  extends AbstractContextAwareController {
 		Assert.notNull(this.userPaginator, "property userPaginator of class " 
 				+ this.getClass().getName() + " can not be null");
 		Assert.notNull(this.userToUpdate, "property userToUpdate of class " 
+				+ this.getClass().getName() + " can not be null");
+		Assert.notNull(this.wurflManager, "property wurflManager of class " 
 				+ this.getClass().getName() + " can not be null");
 		userPaginator.forceReload();
 	}
@@ -124,7 +132,7 @@ public class WelcomeController  extends AbstractContextAwareController {
 		if (logger.isDebugEnabled()) {
 			logger.debug("entering goJpaDemo return " + NavigationRulesConst.JPA_DEMO);
 		}
-		
+
 		return NavigationRulesConst.JPA_DEMO;
 	}
 
@@ -186,7 +194,7 @@ public class WelcomeController  extends AbstractContextAwareController {
 		userToUpdate.setId(userToDelete.getId());
 		userToUpdate.setDisplayName(userToDelete.getDisplayName());
 	}
-	
+
 	/**
 	 * Add the user.
 	 */
@@ -210,6 +218,19 @@ public class WelcomeController  extends AbstractContextAwareController {
 	 * END TO DEMO JPA
 	 ************************************ */
 
+	public String getWurflInfos() {
+		FacesContext fc = FacesContext.getCurrentInstance();
+		String agent = fc.getExternalContext().getRequestHeaderMap().get("User-Agent");
+		Device device = wurflManager.getDeviceForRequest(agent);
+		StringBuffer sb = new StringBuffer();
+		@SuppressWarnings("unchecked")
+		HashMap<String, String> capabilities = (HashMap<String, String>) device.getCapabilities();
+		for (String key : capabilities.keySet()) {
+			sb.append(key).append(" : ").append(capabilities.get(key)).append("; ");
+		}
+		return sb.toString();
+	}
+
 	/**
 	 * @return the name
 	 */
@@ -226,14 +247,14 @@ public class WelcomeController  extends AbstractContextAwareController {
 		return getCurrentUser().getId();
 	}
 
-	
+
 	/*
 	 ******************* ACCESSORS ******************** */
 
 	/**
 	 * @return User
 	 */
-	
+
 	public List<User> getUsers() {
 		return userPaginator.getVisibleItems();
 	}
@@ -274,6 +295,20 @@ public class WelcomeController  extends AbstractContextAwareController {
 	 */
 	public void setUserToUpdate(final UserBean userToUpdate) {
 		this.userToUpdate = userToUpdate;
+	}
+
+	/**
+	 * @return the wurflManager
+	 */
+	public WURFLManager getWurflManager() {
+		return wurflManager;
+	}
+
+	/**
+	 * @param wurflManager the wurflManager to set
+	 */
+	public void setWurflManager(WURFLManager wurflManager) {
+		this.wurflManager = wurflManager;
 	}
 
 
