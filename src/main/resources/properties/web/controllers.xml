@@ -17,6 +17,7 @@
 		<description>A bean to manage the welcome page.</description>
 		<property name="userPaginator" ref="userPaginator" />
 		<property name="userToUpdate" ref="userBean"/>
+		<property name="wurflManager" ref="wurflManager" />
 	</bean>
 	
 	<bean id="simpleController"

@@ -17,6 +17,7 @@
 						<ui:repeat value="#{treatmentController.treatments}" var="t">
 							<i:rowItem value="#{t.label}" view="#{t.code}" />
 						</ui:repeat>
+						<i:rowItem value="#{msgs['TREATMENTS.WURFL_DEMO']}" view="WURFL_DEMO" />
 					</i:rowGroup>
 				</i:tableView>
 			</h:form>
@@ -44,6 +45,14 @@
 
 		<i:view id="JPA_DEMO" title="#{msgs['TREATMENTS.JPA_DEMO']}">
 			<ui:include src="jpa_demo.xhtml"/>
+			<f:facet name="leftNavBar">
+				<i:navBarControl label="Home" view="home" />
+			</f:facet>
+
+		</i:view>
+
+		<i:view id="WURFL_DEMO" title="#{msgs['TREATMENTS.WURFL_DEMO']}">
+			<ui:include src="wurfl_demo.xhtml"/>
 			<f:facet name="leftNavBar">
 				<i:navBarControl label="Home" view="home" />
 			</f:facet>
