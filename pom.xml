@@ -3,21 +3,21 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.esupportail</groupId>
-	<artifactId>esup-example</artifactId>
+	<artifactId>esup-todo-list</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
-	<name>esup-example</name>
+	<name>esup-todo-list</name>
 	<url>http://maven.apache.org</url>
 	<modules>
-		<module>example-dao</module>
-		<module>example-domain-services</module>
-		<module>example-domain-beans</module>
-		<module>example-utils</module>
-		<module>example-web-jsf-shared</module>
-		<module>example-web-jsf-servlet</module>
-		<module>example-web-jsf-mixed</module>
-		<module>example-web-jsf-mobile</module>
-		<module>example-web-jsf-portlet</module>
+		<module>todo-list-dao</module>
+		<module>todo-list-domain-services</module>
+		<module>todo-list-domain-beans</module>
+		<module>todo-list-utils</module>
+		<module>todo-list-web-jsf-shared</module>
+		<module>todo-list-web-jsf-servlet</module>
+		<module>todo-list-web-jsf-mixed</module>
+		<module>todo-list-web-jsf-mobile</module>
+		<module>todo-list-web-jsf-portlet</module>
 	</modules>
 	<repositories>
 		<repository>

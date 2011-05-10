@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:t="http://myfaces.apache.org/tomahawk"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:e="http://commons.esup-portail.org"
+	xmlns:p="http://primefaces.prime.com.tr/ui" 
+	template="/stylesheets/simpleTemplate.xhtml">
+
+	
+    <ui:define name="content"><!-- mettre un pannel avec header admin -->
+		 <p:growl id="growl" showDetail="true" />
+		 <h:panelGrid id="aminOptionsGrid" columns="1" cellpadding="15" border="1"> 
+			 <h:form id="adminOptions">
+			  	<h:panelGrid id="grid" columns="2" cellpadding="5">  
+				 	<t:outputLabel value="#{msgs['TODO_DEMO.ADMIN.USELDAP']} :" for="publicTask"/>
+					<h:selectBooleanCheckbox id="publicTask" value="#{applicationService.useLdap}"/>
+				</h:panelGrid>
+			 </h:form>
+		 </h:panelGrid>		 		
+		<h:panelGrid id="taskAndUserGrid" columns="2" cellpadding="15">  
+		
+		<!-- Gestion des Users -->
+			<h:panelGroup>
+				 <h:form id="formAddUser">
+					Création d'un utilisateur
+					<!-- Exemple component facelet cf WEB-INF/jsf/components/rowInput.xhtml -->
+					<e:ul styleClass="fl-controls-left fl-container-700">
+						<e:rowInput id="uid" label="uid :" size="30" maxlength="50"
+							text="#{userBean.id}" required="true" />
+						<e:rowInput id="displayName" label="displayName :" size="30"
+							maxlength="100" text="#{userBean.displayName}" />
+						<e:rowInput id="email" label="email :" size="30"
+							maxlength="100" text="#{userBean.email}" />
+					</e:ul>
+					<hr/>
+					<p:commandButton value="add" action="#{userController.addUser}" update="growl,@form,myform3"/>
+					<p:commandButton value="cancel" action="#{userBean.reset}" update="formAddUser"/>
+					<br />
+				</h:form>
+				
+				
+				<h:form id="userFormPaginator">
+					<p:dataTable id="tableUser" value="#{userController.users}"
+						var="user" >
+						<f:facet name="header">
+							<e:paginator id="paginatorUser" paginator="#{userPaginator}"
+								itemsName="Utilisateurs" reRender="userFormPaginator" />
+						</f:facet>
+						<f:facet name="footer">
+							<e:paginator id="paginatorUserFooter" paginator="#{userPaginator}"
+								itemsName="Utilisateurs" itemsNumbersFlag="#{false}"
+								itemsPerPageFlag="#{false}" reRender="userFormPaginator" />
+						</f:facet>
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="User " />
+							</f:facet>
+							<h:outputText value="#{user.displayName} (#{user.id}) : #{user.email}" />
+						</p:column>
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Informations" />
+							</f:facet>
+							<ui:repeat value="#{user.informations}" var="information">
+								<h:outputText
+									value="#{information.informationKey} - #{information.informationValue}" />
+								<br/>
+							</ui:repeat>
+						</p:column>
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Action" />
+							</f:facet>
+							<p:commandButton value="delete" update="@form,growl,formAddUser"
+								action="#{userController.deleteUser}" >
+								<f:setPropertyActionListener value="#{user}"
+									target="#{userController.userToDelete}" />
+							</p:commandButton>
+						</p:column>
+					</p:dataTable>
+		
+				</h:form>
+			</h:panelGroup>
+		
+		
+			<!-- Gestion des users -->
+			<h:form id="tasksFormPaginator">
+				<p:dataTable id="tabletasks" value="#{taskController.allTasks}"
+					var="task" >
+					<f:facet name="header">
+						<e:paginator id="paginatorTasksHead" paginator="#{tasksPaginator}"
+							itemsName="#{msgs['TODO_DEMO.TASKS']}" reRender="tasksFormPaginator" />
+					</f:facet>
+					<f:facet name="footer">
+						<e:paginator id="paginatorTasksFooter" paginator="#{tasksPaginator}"
+							itemsName="#{msgs['TODO_DEMO.TASKS']}" itemsNumbersFlag="#{false}"
+							itemsPerPageFlag="#{false}" reRender="tasksFormPaginator" />
+					</f:facet>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="#{msgs['TODO_DEMO.TASK.TITLE']}" />
+						</f:facet>
+						<h:outputText value="#{task.title} (#{task.id}) : #{task.description}" />
+					</p:column>
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="#{msgs['TODO_DEMO.TASK.OWNER']}" />
+						</f:facet>
+						<h:outputText value="#{task.owner.id} : #{task.owner.displayName}" />
+					</p:column>
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="#{msgs['TODO_DEMO.TASK.ASSIGNATEDUSER']}" />
+						</f:facet>
+						<ui:repeat value="#{task.assignatedUsers}" var="assignatedUsers">
+							<h:outputText
+								value="#{assignatedUsers.id} : #{assignatedUsers.displayName}" />
+							<br/>
+						</ui:repeat>
+					</p:column>
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="#{msgs['TODO_DEMO.FORM.TASK.ACTION']}" />
+						</f:facet>
+						<p:commandButton value="#{msgs['TODO_DEMO.FORM.ACTION.DELETETASK']}" update="@form,growl"
+							action="#{taskController.deleteTask}" >
+							<f:setPropertyActionListener value="#{task}"
+								target="#{taskController.taskToDelete}" />
+						</p:commandButton>
+					</p:column>
+				</p:dataTable>
+			</h:form>
+		 </h:panelGrid>
+		 
+		 <h:form id="return">
+		 	<p:commandLink action="#{todoPrivateController.goTodoPrivateDemo}">        
+				<h:outputText value="#{msgs['TODO_DEMO.ACTION.RETURN']}" ajax="false"/>  
+			</p:commandLink> 
+		</h:form>
+		 
+	</ui:define>
+</ui:composition> 
