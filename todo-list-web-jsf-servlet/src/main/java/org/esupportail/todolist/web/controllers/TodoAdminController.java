@@ -7,6 +7,7 @@ package org.esupportail.todolist.web.controllers;
 import org.esupportail.commons.services.logging.Logger;
 import org.esupportail.commons.services.logging.LoggerImpl;
 import org.esupportail.todolist.web.controllers.AbstractContextAwareController;
+import org.esupportail.todolist.web.utils.NavigationRulesConst;
 
 
 /**
@@ -63,7 +64,7 @@ public class TodoAdminController extends AbstractContextAwareController {
 		if (logger.isDebugEnabled()) {
 			logger.debug("entering goTodoAdminDemo return go_todo_admin_demo");
 		}
-		return "go_todo_admin_demo";
+		return NavigationRulesConst.todoAdmin;
 	}
 
 	

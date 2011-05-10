@@ -1,19 +1,13 @@
 
 package org.esupportail.todolist.web.utils;
 
-/**
- * @author cleprous
- *
- */
-
-
 public class NavigationRulesConst {
 
 	/*
 	 ******************* PROPERTIES ******************* */
 
 	/**
-	 * Go to welcome.jsp
+	 * Go to welcome.xhtml
 	 * Access anywhere.
 	 */
 	public static final String APPLI_RESTART = "applicationRestarted";
@@ -21,30 +15,19 @@ public class NavigationRulesConst {
 	
 
 	/**
-	 * Go to /stylesheets/cas_demo.jspx.
+	 * Go to /stylesheets/todo_demo.xhtml.
 	 */
-	public static final String CAS_DEMO = "go_auth_demo";
+	public static final String todo = "go_todo";
 
 	/**
-	 * Go to /stylesheets/jpa_demo.jspx.
+	 * Go to /stylesheets/todo_demo.xhtml.
 	 */
-	public static final String JPA_DEMO = "go_jpa_demo";
+	public static final String todoPrivate = "go_todo_private";
 	
 	/**
-	 * Go to /stylesheets/exception_demo.jspx.
+	 * Go to /stylesheets/todo_demo.xhtml.
 	 */
-	public static final String EXCEPTION_DEMO = "go_exception_demo";
-
-	/**
-	 * Go to /stylesheets/ajax_demo.jspx.
-	 */
-	public static final String AJAX_DEMO = "go_ajax_demo";
-	
-	
-	/**
-	 * Go to /stylesheets/deeplinking_demo.jspx.
-	 */
-	public static final String LINK_DEMO = "go_deeplinking_demo";
+	public static final String todoAdmin = "go_todo_admin";
 	
 	/*
 	 ******************* INIT ************************* */

@@ -127,7 +127,7 @@
 
 /* Content */
 .fl-theme-app .app-body .app-content {
-	position: relative;
+	/*position: relative;*/
 	
 	/* VR 05-10-2010 : Suppression des float, width, margin et padding forcés :
 	Il faut utiliser les styles fluid de colonage fl-col-xxx */
@@ -136,7 +136,7 @@
 	/*margin: 0; */
 	/*padding: 0; */
 	z-index: 0;
-
+	clear: left;
 	min-height: 400px;
 	padding-right: 1%;
 

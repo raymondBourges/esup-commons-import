@@ -13,6 +13,7 @@ import org.esupportail.todolist.domain.beans.Task;
 import org.esupportail.todolist.domain.beans.User;
 import org.esupportail.todolist.web.beans.PublicTasksPaginator;
 import org.esupportail.todolist.web.controllers.AbstractContextAwareController;
+import org.esupportail.todolist.web.utils.NavigationRulesConst;
 
 
 /**
@@ -78,7 +79,7 @@ public class TodoPublicController extends AbstractContextAwareController {
 		if (logger.isDebugEnabled()) {
 			logger.debug("entering goTodoDemo return go_todo_demo");
 		}
-		return "go_todo_demo";
+		return  NavigationRulesConst.todo;
 	}
 	
 	/*

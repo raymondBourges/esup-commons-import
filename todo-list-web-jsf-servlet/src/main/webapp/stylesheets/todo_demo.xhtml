@@ -5,7 +5,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:e="http://commons.esup-portail.org"
 	xmlns:p="http://primefaces.prime.com.tr/ui"
-	template="/stylesheets/simpleTemplate.xhtml">
+	template="/stylesheets/template.xhtml">
 	<ui:define name="content">
 		<h:outputText value="#{msgs['TODO_DEMO.INTRODUCTION']}" escape="false" />
 		<p:growl id="growl" showDetail="true" />
@@ -60,10 +60,7 @@
 			<p:commandButton value="#{msgs['TODO_DEMO.FORM.PUBLICTASK']}" update="@form,growl"
 						action="#{taskController.addPublicTask}" >
 						</p:commandButton>
-					
-			<p:commandButton value="#{msgs['TODO_DEMO.ACTION.CONNECT']}" update="@form,growl"
-						action="#{todoPrivateController.goTodoPrivateDemo}" >		
-					</p:commandButton>
+			
 		</h:form>
 	</ui:define>
 </ui:composition>

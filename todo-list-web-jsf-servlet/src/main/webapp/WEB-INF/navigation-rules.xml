@@ -29,36 +29,6 @@
 			<to-view-id>/stylesheets/welcome.xhtml</to-view-id>
 			<redirect/>
 		</navigation-case>
-		<navigation-case>
-			<from-outcome>go_deeplinkingTest</from-outcome>
-			<to-view-id>/stylesheets/deepLinkingTest.xhtml</to-view-id>
-			<redirect/>
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>go_auth_demo</from-outcome>
-			<to-view-id>/stylesheets/cas_demo.xhtml</to-view-id>
-			<redirect/>
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>go_jpa_demo</from-outcome>
-			<to-view-id>/stylesheets/jpa_demo.xhtml</to-view-id>
-			<redirect/>
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>go_exception_demo</from-outcome>
-			<to-view-id>/stylesheets/exception_demo.xhtml</to-view-id>
-			<redirect/>
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>go_ajax_demo</from-outcome>
-			<to-view-id>/stylesheets/ajax_demo.xhtml</to-view-id>
-			<redirect/>
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>go_deeplinking_demo</from-outcome>
-			<to-view-id>/stylesheets/deepLinking_demo.xhtml</to-view-id>
-			<redirect/>
-		</navigation-case>
 	</navigation-rule>
 	
 	<navigation-rule>
@@ -73,18 +43,18 @@
 	<navigation-rule>
 		<description>Application todo</description>
 		<navigation-case>
-			<from-outcome>go_todo_demo</from-outcome>
+			<from-outcome>go_todo</from-outcome>
 			<to-view-id>/stylesheets/todo_demo.xhtml</to-view-id>
 			<redirect/>
 		</navigation-case>
 		<navigation-case>
-			<from-outcome>go_todo_private_demo</from-outcome>
-			<to-view-id>/stylesheets/private/todo_private_demo.xhtml</to-view-id>
+			<from-outcome>go_todo_private</from-outcome>
+			<to-view-id>/stylesheets/private/todo_private.xhtml</to-view-id>
 			<redirect/>
 		</navigation-case>
 		<navigation-case>
-			<from-outcome>go_todo_admin_demo</from-outcome>
-			<to-view-id>/stylesheets/private/todo_private_admin.xhtml</to-view-id>
+			<from-outcome>go_todo_admin</from-outcome>
+			<to-view-id>/stylesheets/private/todo_admin.xhtml</to-view-id>
 			<redirect/>
 		</navigation-case>
 	</navigation-rule>

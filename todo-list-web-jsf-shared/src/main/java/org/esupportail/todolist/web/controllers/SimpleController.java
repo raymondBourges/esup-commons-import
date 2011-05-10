@@ -83,25 +83,12 @@ public class SimpleController  extends AbstractContextAwareController {
 	/*
 	 ******************* CALLBACK ******************** */
 
-	/**
-	 * @return String
-	 */
-	public String goAjaxDemo() {
-		if (logger.isDebugEnabled()) {
-			logger.debug("entering goAjaxDemo return " + NavigationRulesConst.AJAX_DEMO);
-		}
-		return NavigationRulesConst.AJAX_DEMO;
-	}
-
+	
 
 	/*
 	 ******************* METHODS ******************** */
 
 
-	/* **********************************
-	 * BEGIN TO DEMO AJAX
-	 ************************************ */
-	
 	/**
 	 * @param query
 	 * @return List of id User
@@ -120,9 +107,6 @@ public class SimpleController  extends AbstractContextAwareController {
 
 	
 	
-	/* **********************************
-	 * END TO DEMO AJAX
-	 ************************************ */
 	
 	/*
 	 ******************* ACCESSORS ******************** */
