@@ -25,7 +25,7 @@
 	</bean>
 	<bean id="taskController"
 		class="org.esupportail.todolist.web.controllers.TaskController"
-		parent="abstractContextAwareController" scope="request">
+		parent="abstractContextAwareController" scope="session">
 		<description>A general bean to manage the todo application.</description>
 		<property name="publicTasksPaginator" ref="publicTasksPaginator" />
 		<property name="tasksPaginator" ref="tasksPaginator" />
@@ -52,17 +52,9 @@
 	</bean>
 	<bean id="simpleController"
 		class="org.esupportail.todolist.web.controllers.SimpleController"
-		parent="abstractContextAwareController" scope="request">
+		parent="abstractContextAwareController" scope="session">
 		<description>A bean to manage the welcome page.</description>
 	</bean>
-
-
-	<bean id="treatmentController"
-		class="org.esupportail.todolist.web.controllers.TreatmentController"
-		parent="abstractContextAwareController" scope="session">
-	</bean>
-
-
 
 	<bean id="sessionController"
 		class="org.esupportail.todolist.web.controllers.SessionController"

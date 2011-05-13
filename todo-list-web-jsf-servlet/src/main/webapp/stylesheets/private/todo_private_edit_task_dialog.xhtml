@@ -10,7 +10,7 @@
     <p:dialog id="dialogEditTaskId" widgetVar="dialogEditTask" header="#{msgs['TODO_DEMO.FORM.ACTION.EDITTASK']}" modal="true" width="400"> 
 
     		 <h:form id="formEditTask">
-    		 			<h:inputHidden id="id" value="#{taskController.taskToUpdate.id}"/>
+    		 		  <h:inputHidden id="id" value="#{taskController.taskToUpdate.id}"/>
     				  <h:panelGrid id="grid" columns="2" cellpadding="5">  
     				  	
     				  	<t:outputLabel value="#{msgs['TODO_DEMO.TASK.DATE']} :" for="date"/>
@@ -50,7 +50,8 @@
 	                   		</p:dataList>  
 	                 			
 							<p:autoComplete id="assignatedUserId" size="60" maxlength="50" value="#{taskController.anAssignatedUserId}"
-								completeMethod="#{simpleController.complete}" /><!-- addAnAssignatedUser  -->
+								completeMethod="#{simpleController.complete}" /><!-- <f:validateLength minimum="1" maximum="100" />
+</h:inputText>  -->
 								
 								<p:commandButton value="#{msgs['TODO_DEMO.ACTION.ADDSIGN']}" update="growl,formEditTask"  action="#{taskController.addAnAssignatedUser}" /> 
 							<h:message for="assignatedUserId"/> 

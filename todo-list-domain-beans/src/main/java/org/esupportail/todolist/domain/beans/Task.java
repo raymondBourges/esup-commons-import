@@ -45,12 +45,7 @@ public class Task implements Serializable, Resettable{
 	 */
 	@Embedded
 	private static final long serialVersionUID = 5576556657584434915L;
-	/**
-	 * A logger.
-	 */
-	@Embedded
-	private final Logger logger = new LoggerImpl(this.getClass());
-	
+
 	/**
 	 * Task Id
 	 */

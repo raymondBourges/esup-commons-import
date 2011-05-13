@@ -174,24 +174,26 @@ public class TaskController extends AbstractContextAwareController {
 		addInfoMessage(null, "TODO_DEMO.TASK.SUCCESS.CREATE");
 	}
 	public void addAnAssignatedUser() {
-		logger.debug("addAnAssignatedUser "+anAssignatedUserId);
-		try {
-			User u = getDomainService().getUser(this.anAssignatedUserId);
-			if (u==null){
-				u=new User();
-				u.setId(anAssignatedUserId);
-					
-				if (((TodoApplicationService)getApplicationService()).isUseLdap()){// Si on utilise LDAP on cherche le user et on l'ajoute en base
-					u=getDomainService().getUserFromLdap(u.getId());
+		if(this.anAssignatedUserId!=null && !this.anAssignatedUserId.equals("")){
+			try {
+				User u = getDomainService().getUser(this.anAssignatedUserId);
+				if (u==null){
+					u=new User();
+					u.setId(anAssignatedUserId);
+						
+					if (((TodoApplicationService)getApplicationService()).isUseLdap()){// Si on utilise LDAP on cherche le user et on l'ajoute en base
+						u=getDomainService().getUserFromLdap(u.getId());
+					}
+					getDomainService().addUser(u);
 				}
-				getDomainService().addUser(u);
+				taskToUpdate.getAssignatedUsersNotNull().add(u);
+				this.anAssignatedUserId="";
+			} catch (UserNotFoundException e) {
+				addErrorMessage(null, "TODO_DEMO.FORM.TASK.ASSIGNATEDUSER.ERROR.CREATE", anAssignatedUserId);
 			}
-			taskToUpdate.getAssignatedUsersNotNull().add(u);
-			this.anAssignatedUserId="";
-		} catch (UserNotFoundException e) {
-			addErrorMessage(null, "TODO_DEMO.FORM.TASK.ASSIGNATEDUSER.ERROR.CREATE", anAssignatedUserId);
+			addInfoMessage(null, "TODO_DEMO.FORM.TASK.ASSIGNATEDUSER.SUCESS.CREATE");
 		}
-		addInfoMessage(null, "TODO_DEMO.FORM.TASK.ASSIGNATEDUSER.SUCESS.CREATE");
+		else addErrorMessage("assignatedUserId", "TODO_DEMO.FORM.TASK.ASSIGNATEDUSER.ERROR.NOTNULL");
 	}
 	
 	/**
@@ -223,11 +225,13 @@ public class TaskController extends AbstractContextAwareController {
 		if (logger.isDebugEnabled()) {
 			logger.debug("entering editTask with taskToUpdate = " + taskToUpdate.getTitle());
 		}
+				
 	}
 	public void updateTask() {
 		if (logger.isDebugEnabled()) {
-			logger.debug("entering deleteTask with updateTask = " + taskToUpdate.getTitle());
+			logger.debug("entering updateTask with updateTask = " + taskToUpdate.getTitle());
 		}
+		
 		getDomainService().addTask(taskToUpdate);
 		userTasksPaginator.forceReload();
 		tasksPaginator.forceReload();
@@ -235,8 +239,8 @@ public class TaskController extends AbstractContextAwareController {
 		taskToUpdate.reset();
 		addInfoMessage(null, "TODO_DEMO.FORM.TASK.SUCESS.UPDATED");
 	}
-	public void setTaskToEdit(final Task taskToEdit) {
-		logger.debug("entering setTaskToEdit with taskToEdit = " + taskToEdit.getTitle());
+	public void setTaskToEdit(Task taskToEdit) {
+		logger.debug("entering setTaskToEdit with taskToEdit = " + taskToEdit.getTitle()+" with id = " + taskToEdit.getId()+" with owner = " + taskToEdit.getOwner().getId());
 		taskToUpdate=taskToEdit;
 	}
 	public String getPublicTaskWarn(){
@@ -283,7 +287,6 @@ public class TaskController extends AbstractContextAwareController {
 	}
 
 	public void setAnAssignatedUserId(String anAssignatedUserId) {
-		logger.debug("setAnAssignatedUserId "+anAssignatedUserId);
 		this.anAssignatedUserId = anAssignatedUserId;
 	}
 
@@ -292,7 +295,6 @@ public class TaskController extends AbstractContextAwareController {
 	}
 
 	public void setAssignatedUserToDelete(User assignatedUserToDelete) {
-		logger.debug("setAssignatedUserToDelete "+assignatedUserToDelete.getId());
 		this.assignatedUserToDelete = assignatedUserToDelete;
 	}	
 }
