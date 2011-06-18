@@ -23,7 +23,6 @@ import org.esupportail.commons.services.urlGeneration.AbstractUrlGenerator;
 import org.esupportail.commons.services.urlGeneration.ServletUrlGeneratorImpl;
 import org.esupportail.commons.utils.BeanUtils;
 import org.esupportail.commons.utils.strings.StringUtilsWeb;
-import org.esupportail.commons.web.jsf.tags.TagUtils;
 import org.springframework.util.StringUtils;
 
 /**
@@ -82,6 +81,7 @@ public class DeepLinkingPhaseListener implements PhaseListener {
 				if (logger.isDebugEnabled()) {
 					logger.debug("UrlPatternDescriptor u  = " + u);
 				}
+				/*
 				if (u != null) {
 					//renvoie les paremetres de la methode execute
 					Object[] param = getArgsMethod(params, u);
@@ -111,7 +111,7 @@ public class DeepLinkingPhaseListener implements PhaseListener {
 					context.renderResponse();
 					context.responseComplete();
 					
-				}
+				}*/
 			}	
 			
 			
