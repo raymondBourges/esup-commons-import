@@ -12,7 +12,6 @@ import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 
 import org.esupportail.commons.jsf.BundleService;
-import org.esupportail.commons.services.i18n.I18nUtils;
 
 /**
  * @author Yves Deschamps (Universite de Lille 1) - 2010
