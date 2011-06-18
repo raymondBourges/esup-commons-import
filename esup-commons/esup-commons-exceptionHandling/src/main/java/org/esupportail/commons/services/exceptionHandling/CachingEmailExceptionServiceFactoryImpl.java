@@ -87,8 +87,7 @@ public class CachingEmailExceptionServiceFactoryImpl extends EmailExceptionServi
 	 */
 	@Override
 	public ExceptionService getExceptionService() {
-		return new CachingEmailExceptionServiceImpl(
-				getI18nService(), getApplicationService(), 
+		return new CachingEmailExceptionServiceImpl(getApplicationService(), 
 				getExceptionViews(), getNoEmailExceptions(), getAuthenticationService(), 
 				getSmtpService(), getRecipientEmail(), isDoNotSendExceptionReportsToDevelopers(),
 				getDevelEmail(), cache, getLogLevel());

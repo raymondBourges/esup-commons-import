@@ -12,13 +12,15 @@ import org.esupportail.commons.services.application.ApplicationService;
 import org.esupportail.commons.services.application.Version;
 import org.esupportail.commons.services.authentication.AuthenticationService;
 import org.esupportail.commons.services.authentication.info.AuthInfo;
-import org.esupportail.commons.services.i18n.I18nService;
+import org.esupportail.commons.services.i18n.I18nUtils;
 import org.esupportail.commons.services.logging.Logger;
 import org.esupportail.commons.services.logging.LoggerImpl;
 import org.esupportail.commons.utils.ContextUtils;
 import org.esupportail.commons.utils.HttpUtils;
 import org.esupportail.commons.utils.SystemUtils;
 import org.esupportail.commons.utils.strings.StringUtilsWeb;
+
+import org.esupportail.commons.jsf.*;
 
 /**
  * A simple implementation of ExceptionService, that just logs the exceptions
@@ -174,20 +176,17 @@ implements ExceptionService {
 	/**
 	 * Constructor.
 	 * @param applicationService 
-	 * @param i18nService 
 	 * @param exceptionViews
 	 * @param authenticationService 
 	 * @param logLevel 
 	 */
 	@SuppressWarnings("unchecked")
 	public SimpleExceptionServiceImpl(
-			final I18nService i18nService,
 			final ApplicationService applicationService,
 			final Map<Class, String> exceptionViews,
 			final AuthenticationService authenticationService,
 			final String logLevel) {
 		super();
-		setI18nService(i18nService);
 		setApplicationService(applicationService);		
 		this.exceptionViews = exceptionViews;
 		this.authenticationService = authenticationService;
@@ -202,58 +201,58 @@ implements ExceptionService {
 			final String separator) {
 		StringBuffer sb = new StringBuffer();
 		sb.append(TEXT_HRULE);
-		sb.append(TEXT_CR + getString("EXCEPTION.HEADER.INFORMATION"));
+		sb.append(TEXT_CR + BundleService.getString("EXCEPTION.HEADER.INFORMATION"));
 		sb.append(TEXT_HRULE);
-		sb.append(TEXT_CR + getString("EXCEPTION.INFORMATION.APPLICATION") 
+		sb.append(TEXT_CR + BundleService.getString("EXCEPTION.INFORMATION.APPLICATION") 
 				+ separator + applicationName);
-		sb.append(TEXT_CR + getString("EXCEPTION.INFORMATION.VERSION") 
+		sb.append(TEXT_CR + BundleService.getString("EXCEPTION.INFORMATION.VERSION") 
 				+ separator + applicationVersion);
 		if (server == null) {
-			server = getString("EXCEPTION.INFORMATION.SERVER.UNKNOWN");
+			server = BundleService.getString("EXCEPTION.INFORMATION.SERVER.UNKNOWN");
 		}
-		sb.append(TEXT_CR + getString("EXCEPTION.INFORMATION.SERVER") 
+		sb.append(TEXT_CR + BundleService.getString("EXCEPTION.INFORMATION.SERVER") 
 				+ separator + server);
 		String dateStr;
 		if (date == null) { 
-			dateStr = getString("EXCEPTION.INFORMATION.DATE.UNKNOWN");
+			dateStr = BundleService.getString("EXCEPTION.INFORMATION.DATE.UNKNOWN");
 		} else {
-			dateStr = printableDate(date.longValue());
+			dateStr = I18nUtils.printableDate(date.longValue());
 		}
-		sb.append(TEXT_CR + getString("EXCEPTION.INFORMATION.DATE") 
+		sb.append(TEXT_CR + BundleService.getString("EXCEPTION.INFORMATION.DATE") 
 				+ separator + dateStr);
 		if (ContextUtils.isWeb()) {
 			if (userId == null) {
-				userId = getString("EXCEPTION.INFORMATION.USER_ID.UNKNOWN");
+				userId = BundleService.getString("EXCEPTION.INFORMATION.USER_ID.UNKNOWN");
 			}
-			sb.append(TEXT_CR + getString("EXCEPTION.INFORMATION.USER_ID") 
+			sb.append(TEXT_CR + BundleService.getString("EXCEPTION.INFORMATION.USER_ID") 
 					+ separator + userId);
 			if (portal == null) {
-				portal = getString("EXCEPTION.INFORMATION.PORTAL.UNKNOWN");
+				portal = BundleService.getString("EXCEPTION.INFORMATION.PORTAL.UNKNOWN");
 			} else {
 				if (quickStart != null && quickStart.booleanValue()) {
 					portal = portal + " " 
-					+ getString("EXCEPTION.INFORMATION.PORTAL.QUICK_START");
+					+ BundleService.getString("EXCEPTION.INFORMATION.PORTAL.QUICK_START");
 				}
 			}
-			sb.append(TEXT_CR + getString("EXCEPTION.INFORMATION.PORTAL") 
+			sb.append(TEXT_CR + BundleService.getString("EXCEPTION.INFORMATION.PORTAL") 
 					+ separator + portal);
 			if (client == null) {
-				client = getString("EXCEPTION.INFORMATION.CLIENT.UNKNOWN");
+				client = BundleService.getString("EXCEPTION.INFORMATION.CLIENT.UNKNOWN");
 			}
-			sb.append(TEXT_CR + getString("EXCEPTION.INFORMATION.CLIENT") 
+			sb.append(TEXT_CR + BundleService.getString("EXCEPTION.INFORMATION.CLIENT") 
 					+ separator + client);
 			if (queryString == null) {
 				queryString = 
-					getString("EXCEPTION.INFORMATION.QUERY_STRING.UNKNOWN");
+					BundleService.getString("EXCEPTION.INFORMATION.QUERY_STRING.UNKNOWN");
 			}
-			sb.append(TEXT_CR + getString("EXCEPTION.INFORMATION.QUERY_STRING") 
+			sb.append(TEXT_CR + BundleService.getString("EXCEPTION.INFORMATION.QUERY_STRING") 
 					+ separator + queryString);
 			if (userAgent == null) {
-				userAgent = getString("EXCEPTION.INFORMATION.USER_AGENT.UNKNOWN");
+				userAgent = BundleService.getString("EXCEPTION.INFORMATION.USER_AGENT.UNKNOWN");
 			} else {
 				userAgent = StringUtilsWeb.escapeHtml(userAgent);
 			}
-			sb.append(TEXT_CR + getString("EXCEPTION.INFORMATION.USER_AGENT") 
+			sb.append(TEXT_CR + BundleService.getString("EXCEPTION.INFORMATION.USER_AGENT") 
 					+ separator + userAgent);
 		}
 		return sb;
@@ -269,16 +268,16 @@ implements ExceptionService {
 		if (throwable != null) {
 			Throwable cause = ExceptionUtils.getRealCause(throwable);
 			sb.append(TEXT_HRULE);
-			sb.append(TEXT_CR + getString("EXCEPTION.HEADER.EXCEPTION"));
+			sb.append(TEXT_CR + BundleService.getString("EXCEPTION.HEADER.EXCEPTION"));
 			sb.append(TEXT_HRULE);
-			sb.append(TEXT_CR + getString("EXCEPTION.EXCEPTION.NAME") 
+			sb.append(TEXT_CR + BundleService.getString("EXCEPTION.EXCEPTION.NAME") 
 					+ separator + cause.getClass().getSimpleName());
-			sb.append(TEXT_CR + getString("EXCEPTION.EXCEPTION.MESSAGE") 
+			sb.append(TEXT_CR + BundleService.getString("EXCEPTION.EXCEPTION.MESSAGE") 
 					+ separator + cause.getMessage());
-			sb.append(TEXT_CR + getString("EXCEPTION.EXCEPTION.SHORT_STACK_TRACE") 
+			sb.append(TEXT_CR + BundleService.getString("EXCEPTION.EXCEPTION.SHORT_STACK_TRACE") 
 					+ separator);
 			sb.append(TEXT_CR + ExceptionUtils.getShortPrintableStackTrace(throwable));
-			sb.append(TEXT_CR + getString("EXCEPTION.EXCEPTION.STACK_TRACE") 
+			sb.append(TEXT_CR + BundleService.getString("EXCEPTION.EXCEPTION.STACK_TRACE") 
 					+ separator);
 			sb.append(TEXT_CR + ExceptionUtils.getPrintableStackTrace(throwable));
 		}
@@ -314,47 +313,47 @@ implements ExceptionService {
 		String cookiesStr = text(cookies);
 		StringBuffer sb = new StringBuffer();
 		sb.append(TEXT_HRULE);
-		sb.append(TEXT_CR + getString("EXCEPTION.HEADER.REQUEST_ATTRIBUTES"));
+		sb.append(TEXT_CR + BundleService.getString("EXCEPTION.HEADER.REQUEST_ATTRIBUTES"));
 		sb.append(TEXT_HRULE);
 		if (requestAttributesStr == null) {
-			requestAttributesStr = getString("EXCEPTION.REQUEST_ATTRIBUTES.NONE");
+			requestAttributesStr = BundleService.getString("EXCEPTION.REQUEST_ATTRIBUTES.NONE");
 		}
 		sb.append(TEXT_CR + requestAttributesStr);
 		sb.append(TEXT_HRULE);
-		sb.append(TEXT_CR + getString("EXCEPTION.HEADER.SESSION_ATTRIBUTES"));
+		sb.append(TEXT_CR + BundleService.getString("EXCEPTION.HEADER.SESSION_ATTRIBUTES"));
 		sb.append(TEXT_HRULE);
 		if (sessionAttributesStr == null) {
-			sessionAttributesStr = getString("EXCEPTION.SESSION_ATTRIBUTES.NONE");
+			sessionAttributesStr = BundleService.getString("EXCEPTION.SESSION_ATTRIBUTES.NONE");
 		}
 		sb.append(TEXT_CR + sessionAttributesStr);
 		if (ContextUtils.isPortlet()) {
 			sb.append(TEXT_HRULE);
-			sb.append(TEXT_CR + getString("EXCEPTION.HEADER.GLOBAL_SESSION_ATTRIBUTES"));
+			sb.append(TEXT_CR + BundleService.getString("EXCEPTION.HEADER.GLOBAL_SESSION_ATTRIBUTES"));
 			sb.append(TEXT_HRULE);
 			if (globalSessionAttributesStr == null) {
-				globalSessionAttributesStr = getString("EXCEPTION.GLOBAL_SESSION_ATTRIBUTES.NONE");
+				globalSessionAttributesStr = BundleService.getString("EXCEPTION.GLOBAL_SESSION_ATTRIBUTES.NONE");
 			}
 			sb.append(TEXT_CR + globalSessionAttributesStr);
 		}
 		sb.append(TEXT_HRULE);
-		sb.append(TEXT_CR + getString("EXCEPTION.HEADER.REQUEST_HEADERS"));
+		sb.append(TEXT_CR + BundleService.getString("EXCEPTION.HEADER.REQUEST_HEADERS"));
 		sb.append(TEXT_HRULE);
 		if (requestHeadersStr == null) {
-			requestHeadersStr = getString("EXCEPTION.REQUEST_HEADERS.NONE");
+			requestHeadersStr = BundleService.getString("EXCEPTION.REQUEST_HEADERS.NONE");
 		}
 		sb.append(TEXT_CR + requestHeadersStr);
 		sb.append(TEXT_HRULE);
-		sb.append(TEXT_CR + getString("EXCEPTION.HEADER.REQUEST_PARAMETERS"));
+		sb.append(TEXT_CR + BundleService.getString("EXCEPTION.HEADER.REQUEST_PARAMETERS"));
 		sb.append(TEXT_HRULE);
 		if (requestParametersStr == null) {
-			requestParametersStr = getString("EXCEPTION.REQUEST_PARAMETERS.NONE");
+			requestParametersStr = BundleService.getString("EXCEPTION.REQUEST_PARAMETERS.NONE");
 		}
 		sb.append(TEXT_CR + requestParametersStr);
 		sb.append(TEXT_HRULE);
-		sb.append(TEXT_CR + getString("EXCEPTION.HEADER.COOKIES"));
+		sb.append(TEXT_CR + BundleService.getString("EXCEPTION.HEADER.COOKIES"));
 		sb.append(TEXT_HRULE);
 		if (cookiesStr == null) {
-			cookiesStr = getString("EXCEPTION.COOKIES.NONE");
+			cookiesStr = BundleService.getString("EXCEPTION.COOKIES.NONE");
 		}
 		sb.append(TEXT_CR + cookiesStr);
 		return sb;
@@ -367,13 +366,14 @@ implements ExceptionService {
 		String systemPropertiesStr = text(systemProperties);
 		StringBuffer sb = new StringBuffer();
 		sb.append(TEXT_HRULE);
-		sb.append(TEXT_CR + getString("EXCEPTION.HEADER.SYSTEM_PROPERTIES"));
+		sb.append(TEXT_CR + BundleService.getString("EXCEPTION.HEADER.SYSTEM_PROPERTIES"));
 		sb.append(TEXT_HRULE);
 		sb.append(TEXT_CR + systemPropertiesStr);
 		sb.append(TEXT_HRULE);
-		sb.append(TEXT_CR + getString("EXCEPTION.HEADER.MEMORY"));
-		sb.append(TEXT_HRULE);
-		sb.append(TEXT_CR + getString("EXCEPTION.MEMORY.VALUES", freeMemory, totalMemory, maxMemory));
+		sb.append(TEXT_CR + BundleService.getString("EXCEPTION.HEADER.MEMORY"));
+		sb.append(TEXT_HRULE); 
+		Object params[] = {freeMemory, totalMemory, maxMemory};
+		sb.append(TEXT_CR + BundleService.getString("EXCEPTION.MEMORY.VALUES", params));
 		return sb;
 	}
 	
@@ -382,8 +382,8 @@ implements ExceptionService {
 	 * @return a plain/text report of the throwable.
 	 */
 	protected String getTextReport() {
-		StringBuffer sb = new StringBuffer(getString("EXCEPTION.TITLE"));
-		String separator = getString("EXCEPTION.SEPARATOR");
+		StringBuffer sb = new StringBuffer(BundleService.getString("EXCEPTION.TITLE"));
+		String separator = BundleService.getString("EXCEPTION.SEPARATOR");
 		sb.append(getTextReportInformation(separator));
 		sb.append(getTextReportException(separator));
 		if (ContextUtils.isWeb()) {

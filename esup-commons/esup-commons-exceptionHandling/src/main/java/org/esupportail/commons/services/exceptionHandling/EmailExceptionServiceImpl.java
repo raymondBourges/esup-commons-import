@@ -11,15 +11,15 @@ import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 
 import org.esupportail.commons.exceptions.ExceptionHandlingException;
+import org.esupportail.commons.jsf.BundleService;
 import org.esupportail.commons.services.application.ApplicationService;
 import org.esupportail.commons.services.authentication.AuthenticationService;
-import org.esupportail.commons.services.i18n.I18nService;
+import org.esupportail.commons.services.i18n.I18nUtils;
 import org.esupportail.commons.services.logging.Logger;
 import org.esupportail.commons.services.logging.LoggerImpl;
 import org.esupportail.commons.services.smtp.SmtpService;
 import org.esupportail.commons.utils.ContextUtils;
 import org.esupportail.commons.utils.SystemUtils;
-import org.esupportail.commons.utils.strings.StringUtils;
 import org.esupportail.commons.utils.strings.StringUtilsWeb;
 
 /**
@@ -63,12 +63,11 @@ public class EmailExceptionServiceImpl extends SimpleExceptionServiceImpl {
 	/**
 	 * The exceptions that will generate no email.
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	private List<Class> noEmailExceptions;
 
 	/**
 	 * Constructor.
-	 * @param i18nService 
 	 * @param applicationService 
 	 * @param exceptionViews
 	 * @param noEmailExceptions 
@@ -79,9 +78,8 @@ public class EmailExceptionServiceImpl extends SimpleExceptionServiceImpl {
 	 * @param develEmail 
 	 * @param logLevel 
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "rawtypes" })
 	public EmailExceptionServiceImpl(
-			final I18nService i18nService,
 			final ApplicationService applicationService,
 			final Map<Class, String> exceptionViews,
 			final List<Class> noEmailExceptions,
@@ -91,7 +89,7 @@ public class EmailExceptionServiceImpl extends SimpleExceptionServiceImpl {
 			final boolean doNotSendExceptionReportsToDevelopers,
 			final String develEmail,
 			final String logLevel) {
-		super(i18nService, applicationService, 
+		super(applicationService, 
 				exceptionViews, authenticationService, logLevel);
 		this.smtpService = smtpService;
 		this.recipientEmail = recipientEmail;
@@ -176,72 +174,72 @@ public class EmailExceptionServiceImpl extends SimpleExceptionServiceImpl {
 	 */
 	private StringBuffer getHtmlReportInformation() {
 		StringBuffer sb = new StringBuffer();
-		sb.append(header(getString("EXCEPTION.HEADER.INFORMATION")));
-		sb.append(row2(getString("EXCEPTION.INFORMATION.APPLICATION"), 
+		sb.append(header(BundleService.getString("EXCEPTION.HEADER.INFORMATION")));
+		sb.append(row2(BundleService.getString("EXCEPTION.INFORMATION.APPLICATION"), 
 				StringUtilsWeb.escapeHtml(getApplicationName())));
-		sb.append(row2(getString("EXCEPTION.INFORMATION.VERSION"), 
+		sb.append(row2(BundleService.getString("EXCEPTION.INFORMATION.VERSION"), 
 				StringUtilsWeb.escapeHtml(getApplicationVersion().toString())));
 		String serverStr;
 		if (getServer() == null) {
-			serverStr = em(getString("EXCEPTION.INFORMATION.SERVER.UNKNOWN"));
+			serverStr = em(BundleService.getString("EXCEPTION.INFORMATION.SERVER.UNKNOWN"));
 		} else {
 			serverStr = StringUtilsWeb.escapeHtml(getServer());
 		}
-		sb.append(row2(getString("EXCEPTION.INFORMATION.SERVER"), serverStr));
+		sb.append(row2(BundleService.getString("EXCEPTION.INFORMATION.SERVER"), serverStr));
 		String dateStr = null;
 		if (getDate() == null) {
-			dateStr = em(getString("EXCEPTION.INFORMATION.DATE.UNKNOWN"));
+			dateStr = em(BundleService.getString("EXCEPTION.INFORMATION.DATE.UNKNOWN"));
 		} else {
-			dateStr = StringUtilsWeb.escapeHtml(printableDate(getDate()));
+			dateStr = StringUtilsWeb.escapeHtml(I18nUtils.printableDate(getDate()));
 		}
-		sb.append(row2(getString("EXCEPTION.INFORMATION.DATE"), dateStr));
+		sb.append(row2(BundleService.getString("EXCEPTION.INFORMATION.DATE"), dateStr));
 		if (ContextUtils.isWeb()) {
 			String userIdStr;
 			if (getUserId() == null) {
-				userIdStr = em(getString("EXCEPTION.INFORMATION.USER_ID.UNKNOWN"));
+				userIdStr = em(BundleService.getString("EXCEPTION.INFORMATION.USER_ID.UNKNOWN"));
 			} else {
 				userIdStr = StringUtilsWeb.escapeHtml(getUserId());
 			}
-			sb.append(row2(getString("EXCEPTION.INFORMATION.USER_ID"), userIdStr));
+			sb.append(row2(BundleService.getString("EXCEPTION.INFORMATION.USER_ID"), userIdStr));
 			String portalStr;
 			if (getPortal() == null) {
 				portalStr = 
-					em(getString("EXCEPTION.INFORMATION.PORTAL.UNKNOWN"));
+					em(BundleService.getString("EXCEPTION.INFORMATION.PORTAL.UNKNOWN"));
 			} else {
 				portalStr = StringUtilsWeb.escapeHtml(getPortal());
 				if (getQuickStart() != null && getQuickStart().booleanValue()) {
 					portalStr = portalStr + " " 
-					+ getString("EXCEPTION.INFORMATION.PORTAL.QUICK_START");
+					+ BundleService.getString("EXCEPTION.INFORMATION.PORTAL.QUICK_START");
 				}
-				sb.append(row2(getString(
+				sb.append(row2(BundleService.getString(
 						"EXCEPTION.INFORMATION.PORTAL"), portalStr));
 				String clientStr;
 				if (getClient() == null) {
-					clientStr = em(getString(
+					clientStr = em(BundleService.getString(
 							"EXCEPTION.INFORMATION.CLIENT.UNKNOWN"));
 				} else {
 					clientStr = StringUtilsWeb.escapeHtml(getClient());
 				}
-				sb.append(row2(getString("EXCEPTION.INFORMATION.CLIENT"), clientStr));
+				sb.append(row2(BundleService.getString("EXCEPTION.INFORMATION.CLIENT"), clientStr));
 				String queryStringStr;
 				if (getQueryString() == null) {
 					queryStringStr = 
-						em(getString(
+						em(BundleService.getString(
 								"EXCEPTION.INFORMATION.QUERY_STRING.UNKNOWN"));
 				} else {
 					queryStringStr = StringUtilsWeb.escapeHtml(getQueryString());
 				}
 				sb.append(row2(
-						getString("EXCEPTION.INFORMATION.QUERY_STRING"), 
+						BundleService.getString("EXCEPTION.INFORMATION.QUERY_STRING"), 
 						queryStringStr));
 				String userAgentStr;
 				if (getUserAgent() == null) {
-					userAgentStr = em(getString(
+					userAgentStr = em(BundleService.getString(
 							"EXCEPTION.INFORMATION.USER_AGENT.UNKNOWN"));
 				} else {
 					userAgentStr = StringUtilsWeb.escapeHtml(getUserAgent());
 				}
-				sb.append(row2(getString(
+				sb.append(row2(BundleService.getString(
 						"EXCEPTION.INFORMATION.USER_AGENT"), userAgentStr));
 			}
 		}
@@ -270,7 +268,7 @@ public class EmailExceptionServiceImpl extends SimpleExceptionServiceImpl {
 	 */
 	private StringBuffer getHtmlReportException() {
 		StringBuffer sb = new StringBuffer();
-		sb.append(header(getString("EXCEPTION.HEADER.EXCEPTION")));
+		sb.append(header(BundleService.getString("EXCEPTION.HEADER.EXCEPTION")));
 		String name = "";
 		String message = "";
 		String stackTrace = "";
@@ -283,13 +281,13 @@ public class EmailExceptionServiceImpl extends SimpleExceptionServiceImpl {
 			shortStackTrace = html(ExceptionUtils.getShortStackTraceStrings(t));
 			stackTrace = html(ExceptionUtils.getStackTraceStrings(t));
 		}
-		sb.append(row2(getString("EXCEPTION.EXCEPTION.NAME"), 
+		sb.append(row2(BundleService.getString("EXCEPTION.EXCEPTION.NAME"), 
 				name));
-		sb.append(row2(getString("EXCEPTION.EXCEPTION.MESSAGE"), 
+		sb.append(row2(BundleService.getString("EXCEPTION.EXCEPTION.MESSAGE"), 
 				message));
-		sb.append(row2(getString("EXCEPTION.EXCEPTION.SHORT_STACK_TRACE"), 
+		sb.append(row2(BundleService.getString("EXCEPTION.EXCEPTION.SHORT_STACK_TRACE"), 
 				shortStackTrace));
-		sb.append(row2(getString("EXCEPTION.EXCEPTION.STACK_TRACE"), 
+		sb.append(row2(BundleService.getString("EXCEPTION.EXCEPTION.STACK_TRACE"), 
 				stackTrace));
 		return sb;
 	}
@@ -305,38 +303,38 @@ public class EmailExceptionServiceImpl extends SimpleExceptionServiceImpl {
 		String requestParametersStr = html(getRequestParameters());
 		String cookiesStr = html(getCookies());
 		StringBuffer sb = new StringBuffer();
-		sb.append(header(getString("EXCEPTION.HEADER.REQUEST_ATTRIBUTES")));
+		sb.append(header(BundleService.getString("EXCEPTION.HEADER.REQUEST_ATTRIBUTES")));
 		if (requestAttributesStr == null) {
 			requestAttributesStr = 
-				em(getString("EXCEPTION.REQUEST_ATTRIBUTES.NONE"));
+				em(BundleService.getString("EXCEPTION.REQUEST_ATTRIBUTES.NONE"));
 		}
 		sb.append(row(requestAttributesStr));
-		sb.append(header(getString("EXCEPTION.HEADER.SESSION_ATTRIBUTES")));
+		sb.append(header(BundleService.getString("EXCEPTION.HEADER.SESSION_ATTRIBUTES")));
 		if (sessionAttributesStr == null) {
 			sessionAttributesStr = 
-				em(getString("EXCEPTION.SESSION_ATTRIBUTES.NONE"));
+				em(BundleService.getString("EXCEPTION.SESSION_ATTRIBUTES.NONE"));
 		}
 		sb.append(row(sessionAttributesStr));
-		sb.append(header(getString("EXCEPTION.HEADER.GLOBAL_SESSION_ATTRIBUTES")));
+		sb.append(header(BundleService.getString("EXCEPTION.HEADER.GLOBAL_SESSION_ATTRIBUTES")));
 		if (globalSessionAttributesStr == null) {
 			globalSessionAttributesStr = 
-				em(getString("EXCEPTION.GLOBAL_SESSION_ATTRIBUTES.NONE"));
+				em(BundleService.getString("EXCEPTION.GLOBAL_SESSION_ATTRIBUTES.NONE"));
 		}
 		sb.append(row(globalSessionAttributesStr));
-		sb.append(header(getString("EXCEPTION.HEADER.REQUEST_HEADERS")));
+		sb.append(header(BundleService.getString("EXCEPTION.HEADER.REQUEST_HEADERS")));
 		if (requestHeadersStr == null) {
-			requestHeadersStr = em(getString("EXCEPTION.REQUEST_HEADERS.NONE"));
+			requestHeadersStr = em(BundleService.getString("EXCEPTION.REQUEST_HEADERS.NONE"));
 		}
 		sb.append(row(requestHeadersStr));
-		sb.append(header(getString("EXCEPTION.HEADER.REQUEST_PARAMETERS")));
+		sb.append(header(BundleService.getString("EXCEPTION.HEADER.REQUEST_PARAMETERS")));
 		if (requestParametersStr == null) {
 			requestParametersStr = 
-				em(getString("EXCEPTION.REQUEST_PARAMETERS.NONE"));
+				em(BundleService.getString("EXCEPTION.REQUEST_PARAMETERS.NONE"));
 		}
 		sb.append(row(requestParametersStr));
-		sb.append(header(getString("EXCEPTION.HEADER.COOKIES")));
+		sb.append(header(BundleService.getString("EXCEPTION.HEADER.COOKIES")));
 		if (cookiesStr == null) {
-			cookiesStr = em(getString("EXCEPTION.COOKIES.NONE"));
+			cookiesStr = em(BundleService.getString("EXCEPTION.COOKIES.NONE"));
 		}
 		sb.append(row(cookiesStr));
 		return sb;
@@ -348,22 +346,25 @@ public class EmailExceptionServiceImpl extends SimpleExceptionServiceImpl {
 	private StringBuffer getHtmlReportProperties() {
 		String systemPropertiesStr = html(getSystemProperties());
 		StringBuffer sb = new StringBuffer();
-		sb.append(header(getString("EXCEPTION.HEADER.SYSTEM_PROPERTIES")));
+		sb.append(header(BundleService.getString("EXCEPTION.HEADER.SYSTEM_PROPERTIES")));
 		if (systemPropertiesStr == null) {
 			systemPropertiesStr = 
-				"\n" + em(getString("EXCEPTION.SYSTEM_PROPERTIES.NONE"));
+				"\n" + em(BundleService.getString("EXCEPTION.SYSTEM_PROPERTIES.NONE"));
 		}
 		sb.append(row(systemPropertiesStr));
-		sb.append(header(getString("EXCEPTION.HEADER.MEMORY")));
+		sb.append(header(BundleService.getString("EXCEPTION.HEADER.MEMORY")));
+		Object paramsFree[] = {SystemUtils.getFreeMemory()};
 		sb.append(row2(
-				getString("EXCEPTION.MEMORY.FREE"), 
-				getString("EXCEPTION.MEMORY.VALUE", SystemUtils.getFreeMemory())));
+				BundleService.getString("EXCEPTION.MEMORY.FREE"), 
+				BundleService.getString("EXCEPTION.MEMORY.VALUE", paramsFree)));
+		Object paramsTotal[] = {SystemUtils.getTotalMemory()};
 		sb.append(row2(
-				getString("EXCEPTION.MEMORY.TOTAL"), 
-				getString("EXCEPTION.MEMORY.VALUE", SystemUtils.getTotalMemory())));
+				BundleService.getString("EXCEPTION.MEMORY.TOTAL"),
+				BundleService.getString("EXCEPTION.MEMORY.VALUE", paramsTotal)));
+		Object paramsMax[] = {SystemUtils.getMaxMemory()};
 		sb.append(row2(
-				getString("EXCEPTION.MEMORY.MAX"), 
-				getString("EXCEPTION.MEMORY.VALUE", SystemUtils.getMaxMemory())));
+				BundleService.getString("EXCEPTION.MEMORY.MAX"), 
+				BundleService.getString("EXCEPTION.MEMORY.VALUE", paramsMax)));
 		return sb;
 	}
 
@@ -372,7 +373,7 @@ public class EmailExceptionServiceImpl extends SimpleExceptionServiceImpl {
 	 */
 	public String getHtmlReport() {
 		StringBuffer sb = new StringBuffer(
-				h1(getString("EXCEPTION.TITLE")));
+				h1(BundleService.getString("EXCEPTION.TITLE")));
 		sb.append("\n<table border=\"1\">");
 		sb.append(getHtmlReportInformation());
 		sb.append(getHtmlReportException());
@@ -390,18 +391,18 @@ public class EmailExceptionServiceImpl extends SimpleExceptionServiceImpl {
 	public String getReportSubject() {
 		String serverStr = getServer();
 		if (serverStr == null) {
-			serverStr = getString("EXCEPTION.INFORMATION.SERVER.UNKNOWN");
+			serverStr = BundleService.getString("EXCEPTION.INFORMATION.SERVER.UNKNOWN");
 		}
 		String className = null;
 		if (getThrowable() != null) {
 			className = ExceptionUtils.getRealCause(getThrowable()).getClass().getSimpleName();
 		}
-		return getString(
-				"EXCEPTION.EMAIL_SUBJECT", 
-				getApplicationName(), 
+		Object params[] = {getApplicationName(), 
 				getApplicationVersion(), 
 				className, 
-				serverStr);
+				serverStr};
+		return BundleService.getString(
+				"EXCEPTION.EMAIL_SUBJECT",params);
 	}
 
 	/**
@@ -414,7 +415,7 @@ public class EmailExceptionServiceImpl extends SimpleExceptionServiceImpl {
 	 * @param htmlReport the HTML body
 	 * @param textReport the plain text body
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	protected void sendEmail(
 			final boolean intercept,
 			final Throwable t,

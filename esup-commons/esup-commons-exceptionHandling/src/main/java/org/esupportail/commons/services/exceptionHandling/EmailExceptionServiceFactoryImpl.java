@@ -52,13 +52,13 @@ public class EmailExceptionServiceFactoryImpl extends SimpleExceptionServiceFact
 	/**
 	 * No email sent for these exceptions.
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	private List<Class> noEmailExceptions;
 
 	/**
 	 * Bean constructor.
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	public EmailExceptionServiceFactoryImpl() {
 		super();
 		this.noEmailExceptions = new ArrayList<Class>();
@@ -99,8 +99,7 @@ public class EmailExceptionServiceFactoryImpl extends SimpleExceptionServiceFact
 	 */
 	@Override
 	public ExceptionService getExceptionService() {
-		return new EmailExceptionServiceImpl(
-				getI18nService(), getApplicationService(), 
+		return new EmailExceptionServiceImpl(getApplicationService(), 
 				getExceptionViews(), getNoEmailExceptions(), getAuthenticationService(), 
 				smtpService, recipientEmail, doNotSendExceptionReportsToDevelopers, 
 				getDevelEmail(), getLogLevel());
@@ -153,7 +152,7 @@ public class EmailExceptionServiceFactoryImpl extends SimpleExceptionServiceFact
 	 * Add a 'no email' exception.
 	 * @param className 
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	private void addNoEmailException(final String className) {
 		try {
 			Class clazz = Class.forName(className);
@@ -179,7 +178,7 @@ public class EmailExceptionServiceFactoryImpl extends SimpleExceptionServiceFact
 	/**
 	 * @return the noEmailExceptions
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	protected List<Class> getNoEmailExceptions() {
 		return noEmailExceptions;
 	}

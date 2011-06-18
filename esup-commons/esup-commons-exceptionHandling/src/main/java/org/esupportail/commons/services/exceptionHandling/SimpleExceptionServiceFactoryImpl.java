@@ -111,8 +111,7 @@ implements ExceptionServiceFactory {
 	 * @see org.esupportail.commons.services.exceptionHandling.ExceptionServiceFactory#getExceptionService()
 	 */
 	public ExceptionService getExceptionService() {
-		return new SimpleExceptionServiceImpl(
-				getI18nService(), getApplicationService(), 
+		return new SimpleExceptionServiceImpl(getApplicationService(), 
 				exceptionViews, authenticationService, logLevel);
 	}
 

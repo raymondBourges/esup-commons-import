@@ -16,7 +16,6 @@ import net.sf.ehcache.Element;
 import org.esupportail.commons.exceptions.ConfigException;
 import org.esupportail.commons.services.application.ApplicationService;
 import org.esupportail.commons.services.authentication.AuthenticationService;
-import org.esupportail.commons.services.i18n.I18nService;
 import org.esupportail.commons.services.logging.Logger;
 import org.esupportail.commons.services.logging.LoggerImpl;
 import org.esupportail.commons.services.smtp.SmtpService;
@@ -49,7 +48,6 @@ public class CachingEmailExceptionServiceImpl extends EmailExceptionServiceImpl 
 	
 	/**
 	 * Constructor.
-	 * @param i18nService 
 	 * @param applicationService 
 	 * @param exceptionViews
 	 * @param noEmailExceptions 
@@ -61,9 +59,8 @@ public class CachingEmailExceptionServiceImpl extends EmailExceptionServiceImpl 
 	 * @param cache 
 	 * @param logLevel 
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	public CachingEmailExceptionServiceImpl(
-			final I18nService i18nService,
 			final ApplicationService applicationService,
 			final Map<Class, String> exceptionViews,
 			final List<Class> noEmailExceptions,
@@ -75,7 +72,7 @@ public class CachingEmailExceptionServiceImpl extends EmailExceptionServiceImpl 
 			final Cache cache,
 			final String logLevel) {
 		super(
-				i18nService, applicationService,
+				applicationService,
 				exceptionViews, noEmailExceptions, authenticationService, smtpService, 
 				recipientEmail, doNotSendExceptionReportsToDevelopers, develEmail, logLevel);
 		this.cache = cache;
