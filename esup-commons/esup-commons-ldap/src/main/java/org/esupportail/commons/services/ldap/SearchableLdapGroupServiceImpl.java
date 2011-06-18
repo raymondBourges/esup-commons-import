@@ -12,7 +12,6 @@ import net.sf.ehcache.CacheManager;
 
 import org.esupportail.commons.exceptions.GroupNotFoundException;
 import org.esupportail.commons.exceptions.ObjectNotFoundException;
-import org.esupportail.commons.services.i18n.I18nService;
 import org.esupportail.commons.services.logging.Logger;
 import org.esupportail.commons.services.logging.LoggerImpl;
 import org.esupportail.commons.utils.Assert;
@@ -154,14 +153,6 @@ public class SearchableLdapGroupServiceImpl implements LdapGroupService, Initial
 	 */
 	public void setDnSubPath(final String dnSubPath) {
 		service.setDnSubPath(dnSubPath);
-	}
-
-	/**
-	 * Set the i18nService.
-	 * @param i18nService
-	 */
-	public void setI18nService(final I18nService i18nService) {
-		service.setI18nService(i18nService);
 	}
 
 	/**
