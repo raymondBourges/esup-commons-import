@@ -14,21 +14,8 @@
 	-->
 
     <bean 
-    	id="abstractI18nAwareBean"
-    	class="org.esupportail.commons.beans.AbstractI18nAwareBean"
-    	abstract="true"
-    	>
-    	<description>
-			An abstract bean to factorize the declaration of beans of which 
-			class inherits from AbstractI18nAwareBean. 
-    	</description>
-		<property name="i18nService" ref="i18nService" />
-    </bean>
-
-    <bean 
     	id="abstractApplicationAwareBean"
     	class="org.esupportail.commons.beans.AbstractApplicationAwareBean"
-    	parent="abstractI18nAwareBean"
     	abstract="true"
     	>
     	<description>
@@ -38,20 +25,11 @@
 		<property name="applicationService" ref="applicationService" />
     </bean>
     
-    
-    <bean 
-    	id="abstractJsfMessagesAwareBean"
-    	class="org.esupportail.commons.beans.AbstractJsfMessagesAwareBean"
-    	parent="abstractApplicationAwareBean"
-    	abstract="true"
-    	>
-    </bean>
-    
-	
+    	
     <bean 
     	id="abstractDomainAwareBean"
     	abstract="true"
-    	parent="abstractJsfMessagesAwareBean"
+    	parent="abstractApplicationAwareBean"
     	>
     	<description>
 			An abstract bean to factorize the declaration of beans of which 

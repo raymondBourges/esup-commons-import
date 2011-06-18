@@ -18,11 +18,10 @@
 			<supported-locale>fr</supported-locale>
 			<supported-locale>en</supported-locale>
 		</locale-config>
-		<message-bundle>properties.i18n.bundles.JsfMessages</message-bundle>
-
+		<resource-bundle>
+			<base-name>org.esupportail.commons.jsf.ResourceBundle</base-name>
+			<var>msgs</var>
+		</resource-bundle>
 	</application>
-	<lifecycle>
-		<phase-listener>org.esupportail.commons.jsf.PortletPhaseListener</phase-listener>
-		<phase-listener>org.esupportail.commons.jsf.ResourceBundlePhaseListener</phase-listener>
-	</lifecycle>
+
 </faces-config>
