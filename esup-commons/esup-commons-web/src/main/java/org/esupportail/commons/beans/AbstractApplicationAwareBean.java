@@ -5,12 +5,12 @@ package org.esupportail.commons.beans;
 
 import org.esupportail.commons.services.application.ApplicationService;
 import org.esupportail.commons.utils.Assert;
+import org.springframework.beans.factory.InitializingBean;
 
 /**
  * An abstract class inherited by all the beans for them to get a reference to the domain service.
  */
-@SuppressWarnings("serial")
-public abstract class AbstractApplicationAwareBean extends AbstractI18nAwareBean {
+public abstract class AbstractApplicationAwareBean implements InitializingBean {
 
 	/**
 	 * see {@link ApplicationService}.
@@ -27,9 +27,7 @@ public abstract class AbstractApplicationAwareBean extends AbstractI18nAwareBean
 	/**
 	 * @see org.springframework.beans.factory.InitializingBean#afterPropertiesSet()
 	 */
-	@Override
 	public void afterPropertiesSet() {
-		super.afterPropertiesSet();
 		Assert.notNull(this.applicationService, 
 				"property applicationService of class " + this.getClass().getName() 
 				+ " can not be null");
