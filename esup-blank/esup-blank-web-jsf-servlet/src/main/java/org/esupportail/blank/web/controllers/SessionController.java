@@ -5,6 +5,7 @@
 package org.esupportail.blank.web.controllers;
 
 import java.io.IOException;
+import java.util.Locale;
 
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
@@ -163,5 +164,17 @@ public class SessionController extends AbstractDomainAwareBean {
 	public void setCasLogoutUrl(final String casLogoutUrl) {
 		this.casLogoutUrl = StringUtils.nullIfEmpty(casLogoutUrl);
 	}
+	
+	/**
+	 * @return the current locale.
+	 */
+	public Locale getLocale() {
+		Locale locale = new Locale("fr");
+		FacesContext context = FacesContext.getCurrentInstance();
+		if (context != null) {
+			locale = context.getViewRoot().getLocale();
+		}
+		return locale;
+	}	
 	
 }
