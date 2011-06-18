@@ -1,5 +1,5 @@
 /**
- * ESUP-Portail Blank Application - Copyright (c) 2010 ESUP-Portail consortium.
+ * ESUP-Portail Commons Application - Copyright (c) 2010 ESUP-Portail consortium.
  */
 package org.esupportail.commons.jsf;
 
