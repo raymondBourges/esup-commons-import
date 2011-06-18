@@ -3,10 +3,6 @@
  */
 package org.esupportail.commons.domain.beans;
 
-import java.util.Locale;
-
-import org.esupportail.commons.services.i18n.I18nService;
-import org.esupportail.commons.utils.Assert;
 import org.esupportail.commons.exceptions.PasswordException;
 import org.springframework.beans.factory.InitializingBean;
 
@@ -31,11 +27,6 @@ public class UserPasswordManagerImpl implements UserPasswordManager, Initializin
 	private static final int DEFAULT_PASSWORD_MAX_LENGTH = 8;
 	
 	/**
-	 * The i18n service.
-	 */
-	private I18nService i18nService;
-	
-	/**
 	 * The minimum length for passwords.
 	 */
 	private Integer passwordMinLength;
@@ -56,7 +47,6 @@ public class UserPasswordManagerImpl implements UserPasswordManager, Initializin
 	 * @see org.springframework.beans.factory.InitializingBean#afterPropertiesSet()
 	 */
 	public void afterPropertiesSet() {
-		Assert.notNull(i18nService, "property i18nService can not be null");
 		if (passwordMaxLength == null || passwordMaxLength < 1) {
 			passwordMaxLength = DEFAULT_PASSWORD_MAX_LENGTH;
 		}
@@ -88,17 +78,15 @@ public class UserPasswordManagerImpl implements UserPasswordManager, Initializin
 	/**
 	 * @see org.esupportail.commons.domain.UserPasswordManager#check(java.lang.String, java.util.Locale)
 	 */
-	public void check(final String password, final Locale locale) throws PasswordException {
+	public void check(final String password) throws PasswordException {
 		if (password == null) {
-			throw new PasswordException(i18nService.getString("PASSWORD_ERROR.NULL", locale));
+			throw new PasswordException("PASSWORD_ERROR.NULL");
 		}
 		if (password.length() > passwordMaxLength) {
-			throw new PasswordException(i18nService.getString(
-					"PASSWORD_ERROR.TOO_LONG", locale, passwordMaxLength));
+			throw new PasswordException("PASSWORD_ERROR.TOO_LONG{" + passwordMaxLength + "}");
 		}
 		if (password.length() < passwordMinLength) {
-			throw new PasswordException(i18nService.getString(
-					"PASSWORD_ERROR.TOO_SHORT", locale, passwordMinLength));
+			throw new PasswordException("PASSWORD_ERROR.TOO_SHORT" + passwordMinLength + "}");
 		}
 	}
 
@@ -114,13 +102,6 @@ public class UserPasswordManagerImpl implements UserPasswordManager, Initializin
 	 */
 	public void setPasswordMinLength(final Integer passwordMinLength) {
 		this.passwordMinLength = passwordMinLength;
-	}
-
-	/**
-	 * @param service the i18nService to set
-	 */
-	public void setI18nService(final I18nService service) {
-		i18nService = service;
 	}
 
 }

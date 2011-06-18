@@ -4,7 +4,6 @@
 package org.esupportail.commons.domain.beans;
 
 import java.io.Serializable;
-import java.util.Locale;
 
 import org.esupportail.commons.exceptions.PasswordException;
 
@@ -21,9 +20,8 @@ public interface UserPasswordManager extends Serializable {
 	/**
 	 * Check a password.
 	 * @param password the password to check
-	 * @param locale 
 	 * @throws PasswordException 
 	 */
-	void check(final String password, final Locale locale) throws PasswordException;
+	void check(final String password) throws PasswordException;
 
 }
