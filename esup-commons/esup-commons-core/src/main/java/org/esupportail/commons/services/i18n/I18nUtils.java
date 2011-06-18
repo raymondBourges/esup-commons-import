@@ -3,8 +3,6 @@
  */
 package org.esupportail.commons.services.i18n;
 
-import java.net.URL;
-import java.net.URLClassLoader;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -15,7 +13,6 @@ import java.util.ResourceBundle;
 
 import org.esupportail.commons.services.logging.Logger;
 import org.esupportail.commons.services.logging.LoggerImpl;
-import org.esupportail.commons.utils.BeanUtils;
 
 /**
  * An abstract class that should be inherited by all the implementations 
@@ -34,11 +31,6 @@ public class I18nUtils {
 	private static final long NUMBER_OF_DAYS_TO_PRINT_DAY_OF_WEEK = 6;
 	
 	/**
-	 * The name of the I18nService bean.
-	 */
-	private static final String I18N_SERVICE_BEAN = "i18nService";
-
-	/**
 	 * A logger.
 	 */
 	private static final Logger LOG = new LoggerImpl(I18nUtils.class);
@@ -54,29 +46,6 @@ public class I18nUtils {
 	 * @return de default locale.
 	 */
 	public static Locale getDefaultLocale() {
-//		FacesContext context = FacesContext.getCurrentInstance();
-//		if (context == null) {
-//			return Locale.getDefault();
-//		}
-//		UIViewRoot viewRoot = null;
-//		try {
-//			viewRoot = context.getViewRoot();
-//		} catch (IllegalStateException e) {
-//			// context has probably been released, happens on exception handling
-//		}
-//		if (viewRoot != null) {
-//			return viewRoot.getLocale();
-//		}
-//		Application application = null;
-//		try {
-//			application = context.getApplication();
-//		} catch (IllegalStateException e) {
-//			// context has probably been released, happens on exception handling
-//		}
-//		if (application == null) {
-//			return Locale.getDefault();
-//		}
-//		return application.getDefaultLocale();
 		return Locale.getDefault();
 	}
 
@@ -170,13 +139,6 @@ public class I18nUtils {
 	 */
 	public static String printableDate(final long date) {
 		return printableDate(date, getDefaultLocale());
-	}
-
-	/**
-	 * @return the i18n service.
-	 */
-	public static I18nService createI18nService() {
-		return (I18nService) BeanUtils.getBean(I18N_SERVICE_BEAN);
 	}
 
 }
