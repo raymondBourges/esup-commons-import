@@ -8,19 +8,18 @@ import java.util.Locale;
 
 import org.esupportail.blank.domain.DomainService;
 import org.esupportail.blank.domain.beans.User;
-import org.esupportail.commons.beans.AbstractJsfMessagesAwareBean;
 import org.esupportail.commons.services.logging.Logger;
 import org.esupportail.commons.services.logging.LoggerImpl;
 import org.esupportail.commons.utils.Assert;
 import org.esupportail.commons.web.controllers.Resettable;
+import org.springframework.beans.factory.InitializingBean;
 
 /**
  * An abstract class inherited by all the beans for them to get:
  * - the domain service (domainService).
  * - the application service (applicationService).
- * - the i18n service (i18nService).
  */
-public abstract class AbstractDomainAwareBean extends AbstractJsfMessagesAwareBean implements Resettable {
+public abstract class AbstractDomainAwareBean implements InitializingBean, Resettable {
 
 	/**
 	 * serialVersionUID
@@ -49,7 +48,6 @@ public abstract class AbstractDomainAwareBean extends AbstractJsfMessagesAwareBe
 	 */
 	@Override
 	public final void afterPropertiesSet() {
-		super.afterPropertiesSet(); 
 		Assert.notNull(this.domainService, 
 				"property domainService of class " + this.getClass().getName() + " can not be null");
 		afterPropertiesSetInternal();
@@ -82,7 +80,6 @@ public abstract class AbstractDomainAwareBean extends AbstractJsfMessagesAwareBe
 	/**
 	 * @return the current user's locale.
 	 */
-	@Override
 	public Locale getCurrentUserLocale() {
 		if (logger.isDebugEnabled()) {
 			logger.debug(this.getClass().getName() + ".getCurrentUserLocale()");

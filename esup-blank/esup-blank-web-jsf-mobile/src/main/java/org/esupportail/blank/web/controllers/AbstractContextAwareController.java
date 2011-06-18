@@ -12,7 +12,6 @@ import org.esupportail.commons.utils.Assert;
  * - the context of the application (sessionController).
  * - the domain service (domainService).
  * - the application service (applicationService).
- * - the i18n service (i18nService).
  */
 public abstract class AbstractContextAwareController extends AbstractDomainAwareBean {
 
