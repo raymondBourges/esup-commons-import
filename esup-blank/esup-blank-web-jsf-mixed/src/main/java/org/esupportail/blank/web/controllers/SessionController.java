@@ -13,7 +13,7 @@ import javax.faces.event.ActionEvent;
 import javax.servlet.http.HttpServletRequest;
 
 import org.esupportail.commons.exceptions.UserNotFoundException;
-import org.esupportail.commons.services.i18n.I18nUtils;
+import org.esupportail.commons.jsf.BundleService;
 import org.esupportail.commons.services.logging.Logger;
 import org.esupportail.commons.services.logging.LoggerImpl;
 import org.apache.myfaces.trinidad.util.ExternalContextUtils;
@@ -180,8 +180,8 @@ public class SessionController extends AbstractDomainAwareBean {
 			} catch (UserNotFoundException e) {
 				currentUser = new User();
 				currentUser.setId(uid);
-				currentUser.setDisplayName(I18nUtils.createI18nService()
-						.getString(e.getMessage()));
+				currentUser.setDisplayName(BundleService.getString(e
+						.getMessage()));
 				currentUser.setAdmin(false);
 			}
 			return currentUser;
@@ -201,8 +201,8 @@ public class SessionController extends AbstractDomainAwareBean {
 				} catch (UserNotFoundException e) {
 					currentUser = new User();
 					currentUser.setId(uid);
-					currentUser.setDisplayName(I18nUtils.createI18nService()
-							.getString(e.getMessage()));
+					currentUser.setDisplayName(BundleService.getString(e
+							.getMessage()));
 					currentUser.setAdmin(false);
 				}
 				return currentUser;
@@ -340,7 +340,9 @@ public class SessionController extends AbstractDomainAwareBean {
 		}
 	}
 
-	@Override
+	/**
+	 * @return the current locale.
+	 */
 	public Locale getLocale() {
 		Locale locale = new Locale("fr");
 		FacesContext context = FacesContext.getCurrentInstance();
@@ -410,13 +412,12 @@ public class SessionController extends AbstractDomainAwareBean {
 	 */
 	public String getDisplayAccessibilityMode() {
 		if (accessibilityMode.equals("default"))
-			return I18nUtils.createI18nService().getString(
-					"PREFERENCES.ACCESSIBILITY.DEFAULT");
+			return BundleService.getString("PREFERENCES.ACCESSIBILITY.DEFAULT");
 		if (accessibilityMode.equals("inaccessible"))
-			return I18nUtils.createI18nService().getString(
-					"PREFERENCES.ACCESSIBILITY.INACCESSIBLE");
-		return I18nUtils.createI18nService().getString(
-				"PREFERENCES.ACCESSIBILITY.SCREENREADER");
+			return BundleService
+					.getString("PREFERENCES.ACCESSIBILITY.INACCESSIBLE");
+		return BundleService
+				.getString("PREFERENCES.ACCESSIBILITY.SCREENREADER");
 
 	}
 

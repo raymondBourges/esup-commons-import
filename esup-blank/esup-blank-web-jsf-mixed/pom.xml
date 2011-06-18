@@ -3,7 +3,7 @@
     <parent>
         <artifactId>esup-blank</artifactId>
         <groupId>org.esupportail.blank</groupId>
-        <version>0.2.6-SNAPSHOT</version>
+        <version>0.3.0-SNAPHOT</version>
     </parent>
     <groupId>org.esupportail.blank</groupId>
     <artifactId>esup-blank-web-jsf-mixed</artifactId>
@@ -194,13 +194,6 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>org.esupportail</groupId>
-            <artifactId>esup-commons2-jsf-trinidad</artifactId>
-            <version>${esupcommons.version}</version>
-            <type>jar</type>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
             <groupId>org.esupportail.blank</groupId>
             <artifactId>esup-blank-domain-services</artifactId>
             <version>${project.version}</version>
@@ -209,15 +202,29 @@
         </dependency>
         <dependency>
             <groupId>org.esupportail</groupId>
+            <artifactId>esup-commons2-jsf-trinidad</artifactId>
+            <version>${esupcommons.version}</version>
+            <type>jar</type>
+            <scope>compile</scope>
+            <exclusions>
+            	<exclusion>
+            		<artifactId>myfaces-shared-tomahawk</artifactId>
+            		<groupId>org.apache.myfaces.shared</groupId>
+            	</exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.esupportail</groupId>
             <artifactId>esup-commons2-exceptionHandling</artifactId>
             <version>${esupcommons.version}</version>
             <type>jar</type>
             <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.esupportail</groupId>
-            <artifactId>esup-commons2-jsf-portlet</artifactId>
-            <version>${esupcommons.version}</version>
+            <exclusions>
+            	<exclusion>
+            		<artifactId>tomahawk12</artifactId>
+            		<groupId>org.apache.myfaces.tomahawk</groupId>
+            	</exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.esupportail</groupId>

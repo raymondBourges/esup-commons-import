@@ -11,6 +11,7 @@ import java.util.Locale;
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 
+import org.esupportail.commons.jsf.BundleService;
 import org.esupportail.commons.services.i18n.I18nUtils;
 
 /**
@@ -59,29 +60,25 @@ public class PreferencesController extends AbstractContextAwareController {
 		return localeItems;
 	}
 
-
 	/**
 	 * @return the accessibilityModeItems
 	 */
 	public List<SelectItem> getAccessibilityModeItems() {
 		accessibilityModeItems = new ArrayList<SelectItem>();
-		accessibilityModeItems.add(new SelectItem("default", I18nUtils
-				.createI18nService().getString(
-						"PREFERENCES.ACCESSIBILITY.DEFAULT")));
-		accessibilityModeItems.add(new SelectItem("inaccessible", I18nUtils
-				.createI18nService().getString(
-						"PREFERENCES.ACCESSIBILITY.INACCESSIBLE")));
-		accessibilityModeItems.add(new SelectItem("screenReader", I18nUtils
-				.createI18nService().getString(
-						"PREFERENCES.ACCESSIBILITY.SCREENREADER")));
+		accessibilityModeItems.add(new SelectItem("default", BundleService
+				.getString("PREFERENCES.ACCESSIBILITY.DEFAULT")));
+		accessibilityModeItems.add(new SelectItem("inaccessible", BundleService
+				.getString("PREFERENCES.ACCESSIBILITY.INACCESSIBLE")));
+		accessibilityModeItems.add(new SelectItem("screenReader", BundleService
+				.getString("PREFERENCES.ACCESSIBILITY.SCREENREADER")));
 		return accessibilityModeItems;
 	}
-	
+
 	@Override
 	public void reset() {
 		super.reset();
 		accessibilityModeItems = null;
 		localeItems = null;
 	}
-	
+
 }
