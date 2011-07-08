@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:t="http://myfaces.apache.org/tomahawk"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:e="http://commons.esup-portail.org"
+	xmlns:p="http://primefaces.prime.com.tr/ui">
+
+	
+    <p:dialog id="dialogEditTaskId" widgetVar="dialogEditTask" header="#{msgs['TODO_DEMO.FORM.ACTION.EDITTASK']}" modal="true" width="400"> 
+
+<h:outputLink
+ value="#{taskController.taskUrl}">
+  <f:verbatim>Test</f:verbatim>
+</h:outputLink>
+    		 <h:form id="formEditTask">
+    		 		  <h:inputHidden id="id" value="#{taskController.taskToUpdate.id}"/>
+    				  <h:panelGrid id="grid" columns="2" cellpadding="5">  
+    				  	
+    				  	<t:outputLabel value="#{msgs['TODO_DEMO.TASK.DATE']} :" for="date"/>
+    				  	<h:panelGroup>
+	    				  	<p:calendar id="date" size="60" value="#{taskController.taskToUpdate.date}" showOn="button" />  
+							<h:message for="date"/> 
+						</h:panelGroup>
+						
+						<t:outputLabel value="#{msgs['TODO_DEMO.TASK.TITLE']} :" for="title"/>
+						<h:panelGroup>
+							<t:inputText id="title" size="60" maxlength="50" value="#{taskController.taskToUpdate.title}" required="true" />
+							<h:message for="title"/> 
+						</h:panelGroup>
+						
+						<t:outputLabel value="#{msgs['TODO_DEMO.TASK.DESCRIPTION']} :" for="description"/>
+						<h:panelGroup>
+							<t:inputTextarea id="description" value="#{taskController.taskToUpdate.description}" cols="40" rows="4"/> 
+							<h:message for="description"/>
+						</h:panelGroup>
+						
+						<t:outputLabel value="#{msgs['TODO_DEMO.TASK.PUBLICTASK']} :" for="publicTask"/>
+						<h:panelGroup>
+							<h:selectBooleanCheckbox id="publicTask" value="#{taskController.taskToUpdate.publicTask}">
+								<f:ajax event="change" render="publicTaskWarn" />
+							</h:selectBooleanCheckbox>
+							<h:outputText id="publicTaskWarn" value="  #{taskController.publicTaskWarn}"/>
+							<h:message for="publicTask"/>
+						</h:panelGroup>						  	   				  	
+						<t:outputLabel value="#{msgs['TODO_DEMO.TASK.ASSIGNATEDUSER']} :" for="assignatedUserPanel"/>
+						<h:panelGroup id="assignatedUserPanel">
+						
+							<p:dataList id="assignatedUserList" value="#{taskController.taskToUpdate.assignatedUsers}" var="user">    
+								#{user.displayName} 
+								<p:commandButton value="#{msgs['TODO_DEMO.ACTION.DELETESIGN']}" update="growl,formEditTask"  action="#{taskController.deleteAssignatedUser}">
+									<f:setPropertyActionListener value="#{user}" target="#{taskController.assignatedUserToDelete}" />
+								</p:commandButton> 
+	                   		</p:dataList>  
+	                 			
+							<p:autoComplete id="assignatedUserId" size="60" maxlength="50" value="#{taskController.anAssignatedUserId}"
+								completeMethod="#{simpleController.complete}" /><!-- <f:validateLength minimum="1" maximum="100" />
+</h:inputText>  -->
+								
+								<p:commandButton value="#{msgs['TODO_DEMO.ACTION.ADDSIGN']}" update="growl,formEditTask"  action="#{taskController.addAnAssignatedUser}" /> 
+							<h:message for="assignatedUserId"/> 
+						</h:panelGroup>
+				<p:commandButton value="#{msgs['TODO_DEMO.ACTION.MODIFY']}" action="#{taskController.updateTask}" oncomplete="handleEditTaskRequest(xhr, status, args)" update="growl,@form,tasksFormPaginator"/>
+				<p:commandButton value="#{msgs['TODO_DEMO.ACTION.CANCEL']}" type="reset" action="#{taskController.taskToUpdate.reset}" onclick="dialogEditTask.hide();"/>
+				</h:panelGrid>    
+			</h:form>
+			
+ 		</p:dialog>  
+ 		<script type="text/javascript">  
+			function handleEditTaskRequest(xhr, status, args) {  
+				if(args.validationFailed) {  
+		             jQuery('#dialogEditTaskId').effect("shake", { times:3 }, 100);  
+		         } else {  
+		        	 dialogEditTask.hide();  
+		         }  
+		     }  
+ 		</script> 
+</ui:composition> 

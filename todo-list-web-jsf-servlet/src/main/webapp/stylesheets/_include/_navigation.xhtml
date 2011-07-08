@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<div class="app-navigation" xmlns:t="http://myfaces.apache.org/tomahawk"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.prime.com.tr/ui">
+	<h:form>
+		<p:menubar>
+			<p:menuitem  value="#{msgs['TODO_DEMO.MENU.PUBLIC']}" action="#{todoPublicController.goTodoDemo}"/>
+			<p:menuitem  value="#{msgs['TODO_DEMO.MENU.PRIVATE']}" action="#{todoPrivateController.goTodoPrivateDemo}"/>
+			<p:menuitem  value="#{msgs['TODO_DEMO.MENU.ADMIN']}" action="#{todoAdminController.goTodoAdminDemo}"/>
+		</p:menubar>
+	</h:form>
+</div>
+
+
