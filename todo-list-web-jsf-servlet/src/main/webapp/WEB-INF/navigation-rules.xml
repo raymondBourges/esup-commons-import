@@ -57,6 +57,11 @@
 			<to-view-id>/stylesheets/private/todo_admin.xhtml</to-view-id>
 			<redirect/>
 		</navigation-case>
+		<navigation-case>
+			<from-outcome>go_linkingTask</from-outcome>
+			<to-view-id>/stylesheets/private/deepLinkingTest.xhtml</to-view-id>
+			<redirect/>
+		</navigation-case>
 	</navigation-rule>
 
 </faces-config>

@@ -4,11 +4,14 @@
  */
 package org.esupportail.todolist.web.controllers;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.esupportail.commons.exceptions.UserNotFoundException;
 import org.esupportail.commons.services.logging.Logger;
 import org.esupportail.commons.services.logging.LoggerImpl;
+import org.esupportail.commons.services.urlGeneration.UrlGenerator;
 import org.esupportail.commons.utils.Assert;
 import org.esupportail.todolist.domain.beans.Task;
 import org.esupportail.todolist.domain.beans.User;
@@ -48,6 +51,8 @@ public class TaskController extends AbstractContextAwareController {
 	
 	private String anAssignatedUserId;
 	private User assignatedUserToDelete;
+	
+	private UrlGenerator urlGenerator;
 	/*
 	 ******************* INIT ******************** */
 
@@ -249,6 +254,16 @@ public class TaskController extends AbstractContextAwareController {
 		}
 		else return null;
 	}
+	
+	public String getTaskUrl() {
+		String url = "";
+		Map<String, String> param = new HashMap<String, String>();
+		param.put("actionAFaire", "editTask");
+		param.put("name", "coucou");
+		url = urlGenerator.guestUrl(param);
+		logger.debug("URL -> "+url);
+		return url;
+	}
 	/*
 	 ******************* Getters and setters ******************** */
 
@@ -296,5 +311,13 @@ public class TaskController extends AbstractContextAwareController {
 
 	public void setAssignatedUserToDelete(User assignatedUserToDelete) {
 		this.assignatedUserToDelete = assignatedUserToDelete;
+	}
+
+	public UrlGenerator getUrlGenerator() {
+		return urlGenerator;
+	}
+	
+	public void setUrlGenerator(UrlGenerator urlGenerator) {
+		this.urlGenerator = urlGenerator;
 	}	
 }

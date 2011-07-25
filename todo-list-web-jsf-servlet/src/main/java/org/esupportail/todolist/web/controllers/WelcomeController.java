@@ -25,7 +25,7 @@ public class WelcomeController  extends AbstractContextAwareController {
 	 * A logger.
 	 */
 	private final Logger logger = new LoggerImpl(this.getClass());
-	
+	private String name;
 
 	/*
 	 ******************* INIT ******************** */
@@ -71,4 +71,15 @@ public class WelcomeController  extends AbstractContextAwareController {
         else
             return null;
     }
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	public void initName(String name) {
+		this.name = name;
+	}
 }

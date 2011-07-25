@@ -30,6 +30,7 @@
 		<property name="publicTasksPaginator" ref="publicTasksPaginator" />
 		<property name="tasksPaginator" ref="tasksPaginator" />
 		<property name="userTasksPaginator" ref="userTasksPaginator" />
+		<property name="urlGenerator" ref="servletUrlGenerator" />
 
 		<property name="taskToUpdate" ref="taskForm"/>
 	</bean>

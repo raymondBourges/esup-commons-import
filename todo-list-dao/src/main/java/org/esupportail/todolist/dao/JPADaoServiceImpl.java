@@ -163,13 +163,14 @@ public class JPADaoServiceImpl extends AbstractGenericJPADaoService implements D
 
 	@Override
 	public void deleteTask(Task task) {
-		entityManager.remove(task);
+		Task t = entityManager.find(Task.class, task.getId());
+		entityManager.remove(t);
 		
 	}
 
 	@Override
-	public void updateTask(Task task) {
-		entityManager.merge(task);
+	public Task updateTask(Task task) {
+		return entityManager.merge(task);
 	}
 
 	@Override

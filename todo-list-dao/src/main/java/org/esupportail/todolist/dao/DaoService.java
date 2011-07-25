@@ -76,7 +76,7 @@ public interface DaoService extends Serializable {
 	 * Update a task.
 	 * @param task
 	 */
-	void updateTask(Task task);
+	Task updateTask(Task task);
 	/**
 	 * @param id
 	 * @return the Task instance that corresponds to an id.

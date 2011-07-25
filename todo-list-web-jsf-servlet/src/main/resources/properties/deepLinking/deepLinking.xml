@@ -14,7 +14,7 @@
 	-->
 
 	
-	<bean id="urlTest" class="org.esupportail.commons.jsf.UrlPatternDescriptor">
+	<bean id="urlTask" class="org.esupportail.commons.jsf.UrlPatternDescriptor">
 		<property name="params">
 		 	<list>
 		 		<value>name</value>
@@ -28,24 +28,8 @@
 				</property>
 			</bean>
 		</property>
-		<property name="viewId" value="go_deeplinkingTest"/>
+		<property name="viewId" value="go_linkingTask"/>
 	</bean>
 	
-	<bean id="urlTest2" class="org.esupportail.commons.jsf.UrlPatternDescriptor">
-		<property name="params">
-		 	<list>
-		 		<value>name2</value>
-		 	</list>
-		</property>
-		<property name="actionBinding" >
-			<bean class="org.esupportail.commons.jsf.ActionBinding">
-				<property name="action" value="welcomeController.goTest"/>
-				<property name="args">
-					<list><value>java.lang.String</value></list>
-				</property>
-			</bean>
-		</property>
-	</bean>
-
-	
+		
 </beans>
