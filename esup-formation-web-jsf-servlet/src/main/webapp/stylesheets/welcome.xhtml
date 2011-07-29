@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/stylesheets/template.xhtml">
+	<ui:define name="navigation">
+		Menu
+	</ui:define>
+	<ui:define name="content">
+		 <h:form>
+				<h:panelGrid columns="1" style="width:100%;text-align:center;">
+					<h:outputText value="#{applicationService.name}"
+						style="font-size:16px" />
+					<h:outputText value="#{msgs['ABOUT.VERSION']} #{applicationService.version}" />
+					<h:outputText value="#{applicationService.copyright}" />
+				</h:panelGrid>
+				<br/>
+				<h:panelGrid columns="2">
+					<h:outputText value="#{msgs['ABOUT.AUTHOR']} : " style="font-weight:bold" />
+					<h:outputText value="#{msgs['ABOUT.AUTHOR.NAME']}" />
+
+					<h:outputText value="#{msgs['ABOUT.SOCIETY']} : " style="font-weight:bold" />
+					<h:outputText value="#{msgs['ABOUT.SOCIETY.NAME']}" />
+
+				</h:panelGrid>
+
+			</h:form>
+			<h:outputText value="#{taskController.testDao}" />
+	</ui:define>
+</ui:composition>
