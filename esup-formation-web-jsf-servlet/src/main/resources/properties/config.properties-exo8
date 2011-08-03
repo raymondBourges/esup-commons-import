@@ -1,0 +1,17 @@
+########################################################################
+# Database
+#
+
+jdbc.connection.driver_class=org.hsqldb.jdbcDriver
+jdbc.connection.url=jdbc:hsqldb:file:formationData
+jdbc.connection.username=sa
+jdbc.connection.password=
+
+jndi.datasource=jdbc/formationDB
+
+# JNDI/JDBC
+# for JDBC datasource.bean=JDBCDataSource
+# for JNDI datasource.bean=JNDIDataSource
+datasource.bean=JDBCDataSource
+
+jpa.database.type=HSQL

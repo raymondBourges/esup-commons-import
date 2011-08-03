@@ -12,4 +12,12 @@
 		It should not be modified but by the developers.
 		This file is referenced by /properties/applicationContext.xml.
 	-->
+	
+	<bean id="task1"
+		class="org.esupportail.formation.domain.beans.Task2" scope="session">
+		<property name="title" value="titre 1"/>
+		<property name="publicTask" value="true"/>
+		<property name="description" value="description blabla"/>
+	</bean>
+
 </beans>

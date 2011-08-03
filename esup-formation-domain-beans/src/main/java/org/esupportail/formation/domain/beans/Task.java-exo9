@@ -133,6 +133,13 @@ public class Task implements Serializable, Resettable{
 		this.date = date;
 		this.owner = owner;
 	}
+	public Task(boolean publicTask, String title, String description,Date date) {
+		super();
+		this.publicTask = publicTask;
+		this.title = title;
+		this.description = description;
+		this.date = date;
+	}
 	public Task(Task t) {
 		super();
 		this.id = t.getId();

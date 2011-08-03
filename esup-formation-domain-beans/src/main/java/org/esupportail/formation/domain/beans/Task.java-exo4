@@ -1,0 +1,36 @@
+package org.esupportail.formation.domain.beans;
+
+public class Task{
+
+	 private boolean publicTask;
+    /**
+     * Task's title
+     */
+     private String title;
+    /**
+     * Task's description
+     */
+     private String description;
+
+    /*
+	 ******************* ACCESSORS ******************* */
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
+	public boolean isPublicTask() {
+		return publicTask;
+	}
+	public void setPublicTask(boolean publicTask) {
+		this.publicTask = publicTask;
+	}
+}

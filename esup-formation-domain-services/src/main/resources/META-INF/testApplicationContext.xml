@@ -12,24 +12,12 @@
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations">
 			<list>
-				<value>classpath:/properties/defaults.properties</value>
-				<value>classpath:/properties/config.properties</value>
+				<value>classpath:META-INF/defaults.properties</value>
+				<value>classpath:META-INF/config.properties</value>
 			</list>
 		</property>
 	</bean>
-	<bean id="app_context" class="org.esupportail.commons.context.ApplicationContextHolder"/>
 	<import resource="classpath*:META-INF/domain-services-auth.xml" />
 	<import resource="classpath*:META-INF/domain-services-domain.xml" />
-	<!--<import resource="classpath*:META-INF/dao-dao.xml" />-->
-	<!-- <import resource="dao/dao.xml"/> -->
-	<import resource="exceptionHandling/exceptionHandling.xml" />
-	<import resource="cache/cache.xml"/>
-	<import resource="i18n/i18n.xml" />
-	<import resource="smtp/smtp.xml" />
-	<import resource="misc/abstractBeans.xml" />
-	<import resource="misc/application.xml" />
-	<import resource="tags/tags.xml" />
-	<import resource="web/beans.xml" />
-	<import resource="web/controllers.xml" />
-	<import resource="web/converters.xml" />
+
 </beans>

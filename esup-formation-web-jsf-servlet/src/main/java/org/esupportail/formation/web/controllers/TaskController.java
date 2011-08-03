@@ -13,6 +13,12 @@ public class TaskController extends AbstractContextAwareController {
 	 */
 	private static final long serialVersionUID = -872218604638760392L;
 	
+	
+	@Override
+	public void afterPropertiesSetInternal() {
+		super.afterPropertiesSetInternal();
+	}
+
 	public String getTestDao(){
 		//menage
 		supprimeTout();
@@ -25,12 +31,12 @@ public class TaskController extends AbstractContextAwareController {
 		getDomainService().addUser(user2);
 		
 		
-		//On ajoute 3 tâches
+		//On ajoute 4 tâches
 		getDomainService().addTask(new Task(true, "titre de tache 1", "", new Date(), user1));
 		getDomainService().addTask(new Task(true, "titre de tache 2", "", new Date(), user1));
 		getDomainService().addTask(new Task(true, "titre de tache 3", "", new Date(), user1));
 		getDomainService().addTask(new Task(true, "titre de tache 4", "", new Date(), user2));
-		
+				
 		List<Task> liste=getDomainService().getTasks();
 		afficheTaches(liste,"avant modification");
 		//on modifie la 1ere tâche
