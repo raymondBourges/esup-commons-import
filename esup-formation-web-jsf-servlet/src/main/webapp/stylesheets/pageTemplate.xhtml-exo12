@@ -7,7 +7,7 @@
 	template="/stylesheets/template.xhtml">
 	<ui:define name="navigation">
 		<h:form>
-			<h:commandLink action="#{taskController.goToTaskManagerPage}"><h:outputText value="#{msgs['TASK.MANAGER']}"/></h:commandLink>
+			<h:commandLink action="#{taskController.goToTaskManagerPage}">Task Manager</h:commandLink>
 		</h:form>
 	</ui:define>
 	

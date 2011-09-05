@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/stylesheets/pageTemplate.xhtml">
+	
+	<ui:define name="content">
+		<h:form>
+			<h:dataTable border="1" var="task" value="#{taskController.tasks}" rendered="#{taskController.tasks != null and !empty taskController.tasks}">
+			<h:column>
+	 			 <f:facet name="header">
+	 				 <h:outputText value="id" />
+	  			</f:facet>
+	  			 <h:outputText value="#{task.id}"></h:outputText>
+			</h:column>
+			<h:column>
+	 			 <f:facet name="header">
+	 				 <h:commandButton action="#{taskController.sortTasksByTitle}" value="titre" />
+	  			</f:facet>
+	  			 <h:outputText value="#{task.title}"></h:outputText>
+			</h:column>
+			<h:column>
+	 			 <f:facet name="header">
+	 			 	<h:commandButton action="#{taskController.sortTasksByDate}" value="date" />
+	  			</f:facet>
+	  			 <h:outputText value="#{task.date}"></h:outputText>
+			</h:column>
+			</h:dataTable>
+			
+			<h:outputText value="La liste est vide" rendered="#{taskController.tasks == null or empty taskController.tasks}"/>
+			
+			<h:commandButton action="#{taskController.addFakeTask}" value="Ajouter une tâche bidon"/>
+			<h:commandButton action="#{taskController.supprimeTout}" value="Supprimer toutes les tâches"/>
+		</h:form>
+		
+	</ui:define>
+</ui:composition>
