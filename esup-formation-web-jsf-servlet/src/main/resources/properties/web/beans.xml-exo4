@@ -14,7 +14,7 @@
 	-->
 	
 	<bean id="task1"
-		class="org.esupportail.formation.domain.beans.Task2" scope="session">
+		class="org.esupportail.formation.domain.beans.Task" scope="session">
 		<property name="title" value="titre 1"/>
 		<property name="publicTask" value="true"/>
 		<property name="description" value="description blabla"/>

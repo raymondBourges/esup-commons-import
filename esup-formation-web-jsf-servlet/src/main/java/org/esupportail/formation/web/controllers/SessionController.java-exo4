@@ -10,14 +10,13 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 
-import org.esupportail.formation.domain.beans.Task2;
+import org.esupportail.formation.domain.beans.Task;
 import org.esupportail.formation.domain.beans.User;
 import org.esupportail.formation.services.auth.Authenticator;
 import org.esupportail.commons.utils.Assert;
 import org.esupportail.commons.utils.ContextUtils;
 import org.esupportail.commons.utils.strings.StringUtils;
 import org.esupportail.commons.web.controllers.ExceptionController;
-import org.esupportail.commons.utils.BeanUtils;
 
 /**
  * A bean to memorize the context of the application.
@@ -47,6 +46,7 @@ public class SessionController extends AbstractDomainAwareBean {
 	 */
 	private String casLogoutUrl;
 	
+	private Task task;
 	
 	/*
 	 ******************* INIT ******************** */
@@ -67,8 +67,8 @@ public class SessionController extends AbstractDomainAwareBean {
 				+ this.getClass().getName() + " can not be null");
 		Assert.notNull(this.authenticator, "property authenticator of class " 
 				+ this.getClass().getName() + " can not be null");
-		Task2 t = (Task2) BeanUtils.getBean("task1");
-		System.out.println("Test injection => "+t.getTitle()+" "+t.getDescription());
+		System.out.println("Test injection => "+task.getTitle()+" "+task.getDescription());
+		System.out.println("Test Version => "+getApplicationService().getVersion());
 	}
 
 	
@@ -166,6 +166,14 @@ public class SessionController extends AbstractDomainAwareBean {
 	 */
 	public void setCasLogoutUrl(final String casLogoutUrl) {
 		this.casLogoutUrl = StringUtils.nullIfEmpty(casLogoutUrl);
+	}
+
+	public Task getTask() {
+		return task;
+	}
+
+	public void setTask(Task task) {
+		this.task = task;
 	}
 	
 }
