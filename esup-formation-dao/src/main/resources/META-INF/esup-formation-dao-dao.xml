@@ -34,7 +34,7 @@
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="dataSource" ref="${datasource.bean}" />
 		<property name="jpaVendorAdapter" ref="jpaVendorAdapter" />
-		<property name="persistenceXmlLocation" value="classpath*:META-INF/dao-persistence.xml" />
+		<property name="persistenceXmlLocation" value="classpath*:META-INF/esup-formation-dao-persistence.xml" />
 		<property name="jpaProperties" ref="jpaProperties" />
 	</bean>
 

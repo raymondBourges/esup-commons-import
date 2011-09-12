@@ -18,8 +18,8 @@
 		</property>
 	</bean>
 	<bean id="app_context" class="org.esupportail.commons.context.ApplicationContextHolder"/>
-	<import resource="classpath*:META-INF/domain-services-auth.xml" />
-	<import resource="classpath*:META-INF/domain-services-domain.xml" />
+	<import resource="classpath*:META-INF/esup-formation-domain-services-auth.xml" />
+	<import resource="classpath*:META-INF/esup-formation-domain-services-domain.xml" />
 	
 	<import resource="exceptionHandling/exceptionHandling.xml" />
 	<import resource="cache/cache.xml"/>

@@ -26,7 +26,7 @@
         </tx:attributes>
     </tx:advice>
 	
-	<import resource="classpath*:META-INF/dao-dao.xml" />
+	<import resource="classpath*:META-INF/esup-formation-dao-dao.xml" />
 	<!-- <import resource="classpath*:/properties/dao/dao.xml" /> -->
 	
 	<bean id="domainService" class="org.esupportail.formation.domain.DomainServiceImpl">
