@@ -17,12 +17,6 @@
             <type>jar</type>
             <scope>compile</scope>
         </dependency>
-        <dependency>
-			<groupId>org.esupportail</groupId>
-			<artifactId>esup-commons2-jpa</artifactId>
-			<version>${esupcommons.version}</version>
-			<scope>provided</scope>
-		</dependency>
 		<dependency>
     		<groupId>junit</groupId>
     		<artifactId>junit</artifactId>
