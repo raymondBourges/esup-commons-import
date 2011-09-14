@@ -35,7 +35,7 @@
 			<h:commandButton action="#{taskController.supprimeTout}" value="#{msgs['TASK.MANAGER.DELETE.ALLTASKS']}"/>
 		</h:form>
 		<h:form id="newTask">
-			<h:panelGrid id="grid" columns="2">
+			<h:panelGrid id="grid" columns="1">
 				<f:facet name="header">
 	    			<h:outputText value="#{msgs['TASK.MANAGER.ADD.TASK']}"/>
 	  			</f:facet>
@@ -45,11 +45,24 @@
 	      				<h:message for="title" />
 	    		</h:panelGroup>
 	    		<h:panelGroup>
+	    				<h:outputLabel for="description" value="#{msgs['TASK.DESCRIPTION']}" />
+	      				<h:inputTextarea id="description" value="#{taskController.currentTask.description}"/>
+	      				<h:message for="description" />
+	    		</h:panelGroup>
+	    		<h:panelGroup>
 	    				<h:outputLabel for="date" value="#{msgs['TASK.DATE']}" />
-	      				<h:inputText id="title" value="#{taskController.currentTask.date}" required="#{true}" />
-	      				<h:message for="title" />
+	      				<h:inputText id="date" value="#{taskController.currentTask.date}">
+	      					<f:convertDateTime type="date" pattern="ddMMyyyy"/>
+	      				</h:inputText>
+	      				<h:message for="date" />
+	    		</h:panelGroup>
+	    		<h:panelGroup>
+	    				<h:outputLabel for="publicTask" value="#{msgs['TASK.PUBLICTASK']}" />
+	      				<h:selectBooleanCheckbox id="publicTask" value="#{taskController.currentTask.publicTask}"/>
+	      				<h:message for="publicTask" />
 	    		</h:panelGroup>
   			</h:panelGrid>
+  			<h:commandButton action="#{taskController.addTask}" value="#{msgs['TASK.MANAGER.ADD.TASK']}"/>
 		</h:form>
 	</ui:define>
 </ui:composition>

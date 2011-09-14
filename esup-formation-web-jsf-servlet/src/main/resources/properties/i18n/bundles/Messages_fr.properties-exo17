@@ -12,6 +12,7 @@ BLANK.MENU.TITLE           = A propos de cette application
 BLANK.WELCOME              = Voici l'application vide. Vous pouvez d\u00E9sormais commencer votre projet. Vous trouverez  dans l'application de d\u00E9monstration esup-example de nombreux cas qui sont susceptibles de vous guider.
 
 TASK.DATE                    = Date
+TASK.DESCRIPTION             = Description
 TASK.ID                      = Id
 TASK.MANAGER                 = Gestion des t\u00E2ches
 TASK.MANAGER.ADD             = Ajouter
@@ -19,4 +20,5 @@ TASK.MANAGER.ADD.FAKETASK    = Ajouter une t\u00E2che bidon
 TASK.MANAGER.ADD.TASK        = Cr\u00E9er une t\u00E2che
 TASK.MANAGER.DELETE.ALLTASKS = Supprimer toutes les t\u00E2ches
 TASK.MANAGER.NOTASKS         = La liste de t\u00E2che est vide
+TASK.PUBLICTASK              = La t\u00E2che est-elle publique?
 TASK.TITLE                   = Titre

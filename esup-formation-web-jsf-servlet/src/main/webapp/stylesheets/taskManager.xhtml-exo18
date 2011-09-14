@@ -49,6 +49,13 @@
 	      				<h:inputTextarea id="description" value="#{taskController.currentTask.description}"/>
 	      				<h:message for="description" />
 	    		</h:panelGroup>
+	    		<h:panelGroup>
+	    				<h:outputLabel for="date" value="#{msgs['TASK.DATE']}" />
+	      				<h:inputText id="date" value="#{taskController.currentTask.date}">
+	      					<f:convertDateTime type="date" pattern="ddMMyyyy"/>
+	      				</h:inputText>
+	      				<h:message for="date" />
+	    		</h:panelGroup>
   			</h:panelGrid>
   			<h:commandButton action="#{taskController.addTask}" value="#{msgs['TASK.MANAGER.ADD.TASK']}"/>
 		</h:form>

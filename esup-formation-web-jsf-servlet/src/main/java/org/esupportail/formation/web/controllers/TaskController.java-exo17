@@ -22,6 +22,7 @@ public class TaskController extends AbstractContextAwareController {
 	@Override
 	public void afterPropertiesSetInternal() {
 		super.afterPropertiesSetInternal();
+		currentTask = new Task();
 	}
 
 	public String getTestDao(){
@@ -118,6 +119,12 @@ public class TaskController extends AbstractContextAwareController {
 		for (User u : listeUser) {
 			getDomainService().deleteUser(u);
 		}
+		sortedTasks = getDomainService().getTasks();
+	}
+	
+	public void addTask() {
+		getDomainService().addTask(currentTask);
+		currentTask=new Task();
 		sortedTasks = getDomainService().getTasks();
 	}
 
