@@ -613,7 +613,7 @@
 				<fail message="${tomcat.bootstrap} not found, please check your tomcat installation" />	
 			</then>
 		</if>
-		<if>
+		<!--if>
 			<not>
 				<isset property="tomcat.keystore" />
 			</not>
@@ -621,7 +621,7 @@
 				<property name="tomcat.keystore" value="${utils.dir}/cas/cru-root.keystore"/>
 				<echo message="Property tomcat.keystore not set, using default (${tomcat.keystore})" />	
 			</then>
-		</if>
+		</if-->
 	</target>
 
 	<target name="set-download-properties" depends="read-commons-properties" >
@@ -1085,7 +1085,12 @@
 	    <property name="memory.maxPermSize" value="512m" />
 		<echo message="memory.xmx = ${memory.xmx}"/>
 		<echo message="memory.maxPermSize = ${memory.maxPermSize}"/>
-		<property name="jvmarg.trustStore" value="-Djavax.net.ssl.trustStore=${tomcat.keystore}"/>
+		<if>
+			<isset property="tomcat.keystore" />
+			<then>
+				<property name="jvmarg.trustStore" value="-Djavax.net.ssl.trustStore=${tomcat.keystore}"/>
+			</then>
+		</if>
 		<if>
 			<ispropertytrue property="jmxRemote.use" />
 			<then>
@@ -1126,46 +1131,96 @@
 				<if>
 					<ispropertytrue property="jmxRemote.use" />
 					<then>
-						<java 
-							fork="true" 
-							dir="${tomcat.home}"
-							classname="org.apache.catalina.startup.Bootstrap">
-							<classpath>
-								<pathelement path="${tomcat.bootstrap}"/>
-							</classpath>
-							<sysproperty key="catalina.home" value="${tomcat.home}"/> 
-							<sysproperty key="java.net.preferIPv4Stack" value="true" />
-							<jvmarg value="${jvmarg.trustStore}" />
-							<jvmarg value="${jvmarg.debug}" />
-							<jvmarg value="${jvmarg.runjdwp}" />
-							<jvmarg value="${jvmarg.jmxRemote}" />
-							<jvmarg value="${jvmarg.jmxRemote.hostname}" />
-							<jvmarg value="${jvmarg.jmxRemote.port}" />
-							<jvmarg value="${jvmarg.jmxRemote.auth}" />
-							<jvmarg value="${jvmarg.jmxRemote.passwordFile}" />
-							<jvmarg value="${jvmarg.jmxRemote.accessFile}" />
-				            <jvmarg value="-Xmx${memory.xmx}" />
-				            <jvmarg value="-XX:MaxPermSize=${memory.maxPermSize}" />
-							<arg value="start"/>
-						</java>
+						<if>
+							<isset property="jvmarg.trustStore" />
+							<then>
+								<java 
+									fork="true" 
+									dir="${tomcat.home}"
+									classname="org.apache.catalina.startup.Bootstrap">
+									<classpath>
+										<pathelement path="${tomcat.bootstrap}"/>
+									</classpath>
+									<sysproperty key="catalina.home" value="${tomcat.home}"/> 
+									<sysproperty key="java.net.preferIPv4Stack" value="true" />
+									<jvmarg value="${jvmarg.trustStore}" />
+									<jvmarg value="${jvmarg.debug}" />
+									<jvmarg value="${jvmarg.runjdwp}" />
+									<jvmarg value="${jvmarg.jmxRemote}" />
+									<jvmarg value="${jvmarg.jmxRemote.hostname}" />
+									<jvmarg value="${jvmarg.jmxRemote.port}" />
+									<jvmarg value="${jvmarg.jmxRemote.auth}" />
+									<jvmarg value="${jvmarg.jmxRemote.passwordFile}" />
+									<jvmarg value="${jvmarg.jmxRemote.accessFile}" />
+									<jvmarg value="-Xmx${memory.xmx}" />
+									<jvmarg value="-XX:MaxPermSize=${memory.maxPermSize}" />
+									<arg value="start"/>
+								</java>
+							</then>
+							<else>
+								<java 
+									fork="true" 
+									dir="${tomcat.home}"
+									classname="org.apache.catalina.startup.Bootstrap">
+									<classpath>
+										<pathelement path="${tomcat.bootstrap}"/>
+									</classpath>
+									<sysproperty key="catalina.home" value="${tomcat.home}"/> 
+									<sysproperty key="java.net.preferIPv4Stack" value="true" />
+									<jvmarg value="${jvmarg.debug}" />
+									<jvmarg value="${jvmarg.runjdwp}" />
+									<jvmarg value="${jvmarg.jmxRemote}" />
+									<jvmarg value="${jvmarg.jmxRemote.hostname}" />
+									<jvmarg value="${jvmarg.jmxRemote.port}" />
+									<jvmarg value="${jvmarg.jmxRemote.auth}" />
+									<jvmarg value="${jvmarg.jmxRemote.passwordFile}" />
+									<jvmarg value="${jvmarg.jmxRemote.accessFile}" />
+									<jvmarg value="-Xmx${memory.xmx}" />
+									<jvmarg value="-XX:MaxPermSize=${memory.maxPermSize}" />
+									<arg value="start"/>
+								</java>
+							</else>
+						</if>
 					</then>
 					<else>
-						<java 
-							fork="true" 
-							dir="${tomcat.home}"
-							classname="org.apache.catalina.startup.Bootstrap">
-							<classpath>
-								<pathelement path="${tomcat.bootstrap}"/>
-							</classpath>
-							<sysproperty key="catalina.home" value="${tomcat.home}"/> 
-							<sysproperty key="java.net.preferIPv4Stack" value="true" />
-							<jvmarg value="${jvmarg.trustStore}" />
-							<jvmarg value="${jvmarg.debug}" />
-							<jvmarg value="${jvmarg.runjdwp}" />
-				            <jvmarg value="-Xmx${memory.xmx}" />
-				            <jvmarg value="-XX:MaxPermSize=${memory.maxPermSize}" />
-							<arg value="start"/>
-						</java>
+						<if>
+							<isset property="jvmarg.trustStore" />
+							<then>
+								<java 
+									fork="true" 
+									dir="${tomcat.home}"
+									classname="org.apache.catalina.startup.Bootstrap">
+									<classpath>
+										<pathelement path="${tomcat.bootstrap}"/>
+									</classpath>
+									<sysproperty key="catalina.home" value="${tomcat.home}"/> 
+									<sysproperty key="java.net.preferIPv4Stack" value="true" />
+									<jvmarg value="${jvmarg.trustStore}" />
+									<jvmarg value="${jvmarg.debug}" />
+									<jvmarg value="${jvmarg.runjdwp}" />
+									<jvmarg value="-Xmx${memory.xmx}" />
+									<jvmarg value="-XX:MaxPermSize=${memory.maxPermSize}" />
+									<arg value="start"/>
+								</java>
+							</then>
+							<else>
+								<java 
+									fork="true" 
+									dir="${tomcat.home}"
+									classname="org.apache.catalina.startup.Bootstrap">
+									<classpath>
+										<pathelement path="${tomcat.bootstrap}"/>
+									</classpath>
+									<sysproperty key="catalina.home" value="${tomcat.home}"/> 
+									<sysproperty key="java.net.preferIPv4Stack" value="true" />
+									<jvmarg value="${jvmarg.debug}" />
+									<jvmarg value="${jvmarg.runjdwp}" />
+									<jvmarg value="-Xmx${memory.xmx}" />
+									<jvmarg value="-XX:MaxPermSize=${memory.maxPermSize}" />
+									<arg value="start"/>
+								</java>
+							</else>
+						</if>
 					</else>
 				</if>
 			</then>
@@ -1173,42 +1228,88 @@
 				<if>
 					<ispropertytrue property="jmxRemote.use" />
 					<then>
-						<java 
-							fork="true" 
-							dir="${tomcat.home}"
-							classname="org.apache.catalina.startup.Bootstrap">
-							<classpath>
-								<pathelement path="${tomcat.bootstrap}"/>
-							</classpath>
-							<sysproperty key="catalina.home" value="${tomcat.home}"/> 
-							<sysproperty key="java.net.preferIPv4Stack" value="true" />
-							<jvmarg value="${jvmarg.trustStore}" />
-							<jvmarg value="${jvmarg.jmxRemote}" />
-							<jvmarg value="${jvmarg.jmxRemote.hostname}" />
-							<jvmarg value="${jvmarg.jmxRemote.port}" />
-							<jvmarg value="${jvmarg.jmxRemote.auth}" />
-							<jvmarg value="${jvmarg.jmxRemote.passwordFile}" />
-							<jvmarg value="${jvmarg.jmxRemote.accessFile}" />
-				            <jvmarg value="-Xmx${memory.xmx}" />
-				            <jvmarg value="-XX:MaxPermSize=${memory.maxPermSize}" />
-							<arg value="start"/>
-						</java>
+						<if>
+							<isset property="jvmarg.trustStore" />
+							<then>
+								<java 
+									fork="true" 
+									dir="${tomcat.home}"
+									classname="org.apache.catalina.startup.Bootstrap">
+									<classpath>
+										<pathelement path="${tomcat.bootstrap}"/>
+									</classpath>
+									<sysproperty key="catalina.home" value="${tomcat.home}"/> 
+									<sysproperty key="java.net.preferIPv4Stack" value="true" />
+									<jvmarg value="${jvmarg.trustStore}" />
+									<jvmarg value="${jvmarg.jmxRemote}" />
+									<jvmarg value="${jvmarg.jmxRemote.hostname}" />
+									<jvmarg value="${jvmarg.jmxRemote.port}" />
+									<jvmarg value="${jvmarg.jmxRemote.auth}" />
+									<jvmarg value="${jvmarg.jmxRemote.passwordFile}" />
+									<jvmarg value="${jvmarg.jmxRemote.accessFile}" />
+									<jvmarg value="-Xmx${memory.xmx}" />
+									<jvmarg value="-XX:MaxPermSize=${memory.maxPermSize}" />
+									<arg value="start"/>
+								</java>
+							</then>
+							<else>
+								<java 
+									fork="true" 
+									dir="${tomcat.home}"
+									classname="org.apache.catalina.startup.Bootstrap">
+									<classpath>
+										<pathelement path="${tomcat.bootstrap}"/>
+									</classpath>
+									<sysproperty key="catalina.home" value="${tomcat.home}"/> 
+									<sysproperty key="java.net.preferIPv4Stack" value="true" />
+									<jvmarg value="${jvmarg.jmxRemote}" />
+									<jvmarg value="${jvmarg.jmxRemote.hostname}" />
+									<jvmarg value="${jvmarg.jmxRemote.port}" />
+									<jvmarg value="${jvmarg.jmxRemote.auth}" />
+									<jvmarg value="${jvmarg.jmxRemote.passwordFile}" />
+									<jvmarg value="${jvmarg.jmxRemote.accessFile}" />
+									<jvmarg value="-Xmx${memory.xmx}" />
+									<jvmarg value="-XX:MaxPermSize=${memory.maxPermSize}" />
+									<arg value="start"/>
+								</java>
+							</else>
+						</if>
 					</then>
 					<else>
-						<java 
-							fork="true" 
-							dir="${tomcat.home}"
-							classname="org.apache.catalina.startup.Bootstrap">
-							<classpath>
-								<pathelement path="${tomcat.bootstrap}"/>
-							</classpath>
-							<sysproperty key="catalina.home" value="${tomcat.home}"/> 
-							<sysproperty key="java.net.preferIPv4Stack" value="true" />
-							<jvmarg value="${jvmarg.trustStore}" />
-				            <jvmarg value="-Xmx${memory.xmx}" />
-				            <jvmarg value="-XX:MaxPermSize=${memory.maxPermSize}" />
-							<arg value="start"/>
-						</java>
+						<if>
+							<isset property="jvmarg.trustStore" />
+							<then>
+								<java 
+									fork="true" 
+									dir="${tomcat.home}"
+									classname="org.apache.catalina.startup.Bootstrap">
+									<classpath>
+										<pathelement path="${tomcat.bootstrap}"/>
+									</classpath>
+									<sysproperty key="catalina.home" value="${tomcat.home}"/> 
+									<sysproperty key="java.net.preferIPv4Stack" value="true" />
+									<jvmarg value="${jvmarg.trustStore}" />
+									<jvmarg value="-Xmx${memory.xmx}" />
+									<jvmarg value="-XX:MaxPermSize=${memory.maxPermSize}" />
+									<arg value="start"/>
+								</java>
+							</then>
+							<else>
+								<java 
+									fork="true" 
+									dir="${tomcat.home}"
+									classname="org.apache.catalina.startup.Bootstrap">
+									<classpath>
+										<pathelement path="${tomcat.bootstrap}"/>
+									</classpath>
+									<sysproperty key="catalina.home" value="${tomcat.home}"/> 
+									<sysproperty key="java.net.preferIPv4Stack" value="true" />
+									<jvmarg value="-Xmx${memory.xmx}" />
+									<jvmarg value="-XX:MaxPermSize=${memory.maxPermSize}" />
+									<arg value="start"/>
+								</java>
+							</else>
+						</if>
 					</else>
 				</if>
 			</else>
@@ -1230,5 +1331,4 @@
 	</target>
 
 </project>
-
 
