@@ -6,11 +6,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
-import javax.faces.application.FacesMessage;
-import javax.faces.component.UIComponent;
-import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
-import javax.faces.validator.ValidatorException;
 
 import org.esupportail.formation.domain.beans.Task;
 import org.esupportail.formation.domain.beans.User;
@@ -154,13 +150,6 @@ public class TaskController extends AbstractContextAwareController {
 				userItems.add(new SelectItem(user, "Inconnu ("+user.getLogin()+")"));
 		}		
 		return userItems;
-	}
-	public void validateTitle(FacesContext ctx, UIComponent componentToValidate, Object obj)
-	throws ValidatorException {
-		if (obj != null){
-			if (((String)obj).length()<5)
-				throw new ValidatorException(new FacesMessage("Erreur le titre ne doit pas comporter moins de 5 caractères"));
-		}
 	}
 	
 }

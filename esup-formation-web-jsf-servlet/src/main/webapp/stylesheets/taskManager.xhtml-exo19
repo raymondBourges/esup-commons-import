@@ -27,6 +27,18 @@
 	  			</f:facet>
 	  			 <h:outputText value="#{task.date}"></h:outputText>
 			</h:column>
+			<h:column>
+	 			 <f:facet name="header">
+	 				 <h:outputText value="#{msgs['TASK.PUBLICTASK']}" />
+	  			</f:facet>
+	  			 <h:outputText value="#{task.publicTask}"></h:outputText>
+			</h:column>
+			<h:column>
+	 			 <f:facet name="header">
+	 				 <h:outputText value="#{msgs['TASK.OWNER']}" />
+	  			</f:facet>
+	  			 <h:outputText value="#{task.owner.login}" renderer="#{task.owner != null}"></h:outputText>
+			</h:column>
 			</h:dataTable>
 			
 			<h:outputText value="#{msgs['TASK.MANAGER.NOTASKS']}" rendered="#{taskController.tasks == null or empty taskController.tasks}"/>
@@ -41,7 +53,8 @@
 	  			</f:facet>
 	    		<h:panelGroup>
 	    				<h:outputLabel for="title" value="#{msgs['TASK.TITLE']}" />
-	      				<h:inputText id="title" value="#{taskController.currentTask.title}" required="#{true}" />
+	      				<h:inputText id="title" value="#{taskController.currentTask.title}" required="#{true}" 
+	      				/>
 	      				<h:message for="title" />
 	    		</h:panelGroup>
 	    		<h:panelGroup>
@@ -50,17 +63,20 @@
 	      				<h:message for="description" />
 	    		</h:panelGroup>
 	    		<h:panelGroup>
-						<h:outputLabel for="publicTask" value="#{msgs['TASK.PUBLICTASK']}" />
-						<h:selectBooleanCheckbox id="publicTask" value="#{taskController.currentTask.publicTask}"/>
-						<h:message for="publicTask" />
-				</h:panelGroup>
-	    		<h:panelGroup>
 	    				<h:outputLabel for="date" value="#{msgs['TASK.DATE']}" />
 	      				<h:inputText id="date" value="#{taskController.currentTask.date}">
 	      					<f:convertDateTime type="date" pattern="ddMMyyyy"/>
 	      				</h:inputText>
 	      				<h:message for="date" />
 	    		</h:panelGroup>
+	    		<h:panelGroup>
+	    				<h:outputLabel for="publicTask" value="#{msgs['TASK.PUBLICTASK']}" />
+	      				<h:selectBooleanCheckbox id="publicTask" value="#{taskController.currentTask.publicTask}"/>
+	      				<h:message for="publicTask" />
+	      		</h:panelGroup>
+				<h:selectOneListbox value="#{taskController.currentTask.owner}" converter="#{userConverter}">
+					<f:selectItems value="#{taskController.userItems}"/>
+				</h:selectOneListbox>
   			</h:panelGrid>
   			<h:commandButton action="#{taskController.addTask}" value="#{msgs['TASK.MANAGER.ADD.TASK']}"/>
 		</h:form>

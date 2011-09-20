@@ -20,5 +20,6 @@ TASK.MANAGER.ADD.FAKETASK    = Ajouter une t\u00E2che bidon
 TASK.MANAGER.ADD.TASK        = Cr\u00E9er une t\u00E2che
 TASK.MANAGER.DELETE.ALLTASKS = Supprimer toutes les t\u00E2ches
 TASK.MANAGER.NOTASKS         = La liste de t\u00E2che est vide
+TASK.OWNER                   = Propri\u00E9taire
 TASK.PUBLICTASK              = La t\u00E2che est-elle publique?
 TASK.TITLE                   = Titre

@@ -49,6 +49,11 @@
 	      				<h:inputTextarea id="description" value="#{taskController.currentTask.description}"/>
 	      				<h:message for="description" />
 	    		</h:panelGroup>
+	    		<h:panelGroup>
+						<h:outputLabel for="publicTask" value="#{msgs['TASK.PUBLICTASK']}" />
+						<h:selectBooleanCheckbox id="publicTask" value="#{taskController.currentTask.publicTask}"/>
+						<h:message for="publicTask" />
+				</h:panelGroup>
   			</h:panelGrid>
   			<h:commandButton action="#{taskController.addTask}" value="#{msgs['TASK.MANAGER.ADD.TASK']}"/>
 		</h:form>

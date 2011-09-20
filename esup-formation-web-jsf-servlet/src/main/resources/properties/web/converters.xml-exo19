@@ -23,8 +23,11 @@
 	</bean>
 	<bean 
 		id="userConverter"
-		class="org.esupportail.formation.web.converters.UserConverter">
-    	<description>A converter for User.</description>
+		class="org.esupportail.formation.web.converters.UserConverter"
+		>
+    	<description>
+			A converter for User.
+    	</description>
     	<property name="domainService" ref="domainService" />
 	</bean>
 
