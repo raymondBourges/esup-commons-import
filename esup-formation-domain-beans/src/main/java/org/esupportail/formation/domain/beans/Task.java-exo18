@@ -11,8 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 import org.esupportail.commons.web.controllers.Resettable;
 
@@ -53,13 +51,10 @@ public class Task implements Serializable, Resettable{
      * Task's title
      */
     @Column(nullable = false)
-    @NotNull
-	@Size(max = 15, min = 5)
     private String title;
     /**
      * Task's descriptio,
      */
-    @Size(max = 30)
     private String description;
 
     /**
