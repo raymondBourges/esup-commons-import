@@ -49,7 +49,7 @@ public class Task implements Serializable, Resettable{
     @Column(nullable = false)
     private String title;
     /**
-     * Task's descriptio,
+     * Task's description
      */
     private String description;
 

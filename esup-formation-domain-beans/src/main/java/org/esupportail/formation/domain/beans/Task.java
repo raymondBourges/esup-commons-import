@@ -57,7 +57,7 @@ public class Task implements Serializable, Resettable{
 	@Size(max = 15, min = 5)
     private String title;
     /**
-     * Task's descriptio,
+     * Task's description
      */
     @Size(max = 30)
     private String description;
