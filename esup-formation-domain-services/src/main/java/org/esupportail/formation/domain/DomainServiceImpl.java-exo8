@@ -85,12 +85,10 @@ public class DomainServiceImpl implements DomainService, InitializingBean {
 		Task tmp = daoService.getTask(task.getId());
 		if (tmp == null) { 
 			// task does not already exists in database
-			logger.debug("addTask -> not found "+task.getId());
 			daoService.addTask(task);			
 		}
 		else {
 			daoService.updateTask(task);
-			logger.debug("addTask -> found "+task.getId());
 		}
 		
 	}
