@@ -68,7 +68,7 @@
 	      					<f:ajax event="keyup" render="outAjax" />
 						</h:inputText>
 						<h:outputText id="outAjax" value="#{taskController.currentTask.title}" />
-						<h:message for="title" />
+	      				<h:message for="title" />
 	    		</h:panelGroup>
 	    		<h:panelGroup>
 	    				<h:outputLabel for="description" value="#{msgs['TASK.DESCRIPTION']}" />
@@ -88,8 +88,8 @@
 	      				<h:message for="publicTask" />
 	      		</h:panelGroup>
 				<h:selectOneListbox value="#{taskController.currentTask.owner}" converter="#{userConverter}">
-					<f:selectItems value="#{taskController.userItems}"/> 
-				</h:selectOneListbox>			
+					<f:selectItems value="#{taskController.userItems}"/>
+				</h:selectOneListbox>
   			</h:panelGrid>
   			<h:commandButton action="#{taskController.addTask}" value="#{msgs['TASK.MANAGER.ADD.TASK']}" rendered="#{taskController.currentTask.title == null}"/>
   			<h:commandButton action="#{taskController.addTask}" value="#{msgs['TASK.MANAGER.MODIFY.TASK']}" rendered="#{taskController.currentTask.title != null}"/>
