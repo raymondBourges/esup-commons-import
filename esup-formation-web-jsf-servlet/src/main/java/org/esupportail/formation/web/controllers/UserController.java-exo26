@@ -1,6 +1,5 @@
 package org.esupportail.formation.web.controllers;
 
-import org.esupportail.commons.services.authentication.AuthenticationService;
 import org.esupportail.formation.services.auth.Authenticator;
 import org.springframework.util.Assert;
 
@@ -35,15 +34,7 @@ public class UserController extends AbstractContextAwareController {
 			return "Invité";
 		}
 	}
-/*
-	public AuthenticationService getAuthenticationService() {
-		return authenticationService;
-	}
 
-	public void setAuthenticationService(AuthenticationService authenticationService) {
-		this.authenticationService = authenticationService;
-	}
-*/
 	public Authenticator getAuthenticator() {
 		return authenticator;
 	}

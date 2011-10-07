@@ -2,8 +2,6 @@ package org.esupportail.formation.web.controllers;
 
 import java.io.IOException;
 
-import javax.faces.context.FacesContext;
-
 import org.esupportail.formation.services.auth.Authenticator;
 import org.springframework.util.Assert;
 
@@ -50,11 +48,8 @@ public class UserController extends AbstractContextAwareController {
 		}
 	}
 	public String goLogout(){
-		FacesContext facesContext = FacesContext.getCurrentInstance();
 		try {
 			getSessionController().logout();
-			facesContext.getExternalContext().redirect("https://cas.uhp-nancy.fr/cas/logout?service=http://localhost:8080");
-			facesContext.responseComplete();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
