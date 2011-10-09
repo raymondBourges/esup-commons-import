@@ -21,6 +21,7 @@ public interface DomainService extends Serializable {
 	 */
 	public User getUser(String uid);
 	public List<Task> getTasks();
+	public List<Task> getPublicTasks();
 	void addTask(Task task);
 	public void deleteTask(Task task);
 	public void updateTask(Task task);

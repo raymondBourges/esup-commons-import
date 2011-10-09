@@ -28,7 +28,7 @@ import org.esupportail.commons.web.controllers.Resettable;
     ),   
     @NamedQuery(
     	    name="tasksForUser",
-    	    query="SELECT t FROM Task t WHERE t.owner.id = :userId"
+    	    query="SELECT t FROM Task t WHERE t.owner.login = :userLogin"
     )   
 })
 public class Task implements Serializable, Resettable{

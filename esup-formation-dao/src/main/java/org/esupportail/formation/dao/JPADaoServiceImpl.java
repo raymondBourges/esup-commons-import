@@ -87,7 +87,7 @@ public class JPADaoServiceImpl extends AbstractGenericJPADaoService implements D
 	@SuppressWarnings("unchecked")
 	public List<Task> getTasksForUser(User u) {
 		Query q = entityManager.createNamedQuery("tasksForUser");
-		q.setParameter("userId", u.getId());
+		q.setParameter("userLogin", u.getLogin());
 		List<Task> ret = (List<Task>)q.getResultList();
 		return ret;
 	} 
