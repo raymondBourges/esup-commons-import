@@ -14,13 +14,10 @@ public class UserController extends AbstractContextAwareController {
 	 * 
 	 */
 	private static final long serialVersionUID = -1084603907906407867L;
-	//private AuthenticationService authenticationService;
 	private Authenticator authenticator;
 	@Override
 	public void afterPropertiesSetInternal() {
 		super.afterPropertiesSetInternal();
-	//	Assert.notNull(authenticationService, "property authenticationService of class "
-		//		+ this.getClass().getName() + " can not be null");
 		Assert.notNull(authenticator, "property authenticator of class "
 				+ this.getClass().getName() + " can not be null");
 	}
