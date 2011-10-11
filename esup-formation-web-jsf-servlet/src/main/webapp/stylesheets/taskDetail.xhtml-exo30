@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/stylesheets/pageTemplate.xhtml">
+	
+	<ui:define name="content">
+			<h:panelGrid id="grid" columns="1">
+				<f:facet name="header">
+	    			<h:outputText value="#{msgs['TASK.MANAGER.DETAIL.TASK']}"/>
+	  			</f:facet>
+	  			<h:panelGroup><h:outputText value="#{msgs['TASK.ID']}" /> : <h:outputText value="#{taskController.detailledTask.id}"></h:outputText></h:panelGroup>
+	  			<h:panelGroup><h:outputText value="#{msgs['TASK.TITLE']}" /> : <h:outputText value="#{taskController.detailledTask.title}"></h:outputText></h:panelGroup>
+	  			<h:panelGroup><h:outputText value="#{msgs['TASK.DESCRIPTION']}" /> : <h:outputText value="#{taskController.detailledTask.description}"></h:outputText></h:panelGroup>
+	  			<h:panelGroup><h:outputText value="#{msgs['TASK.DATE']}" /> : <h:outputText value="#{taskController.detailledTask.date}"></h:outputText></h:panelGroup>
+	  			<h:panelGroup><h:outputText value="#{msgs['TASK.PUBLICTASK']}" /> : <h:outputText value="#{taskController.detailledTask.publicTask}"></h:outputText></h:panelGroup>
+		  		<h:panelGroup><h:outputText value="#{msgs['TASK.LINK']}" /> : <h:outputLink value="#{taskController.urlTask}">
+					<h:outputText value="#{taskController.urlTask}" />
+					</h:outputLink>
+				</h:panelGroup>
+		  		
+		  		<h:form>
+		    		<h:commandLink action="#{taskController.goToTaskManagerPage}"><h:outputText value="#{msgs['TASK.DETAIL.RETURN']}"/>
+					
+					</h:commandLink>
+					
+				</h:form>
+  			</h:panelGrid>
+	</ui:define>
+</ui:composition>
