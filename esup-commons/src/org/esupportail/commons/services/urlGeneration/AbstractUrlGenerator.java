@@ -26,6 +26,11 @@ public abstract class AbstractUrlGenerator implements UrlGenerator {
 	public static final String NAME_VALUE_SEPARATOR = "=";
 	
 	/**
+	 * The media path.
+	 */
+	private String mediaPath;
+	
+	/**
 	 * Bean constructor.
 	 */
 	protected AbstractUrlGenerator() {
@@ -136,6 +141,38 @@ public abstract class AbstractUrlGenerator implements UrlGenerator {
 	@Override
 	public String shibbolethUrl() {
 		return shibbolethUrl(null);
+	}
+	
+	/**
+	 * @return the base URL for internal medias of the application.
+	 */
+	protected abstract String getMediaUrl();
+	
+	/**
+	 * @see org.esupportail.commons.services.urlGeneration.UrlGenerator#getImageUrl(java.lang.String)
+	 */
+	@Override
+	public String getImageUrl(String imagePath) {
+		return getMediaUrl() + '/' + imagePath;
+	}
+	
+	/**
+	 * @param mediaPath the mediaPath to set
+	 */
+	public void setMediaPath(final String mediaPath) {
+		this.mediaPath = StringUtils.nullIfEmpty(mediaPath);
+		if (this.mediaPath != null) {
+			while (mediaPath.endsWith("/")) {
+				this.mediaPath = this.mediaPath.substring(0, this.mediaPath.length() - 1);
+			}
+		}
+	}
+
+	/**
+	 * @return the mediaPath
+	 */
+	protected String getMediaPath() {
+		return mediaPath == null ? "" : mediaPath;
 	}
 
 }

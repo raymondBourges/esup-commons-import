@@ -133,6 +133,14 @@ public class ServletUrlGeneratorImpl extends AbstractCasUrlGenerator {
 	}
 
 	/**
+	 * @see org.esupportail.commons.services.urlGeneration.AbstractUrlGenerator#getMediaUrl()
+	 */
+	@Override
+	protected String getMediaUrl() {
+		return getServletUrl() + getMediaPath();
+	}
+
+	/**
 	 * @return the servletUrl
 	 */
 	protected String getServletUrl() {
@@ -145,7 +153,7 @@ public class ServletUrlGeneratorImpl extends AbstractCasUrlGenerator {
 	public void setServletUrl(final String servletUrl) {
 		this.servletUrl = StringUtils.nullIfEmpty(servletUrl);
 		if (this.servletUrl != null) {
-			while (servletUrl.endsWith("/")) {
+			while (this.servletUrl.endsWith("/")) {
 				this.servletUrl = this.servletUrl.substring(0, this.servletUrl.length() - 1);
 			}
 		}

@@ -164,6 +164,14 @@ public class UportalUrlGeneratorImpl extends AbstractCasUrlGenerator {
 	}
 
 	/**
+	 * @see org.esupportail.commons.services.urlGeneration.AbstractUrlGenerator#getMediaUrl()
+	 */
+	@Override
+	protected String getMediaUrl() {
+		return getUportalUrl() + "/stylesheets/" + getMediaPath();
+	}
+
+	/**
 	 * @return the uportalUrl
 	 */
 	protected String getUportalUrl() {
@@ -176,7 +184,7 @@ public class UportalUrlGeneratorImpl extends AbstractCasUrlGenerator {
 	public void setUportalUrl(final String uportalUrl) {
 		this.uportalUrl = StringUtils.nullIfEmpty(uportalUrl);
 		if (this.uportalUrl != null) {
-			while (uportalUrl.endsWith("/")) {
+			while (this.uportalUrl.endsWith("/")) {
 				this.uportalUrl = this.uportalUrl.substring(0, this.uportalUrl.length() - 1);
 			}
 		}

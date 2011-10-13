@@ -34,4 +34,12 @@ public class NotSupportedUrlGeneratorImpl extends AbstractCasUrlGenerator {
 		throw new UnsupportedOperationException("class " + getClass().getName() + "should never be called.");
 	}
 
+	/**
+	 * @see org.esupportail.commons.services.urlGeneration.AbstractUrlGenerator#getMediaUrl()
+	 */
+	@Override
+	protected String getMediaUrl() {
+		throw new UnsupportedOperationException("class " + getClass().getName() + "should never be called.");
+	}
+
 }

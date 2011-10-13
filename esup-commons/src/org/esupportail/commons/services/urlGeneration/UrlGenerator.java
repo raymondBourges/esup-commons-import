@@ -44,4 +44,10 @@ public interface UrlGenerator extends Serializable {
 	 */
 	String shibbolethUrl();
 
+	/**
+	 * @param imagePath
+	 * @return a link to an internal image of the application.
+	 */
+	String getImageUrl(String imagePath);
+
 }
