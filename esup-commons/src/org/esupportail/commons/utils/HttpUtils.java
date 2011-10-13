@@ -23,6 +23,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.esupportail.commons.exceptions.NoRequestBoundException;
 import org.esupportail.commons.services.logging.Logger;
 import org.esupportail.commons.services.logging.LoggerImpl;
 import org.springframework.web.context.request.RequestAttributes;
@@ -48,8 +49,9 @@ public class HttpUtils {
 
 	/**
 	 * @return The current HttpServletRequest.
+	 * @throws NoRequestBoundException 
 	 */
-	public static HttpServletRequest getHttpServletRequest() {
+	public static HttpServletRequest getHttpServletRequest() throws NoRequestBoundException {
 		if (ContextUtils.isServlet()) {
 			return ((ServletRequestAttributes) ContextUtils.getContextAttributes()).getRequest();
 		}
@@ -332,7 +334,13 @@ public class HttpUtils {
 	 * @return The user agent.
 	 */
 	public static String getUserAgent() {
-		HttpServletRequest request = getHttpServletRequest();
+		HttpServletRequest request;
+		try {
+			request = getHttpServletRequest();
+		} catch (NoRequestBoundException e) {
+			// batch context
+			return null;
+		}
 		if (request == null) {
 			return null;
 		}
