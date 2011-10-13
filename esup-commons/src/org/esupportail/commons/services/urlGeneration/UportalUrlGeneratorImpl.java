@@ -168,7 +168,7 @@ public class UportalUrlGeneratorImpl extends AbstractCasUrlGenerator {
 	 */
 	@Override
 	protected String getMediaUrl() {
-		return getUportalUrl() + "/stylesheets/" + getMediaPath();
+		return getUportalUrl() + getMediaPath();
 	}
 
 	/**

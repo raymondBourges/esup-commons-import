@@ -137,7 +137,7 @@ public class ServletUrlGeneratorImpl extends AbstractCasUrlGenerator {
 	 */
 	@Override
 	protected String getMediaUrl() {
-		return getServletUrl() + getMediaPath();
+		return getServletUrl() + "/stylesheets/" + getMediaPath();
 	}
 
 	/**
