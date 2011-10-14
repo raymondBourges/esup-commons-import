@@ -21,12 +21,8 @@
         > 
         <property name="servletGuestUrl" value="http://localhost:8080/stylesheets/welcome.xhtml" />
         <property name="servletCasLoginUrl" value="http://localhost:8080/stylesheets/welcome.xhtml" />
-        <property name="casLoginUrl" value="http://cas.uhp-nancy.fr/cas/login?service=%s" />
-        <!--<property name="casUrl" value="${cas.url}" />
-        <property name="casLoginUrl" value="${urlGeneration.casLoginUrl}" />
-        <property name="servletCasLoginUrl" value="${urlGeneration.casLoginUrl}" />
-        <property name="servletShibbolethLoginUrl" value="${urlGeneration.servletLoginUrl}" />
-        -->
+        <property name="casLoginUrl" value="http://localhost/cas/login?service=%s" />
+        
     </bean>
 
 	

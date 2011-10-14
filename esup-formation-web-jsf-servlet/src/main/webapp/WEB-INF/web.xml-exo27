@@ -86,7 +86,7 @@
     <filter-class>org.jasig.cas.client.authentication.AuthenticationFilter</filter-class>
     <init-param>
       <javaee:param-name>casServerLoginUrl</javaee:param-name>
-      <javaee:param-value>https://cas.uhp-nancy.fr/cas/login</javaee:param-value>
+      <javaee:param-value>https://localhost/cas/login</javaee:param-value>
     </init-param>
     <init-param>
       <javaee:param-name>serverName</javaee:param-name>
@@ -110,7 +110,7 @@
     <filter-class>org.jasig.cas.client.validation.Cas10TicketValidationFilter</filter-class>
     <init-param>
       <javaee:param-name>casServerUrlPrefix</javaee:param-name>
-      <javaee:param-value>https://cas.uhp-nancy.fr/cas</javaee:param-value>
+      <javaee:param-value>http://localhost/cas</javaee:param-value>
     </init-param>
     <init-param>
       <javaee:param-name>serverName</javaee:param-name>

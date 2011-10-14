@@ -16,15 +16,15 @@ datasource.bean=JDBCDataSource
 
 jpa.database.type=HSQL
 
-cas.url=https://cas.uhp-nancy.fr/cas
+cas.url=http://localhost/cas
 
 ########################################################################
 # LDAP
 #
-ldap.url=ldap://ldap1.uhp-nancy.fr:391,ldap://ldap2.uhp-nancy.fr:391
-ldap.userDn=uid=lecteur-portail,ou=comptes,dc=uhp-nancy,dc=fr
-ldap.password=xxx
-ldap.base=dc=uhp-nancy,dc=fr
+ldap.url=ldap://localhost:389
+ldap.userDn=
+ldap.password=
+ldap.base=dc=univ,dc=fr
 ldap.dnSubPath=ou=people
 ldap.uidAttribute=uid
 ldap.displayNameAttribute=displayName

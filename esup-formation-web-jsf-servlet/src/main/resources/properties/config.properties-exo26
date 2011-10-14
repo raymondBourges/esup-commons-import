@@ -16,4 +16,4 @@ datasource.bean=JDBCDataSource
 
 jpa.database.type=HSQL
 
-cas.url=https://cas.uhp-nancy.fr/cas
+cas.url=http://localhost/cas
