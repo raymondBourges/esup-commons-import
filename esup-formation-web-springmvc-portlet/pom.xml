@@ -3,10 +3,10 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <artifactId>esup-formation</artifactId>
-        <groupId>org.esupportail</groupId>
+        <groupId>org.esupportail.formation</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <groupId>org.esupportail</groupId>
+    <groupId>org.esupportail.formation</groupId>
     <artifactId>esup-formation-web-springmvc-portlet</artifactId>
     <packaging>war</packaging>
     <dependencies>
