@@ -5,20 +5,14 @@
 	xmlns:e="http://commons.esup-portail.org"
 	template="/stylesheets/template.xhtml">
 	<ui:define name="content">
-		<e:section value="ERROR" />
-		<hr/>
+		Ici je veux un affichage simplifié de l'erreur :
 		<h:outputText id="exceptionName"
 			value="#{exceptionController.exceptionName}" />
-		<hr/>
+		<br/>
 		<b><h:outputText id="exceptionMessage"
 			value="#{exceptionController.exceptionMessage}" /></b>
 		<hr/>
-		<e:subSection value="TRACE" />
-		<h:outputText value="#{exceptionController.exceptionShortStackTrace}" />
-		<hr/>
-		<e:subSection value="FULL TRACE" />
-		<h:outputText value="#{exceptionController.exceptionStackTrace}"/>
-		<hr/>
+		
 		<h:form>
 			<h:commandButton value="#{msgs['BUTTON.BACK_WELCOME']}"
 				action="#{exceptionController.restart}" />

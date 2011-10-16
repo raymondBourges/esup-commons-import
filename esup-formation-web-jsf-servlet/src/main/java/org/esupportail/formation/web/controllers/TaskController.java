@@ -21,6 +21,8 @@ import org.esupportail.formation.services.auth.Authenticator;
 import org.esupportail.formation.utils.TaskDateComparator;
 import org.esupportail.formation.utils.TaskTitleComparator;
 
+import org.esupportail.formation.web.exceptions.TaskException;
+
 public class TaskController extends AbstractContextAwareController {
 
 	/**
@@ -221,5 +223,21 @@ public class TaskController extends AbstractContextAwareController {
 		detailledTask = getTaskFromDomainService(new Long(taskId).longValue());
 		return "go_taskDetailPage";
 	}
+	public void genereException() throws Exception {
+		throw new Exception("Bonjour je suis une erreur !");
+	}
+	public void genereTaskException() throws TaskException {
+		//imaginons un code qui génère une TaskException
+		throw new TaskException("Moi je suis une Task Exception !");
+	}
+
+	@Override
+	public void reset() {
+		super.reset();
+		currentTask = new Task();
+		taskToEditOrDelete = new Task();
+		System.out.println("Reset task controller");
+	}
+	
 		
 }

@@ -6,37 +6,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	template="/stylesheets/pageTemplate.xhtml">
 	<ui:define name="content">
-		<h:panelGrid columns="1">
-			<h:dataTable border="1" var="task" value="#{taskController.publicTasks}" rendered="#{taskController.publicTasks != null and !empty taskController.publicTasks}">
-				<h:column>
-		 			 <f:facet name="header">
-		 				 <h:outputText value="#{msgs['TASK.ID']}" />
-		  			</f:facet>
-		  			 <h:outputText value="#{task.id}"></h:outputText>
-				</h:column>
-				<h:column>
-		 			 <f:facet name="header">
-		 				 <h:outputText value="#{msgs['TASK.TITLE']}" />
-		  			</f:facet>
-		  			 <h:outputText value="#{task.title}"></h:outputText>
-				</h:column>
-				<h:column>
-		 			 <f:facet name="header">
-		 				 <h:outputText value="#{msgs['TASK.DESCRIPTION']}" />
-		  			</f:facet>
-		  			 <h:outputText value="#{task.description}"></h:outputText>
-				</h:column>
-				<h:column>
-		 			 <f:facet name="header">
-		 			 	<h:outputText value="#{msgs['TASK.DATE']}" />
-		  			</f:facet>
-		  			 <h:outputText value="#{task.date}"></h:outputText>
-				</h:column>
-				
-				</h:dataTable>
-			</h:panelGrid>
-		
-		
+		 <h:form>
 				<h:panelGrid columns="1" style="width:100%;text-align:center;">
 					<h:outputText value="#{applicationService.name}"
 						style="font-size:16px" />
@@ -52,7 +22,9 @@
 					<h:outputText value="#{msgs['ABOUT.SOCIETY.NAME']}" />
 
 				</h:panelGrid>
-		<h:form>
+
+			</h:form>
+			<h:form>
 				<h:commandButton action="#{taskController.genereException}" value="#{msgs['GENERATE.EXCEPTION']}"/>
 				<h:commandButton action="#{taskController.genereTaskException}" value="#{msgs['GENERATE.TASK.EXCEPTION']}"/>
 		</h:form>

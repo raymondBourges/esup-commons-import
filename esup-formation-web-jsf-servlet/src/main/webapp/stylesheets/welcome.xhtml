@@ -52,6 +52,10 @@
 					<h:outputText value="#{msgs['ABOUT.SOCIETY.NAME']}" />
 
 				</h:panelGrid>
-
+		
+		<h:form>
+				<h:commandButton action="#{taskController.genereException}" value="#{msgs['GENERATE.EXCEPTION']}"/>
+				<h:commandButton action="#{taskController.genereTaskException}" value="#{msgs['GENERATE.TASK.EXCEPTION']}"/>
+		</h:form>
 	</ui:define>
 </ui:composition>

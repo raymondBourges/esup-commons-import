@@ -13,8 +13,6 @@ BLANK.WELCOME              = This is the blank application. You can now start yo
 
 BUTTON.BACK_WELCOME = Return to welcome page
 
-CURRENT.USER = Current user :
-
 GENERATE.EXCEPTION      = Generate exception
 GENERATE.TASK.EXCEPTION = Generate a TaskException
 
@@ -33,8 +31,3 @@ TASK.MANAGER.NOTASKS         = The tasklist is empty
 TASK.OWNER                   = Owner
 TASK.PUBLICTASK              = Is it a public task?
 TASK.TITLE                   = Title
-
-USER.GUEST   = Guest
-USER.LOGIN   = Connection 
-USER.LOGOUT  = Disconnect
-USER.MANAGER = User Manager

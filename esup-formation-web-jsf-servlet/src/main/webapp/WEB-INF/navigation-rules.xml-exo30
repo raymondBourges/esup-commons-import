@@ -19,6 +19,16 @@
 			<to-view-id>/stylesheets/exceptions/exception.xhtml</to-view-id>
 			<redirect/>
 		</navigation-case>
+		<navigation-case>
+			<from-outcome>go_task_exception</from-outcome>
+			<to-view-id>/stylesheets/exceptions/task-exception.xhtml</to-view-id>
+			<redirect/>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>applicationRestarted</from-outcome>
+			<to-view-id>/stylesheets/welcome.xhtml</to-view-id>
+			<redirect/>
+		</navigation-case>
 	</navigation-rule>
 	
 	<navigation-rule>

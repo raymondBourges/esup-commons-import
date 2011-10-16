@@ -3,9 +3,7 @@ package org.esupportail.formation.web.controllers;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
 
 import javax.faces.application.FacesMessage;
@@ -14,10 +12,8 @@ import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 import javax.faces.validator.ValidatorException;
 
-import org.esupportail.commons.services.urlGeneration.UrlGenerator;
 import org.esupportail.formation.domain.beans.Task;
 import org.esupportail.formation.domain.beans.User;
-import org.esupportail.formation.services.auth.Authenticator;
 import org.esupportail.formation.utils.TaskDateComparator;
 import org.esupportail.formation.utils.TaskTitleComparator;
 
@@ -33,13 +29,6 @@ public class TaskController extends AbstractContextAwareController {
 	private Task currentTask=null;
 	private Task taskToEditOrDelete=null;
 	
-	private Authenticator authenticator;
-	
-	private UrlGenerator urlGenerator;
-	
-	private long taskId;
-	private Task detailledTask=null;
-	
 	@Override
 	public void afterPropertiesSetInternal() {
 		super.afterPropertiesSetInternal();
@@ -50,51 +39,31 @@ public class TaskController extends AbstractContextAwareController {
 	public String goToTaskManagerPage(){
 		return "go_taskManagerPage";
 	}
-	public String goToDetailPage(){
-		return "go_taskDetailPage";
-	}
-	private List<Task> getTasksFromDomainService() {
-		try {
-			if(authenticator.getUser()!=null)
-				return getDomainService().getTasksForUser(authenticator.getUser());
-			else
-				return getDomainService().getTasks();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
-	}
-	
 	public List<Task> getTasks() {
-		if (this.sortedTasks==null){
-			sortedTasks = getTasksFromDomainService();
-		}		
+		if (this.sortedTasks==null)
+			sortedTasks = getDomainService().getTasks();
 		return sortedTasks;
-	}
-	public List<Task> getPublicTasks() {
-		return getDomainService().getPublicTasks();
 	}
 	public void sortTasksByDate() {
 		if (this.sortedTasks==null)
-			sortedTasks = getTasksFromDomainService();
+			sortedTasks = getDomainService().getTasks();
 		Collections.sort(sortedTasks, new TaskDateComparator());
 	}
 	public void sortTasksByTitle() {
 		if (this.sortedTasks==null)
-			sortedTasks = getTasksFromDomainService();
+			sortedTasks = getDomainService().getTasks();
 		Collections.sort(sortedTasks, new TaskTitleComparator());
 	}
 	public void addFakeTask() {
-		User user1=getDomainService().getUser("tartempion");
+		User user1=getDomainService().getUser("cbissler");
 		if(user1 == null){
 			user1=new User();
-			user1.setLogin("tartempion");
+			user1.setLogin("cbissler");
 			getDomainService().addUser(user1);
 		}
 		//On ajoute la tâche avec un titre dont les deux premières lettres sont tirées au sort (pour tester le tri)
 		getDomainService().addTask(new Task(true, getLettreAuHasard()+""+getLettreAuHasard()+" - Titre de tache bidon", "", new Date(), user1));
-		sortedTasks = getTasksFromDomainService();
+		sortedTasks = getDomainService().getTasks();
 	}
 	private char getLettreAuHasard(){
 		Random r = new Random();
@@ -110,14 +79,13 @@ public class TaskController extends AbstractContextAwareController {
 		for (User u : listeUser) {
 			getDomainService().deleteUser(u);
 		}
-		sortedTasks = getTasksFromDomainService();
+		sortedTasks = getDomainService().getTasks();
 	}
 	
 	public void addTask() {
-		System.out.println("ADD"+currentTask.getId());
 		getDomainService().addTask(currentTask);
 		currentTask=new Task();
-		sortedTasks = getTasksFromDomainService();
+		sortedTasks = getDomainService().getTasks();
 	}
 
 	public Task getCurrentTask() {
@@ -149,14 +117,14 @@ public class TaskController extends AbstractContextAwareController {
 	}
 	
 	public void deleteTask() {
-		getDomainService().deleteTask(taskToEditOrDelete);
+		getDomainService().deleteTask(currentTask);
 		taskToEditOrDelete=new Task();
-		sortedTasks = getTasksFromDomainService();
+		sortedTasks = getDomainService().getTasks();
 	}
 	public void editTask() {
 		currentTask = taskToEditOrDelete;
 		taskToEditOrDelete=new Task();
-		sortedTasks = getTasksFromDomainService();
+		sortedTasks = getDomainService().getTasks();
 	}
 
 	public Task getTaskToEditOrDelete() {
@@ -165,34 +133,6 @@ public class TaskController extends AbstractContextAwareController {
 
 	public void setTaskToEditOrDelete(Task taskToEditOrDelete) {
 		this.taskToEditOrDelete = taskToEditOrDelete;
-	}
-
-	public Authenticator getAuthenticator() {
-		return authenticator;
-	}
-
-	public void setAuthenticator(Authenticator authenticator) {
-		this.authenticator = authenticator;
-	}
-
-	public long getTaskId() {
-		return taskId;
-	}
-
-	public void setTaskId(long taskId) {
-		this.taskId = taskId;
-		detailledTask = getTaskFromDomainService(taskId);
-	}
-	public Task getTaskFromDomainService(long tId) {
-		return getDomainService().getTask(tId);
-	}
-
-	public Task getDetailledTask() {
-		return detailledTask;
-	}
-
-	public void setDetailledTask(Task detailledTask) {
-		this.detailledTask = detailledTask;
 	}
 		public void genereException() throws Exception {
 		throw new Exception("Bonjour je suis une erreur !");
@@ -209,26 +149,5 @@ public class TaskController extends AbstractContextAwareController {
 		taskToEditOrDelete = new Task();
 		System.out.println("Reset task controller");
 	}
-	public UrlGenerator getUrlGenerator() {
-		return urlGenerator;
-	}
-
-	public void setUrlGenerator(UrlGenerator urlGenerator) {
-		this.urlGenerator = urlGenerator;
-	}
-
-	public String getUrlTask(){
-		Map<String, String> params = new HashMap<String, String>();
-		params.put("taskId", new Long(taskId).toString());
-		String url = getUrlGenerator().guestUrl(params);
-		
-		return url;
-	}	
-
-	public String goUrlTask(String taskId){
-		this.taskId = new Long(taskId).longValue();
-		detailledTask = getTaskFromDomainService(new Long(taskId).longValue());
-		return "go_taskDetailPage";
-	}
-		
+	
 }

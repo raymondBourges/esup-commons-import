@@ -11,7 +11,12 @@ BLANK.MENU                 = A propos
 BLANK.MENU.TITLE           = A propos de cette application
 BLANK.WELCOME              = Voici l'application vide. Vous pouvez d\u00E9sormais commencer votre projet. Vous trouverez  dans l'application de d\u00E9monstration esup-example de nombreux cas qui sont susceptibles de vous guider.
 
+BUTTON.BACK_WELCOME = Retour \u00E0 la page d'accueil
+
 CURRENT.USER = Utilisateur Courant :
+
+GENERATE.EXCEPTION      = G\u00E9n\u00E9rer une exception
+GENERATE.TASK.EXCEPTION = G\u00E9n\u00E9rer une TaskException
 
 TASK.DATE                    = Date
 TASK.DESCRIPTION             = Description

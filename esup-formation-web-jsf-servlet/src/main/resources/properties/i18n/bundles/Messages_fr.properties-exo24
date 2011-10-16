@@ -13,8 +13,6 @@ BLANK.WELCOME              = Voici l'application vide. Vous pouvez d\u00E9sormai
 
 BUTTON.BACK_WELCOME = Retour \u00E0 la page d'accueil
 
-CURRENT.USER = Utilisateur Courant :
-
 GENERATE.EXCEPTION      = G\u00E9n\u00E9rer une exception
 GENERATE.TASK.EXCEPTION = G\u00E9n\u00E9rer une TaskException
 
@@ -33,5 +31,3 @@ TASK.MANAGER.NOTASKS         = La liste de t\u00E2che est vide
 TASK.OWNER                   = Propri\u00E9taire
 TASK.PUBLICTASK              = La t\u00E2che est-elle publique?
 TASK.TITLE                   = Titre
-
-USER.MANAGER = Gestion des utilisateurs

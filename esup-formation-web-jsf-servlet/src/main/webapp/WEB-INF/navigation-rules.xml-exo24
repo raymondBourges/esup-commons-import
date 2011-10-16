@@ -34,23 +34,8 @@
 	<navigation-rule>
 		<description>Gestion des tâches</description>
 		<navigation-case>
-			<from-outcome>go_home</from-outcome>
-			<to-view-id>/stylesheets/welcome.xhtml</to-view-id>
-			<redirect/>
-		</navigation-case>
-		<navigation-case>
 			<from-outcome>go_taskManagerPage</from-outcome>
 			<to-view-id>/stylesheets/taskManager.xhtml</to-view-id>
-			<redirect/>
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>go_userManagerPage</from-outcome>
-			<to-view-id>/stylesheets/userManager.xhtml</to-view-id>
-			<redirect/>
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>go_taskDetailPage</from-outcome>
-			<to-view-id>/stylesheets/taskDetail.xhtml</to-view-id>
 			<redirect/>
 		</navigation-case>
 	</navigation-rule>

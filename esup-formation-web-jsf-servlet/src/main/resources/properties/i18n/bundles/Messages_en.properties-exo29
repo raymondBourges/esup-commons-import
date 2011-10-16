@@ -11,7 +11,12 @@ BLANK.MENU                 = About
 BLANK.MENU.TITLE           = About this blank application
 BLANK.WELCOME              = This is the blank application. You can now start your own projet. Various examples in the esup-example project can help you in doing so.
 
+BUTTON.BACK_WELCOME = Return to welcome page
+
 CURRENT.USER = Current user :
+
+GENERATE.EXCEPTION      = Generate exception
+GENERATE.TASK.EXCEPTION = Generate a TaskException
 
 TASK.DATE                    = Date
 TASK.DESCRIPTION             = Description
