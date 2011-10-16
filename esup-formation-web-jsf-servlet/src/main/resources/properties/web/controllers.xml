@@ -52,6 +52,7 @@
 		>
 		<property name="authenticator" ref="authenticator"/>
 		<property name="urlGenerator"  ref="servletUrlGenerator"></property>
+		<property name="smtpService"  ref="smtpService"/>
 	</bean>
 	<bean id="userController"
 		class="org.esupportail.formation.web.controllers.UserController"

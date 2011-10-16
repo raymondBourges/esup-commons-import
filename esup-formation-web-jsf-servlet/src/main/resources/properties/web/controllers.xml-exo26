@@ -48,7 +48,9 @@
 	<bean id="taskController"
 		class="org.esupportail.formation.web.controllers.TaskController"
 		parent="abstractContextAwareController" 
-		scope="session"/>
+		scope="session">
+		<property name="smtpService"  ref="smtpService"/>
+	</bean>
 	<bean id="userController"
 		class="org.esupportail.formation.web.controllers.UserController"
 		parent="abstractContextAwareController" 

@@ -16,6 +16,23 @@ datasource.bean=JDBCDataSource
 
 jpa.database.type=HSQL
 
+########################################################################
+# SMTP
+#
+exceptionHandling.email=celine.didier@uhp-nancy.fr
+
+smtp.host=smtp.uhp-nancy.fr
+smtp.port=25
+smtp.charset=utf-8
+smtp.fromEmail=celine.didier@uhp-nancy.fr
+smtp.fromName=Esup-Formation Application
+smtp.interceptAll=true
+smtp.interceptEmail=celine.didier@uhp-nancy.fr
+smtp.interceptName=Céline DIDIER
+smtp.notInterceptedAddresses=
+smtp.testEmail=celine.didier@uhp-nancy.fr
+smtp.testName=Céline DIDIER
+
 cas.url=http://localhost/cas
 
 ########################################################################

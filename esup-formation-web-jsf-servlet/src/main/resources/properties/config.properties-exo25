@@ -1,0 +1,34 @@
+########################################################################
+# Database
+#
+
+jdbc.connection.driver_class=org.hsqldb.jdbcDriver
+jdbc.connection.url=jdbc:hsqldb:file:formationData
+jdbc.connection.username=sa
+jdbc.connection.password=
+
+jndi.datasource=jdbc/formationDB
+
+# JNDI/JDBC
+# for JDBC datasource.bean=JDBCDataSource
+# for JNDI datasource.bean=JNDIDataSource
+datasource.bean=JDBCDataSource
+
+jpa.database.type=HSQL
+
+########################################################################
+# SMTP
+#
+exceptionHandling.email=celine.didier@uhp-nancy.fr
+
+smtp.host=smtp.uhp-nancy.fr
+smtp.port=25
+smtp.charset=utf-8
+smtp.fromEmail=celine.didier@uhp-nancy.fr
+smtp.fromName=Esup-Formation Application
+smtp.interceptAll=true
+smtp.interceptEmail=celine.didier@uhp-nancy.fr
+smtp.interceptName=Céline DIDIER
+smtp.notInterceptedAddresses=
+smtp.testEmail=celine.didier@uhp-nancy.fr
+smtp.testName=Céline DIDIER

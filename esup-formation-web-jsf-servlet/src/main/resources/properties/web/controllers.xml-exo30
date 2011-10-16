@@ -50,6 +50,7 @@
 		parent="abstractContextAwareController" 
 		scope="session"
 		>
+		<property name="smtpService"  ref="smtpService"/>
 		<property name="authenticator" ref="authenticator"/>
 		<property name="urlGenerator"  ref="servletUrlGenerator"></property>
 	</bean>

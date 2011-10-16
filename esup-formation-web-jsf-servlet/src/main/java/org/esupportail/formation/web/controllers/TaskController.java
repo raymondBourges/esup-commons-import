@@ -13,7 +13,10 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 import javax.faces.validator.ValidatorException;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
 
+import org.esupportail.commons.services.smtp.SmtpService;
 import org.esupportail.commons.services.urlGeneration.UrlGenerator;
 import org.esupportail.formation.domain.beans.Task;
 import org.esupportail.formation.domain.beans.User;
@@ -34,6 +37,7 @@ public class TaskController extends AbstractContextAwareController {
 	private Task taskToEditOrDelete=null;
 	
 	private Authenticator authenticator;
+	private SmtpService smtpService;
 	
 	private UrlGenerator urlGenerator;
 	
@@ -116,6 +120,14 @@ public class TaskController extends AbstractContextAwareController {
 	public void addTask() {
 		System.out.println("ADD"+currentTask.getId());
 		getDomainService().addTask(currentTask);
+		try {
+			smtpService.send(new InternetAddress("celine.didier@uhp-nancy.fr"),
+					"CREATION D'UNE TACHE", 
+					"<b>Une nouvelle tâche vient d'être crée</b><br/>"+ currentTask.getTitle()+"<br/>"+currentTask.getDescription(), 
+					"**Une nouvelle tâche vient d'être crée**\n\n"+ currentTask.getTitle()+"\n"+currentTask.getDescription());
+		} catch (AddressException e) {
+			
+		}
 		currentTask=new Task();
 		sortedTasks = getTasksFromDomainService();
 	}
@@ -237,6 +249,14 @@ public class TaskController extends AbstractContextAwareController {
 		currentTask = new Task();
 		taskToEditOrDelete = new Task();
 		System.out.println("Reset task controller");
+	}
+
+	public SmtpService getSmtpService() {
+		return smtpService;
+	}
+
+	public void setSmtpService(SmtpService smtpService) {
+		this.smtpService = smtpService;
 	}
 	
 		
