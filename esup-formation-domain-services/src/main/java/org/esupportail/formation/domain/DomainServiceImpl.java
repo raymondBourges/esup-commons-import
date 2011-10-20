@@ -110,6 +110,10 @@ public class DomainServiceImpl implements DomainService, InitializingBean {
 	public List<Task> get10LastTasksForUser(User user) {
 		return daoService.get10LastTasksForUser(user);
 	}
+	public List<Task> get10LastTasksForUserString(String uid) {
+		User u=getUser(uid);
+		return daoService.get10LastTasksForUser(u);
+	}
 	public List<Task> getPublicTasks() {
 		return daoService.getPublicTasks();
 	}

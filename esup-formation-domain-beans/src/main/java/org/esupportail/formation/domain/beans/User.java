@@ -83,9 +83,9 @@ public class User implements Serializable {
 	private String language;
 	
 	//Fetch lazy par defaut
-	@OneToMany(cascade={CascadeType.ALL},mappedBy="owner")
+	/*@OneToMany(cascade={CascadeType.ALL},mappedBy="owner")
 	private List<Task> taches;
-
+*/
 	/**
 	 * Bean constructor.
 	 */
@@ -178,8 +178,12 @@ public class User implements Serializable {
 	 * @return the user display language.
 	 */
 	public String getDisplayLanguage() {
-		Locale locale = new Locale(language);
-		return locale.getDisplayLanguage(locale);
+		if (language!=null){
+			Locale locale = new Locale(language);
+			return locale.getDisplayLanguage(locale);
+		}
+		else
+			return null;
 	}
 	/**
 	 * @return the id of the user.
@@ -194,13 +198,13 @@ public class User implements Serializable {
 	public void setId(long id) {
 		this.id = id;
 	}
-
+/*
 	public List<Task> getTaches() {
 		return taches;
 	}
 
 	public void setTaches(List<Task> taches) {
 		this.taches = taches;
-	}
+	}*/
 	
 }
