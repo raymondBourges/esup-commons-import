@@ -113,6 +113,6 @@
     <module>esup-formation-web-jsf-servlet</module>
   <!--  
     <module>esup-formation-web-springmvc-servlet</module>-->
-    <module>esup-formation-web-springmvc-portlet</module> 
+<!--    <module>esup-formation-web-springmvc-portlet</module> -->
   </modules>
 </project>
