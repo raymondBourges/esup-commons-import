@@ -4,13 +4,13 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -36,7 +36,7 @@ public class Task implements Serializable, Resettable{
 	/**
 	 * The serialization id.
 	 */
-	@Embedded
+	@Transient
 	private static final long serialVersionUID = 5576556657584434915L;
 
 	/**
