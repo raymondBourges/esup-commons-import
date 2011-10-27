@@ -31,7 +31,7 @@
 			      <configuration>
 				<wsdlOptions>
 				  <wsdlOption>
-				    <wsdl>http://localhost:9090/services/DomainService?wsdl</wsdl>
+				    <wsdl>http://localhost:9090/services/TodoService?wsdl</wsdl>
 				  </wsdlOption>
 				</wsdlOptions>
 			      </configuration>
