@@ -48,7 +48,7 @@ public interface DaoService extends Serializable {
 	Task getTask(long id);
 	
 	public List<Task> getTasksForUser(User u);
-	public List<Task> get10LastTasksForUser(User u);
+	public List<Task> getLastTasksForUser(User u, int limit);
 	
 	public List<User> getUsers();
 

@@ -42,7 +42,7 @@
   	<import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
   
    <jaxws:endpoint id="domainService.remoteService" implementor="#domainService"
-        address="/DomainService">
+        address="/TodoService">
     </jaxws:endpoint>
     
     <jaxrs:server id="domainServiceRest" address="/rest">

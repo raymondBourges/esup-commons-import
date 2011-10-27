@@ -40,7 +40,7 @@ public interface DomainService extends Serializable {
 	public void deleteTask(Task task);
 	public void updateTask(Task task);
 	public List<Task> getTasksForUser(User user);
-	public List<Task> get10LastTasksForUser(User user);
+	public List<Task> getLastTasksForUser(User user,int limit);
 	@GET
 	@Path("/tasks/{login}")
 	public List<Task> get10LastTasksForUserString(@PathParam("login") String uid);

@@ -92,10 +92,10 @@ public class JPADaoServiceImpl extends AbstractGenericJPADaoService implements D
 		return ret;
 	} 
 	@SuppressWarnings("unchecked")
-	public List<Task> get10LastTasksForUser(User u) {
+	public List<Task> getLastTasksForUser(User u,int limit) {
 		Query q = entityManager.createNamedQuery("tasksForUser");
 		q.setParameter("userLogin", u.getLogin());
-		q.setMaxResults(10);
+		q.setMaxResults(limit);
 		List<Task> ret = (List<Task>)q.getResultList();
 		return ret;
 	} 
