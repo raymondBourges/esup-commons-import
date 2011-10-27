@@ -110,7 +110,7 @@
     <filter-class>org.jasig.cas.client.validation.Cas10TicketValidationFilter</filter-class>
     <init-param>
       <javaee:param-name>casServerUrlPrefix</javaee:param-name>
-      <javaee:param-value>http://cas.uhp-nancy.fr/cas</javaee:param-value>
+      <javaee:param-value>http://localhost/cas</javaee:param-value>
     </init-param>
     <init-param>
       <javaee:param-name>serverName</javaee:param-name>
