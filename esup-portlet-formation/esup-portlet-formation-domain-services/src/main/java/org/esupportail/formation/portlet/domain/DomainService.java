@@ -20,6 +20,6 @@ public interface DomainService extends Serializable {
 	 * @return a user.
 	 */
 	User getUser(String uid);
-	public List<Task> getTasks(String login,String wsdl);
+	public List<Task> getTasks(String login,String wsdl,int limit);
 	public List<Task> getAllTasks(String wsdl);
 }

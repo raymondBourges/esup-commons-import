@@ -72,9 +72,11 @@ public class DomainServiceImpl implements DomainService, InitializingBean {
 		return user;
 	}
 
-	public List<Task> getTasks(String login,String wsdl){
+	public List<Task> getTasks(String login,String wsdl,int limit){
 		org.esupportail.formation.domain.DomainService ds = getWs(wsdl);
-		return ds.get10LastTasksForUserString(login);	
+		org.esupportail.formation.domain.User u=new org.esupportail.formation.domain.User();
+		u.setLogin(login);
+		return ds.   getLastTasksForUser(u,limit);	
 	}
 	public List<Task> getAllTasks(String wsdl){
 		org.esupportail.formation.domain.DomainService ds = getWs(wsdl);
