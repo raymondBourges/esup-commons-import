@@ -24,7 +24,8 @@ public class WebController extends AbastractExceptionController {
     private static final String DEFAULT_USERNAME = "JavaWorld";
     
     private static final String PREF_WSDL = "wsdlLocation";
-	
+    private static final String PREF_LIMIT = "nbLimit";
+    
     @Autowired
 	private Authenticator authenticator;
     
@@ -47,9 +48,11 @@ public class WebController extends AbastractExceptionController {
     	model.put("userFromEC2", userFromEC2);
 
     	String wsdl = prefs.getValue(PREF_WSDL,null);
+    	String limit = prefs.getValue(PREF_WSDL,null);
     	System.out.println("Tâche de "+remoteUser);
-    	List<Task> list= domainService.getTasks(remoteUser, wsdl);
+    	List<Task> list= domainService.getTasks(remoteUser, wsdl,Integer.parseInt(limit));
     	model.put("taskList", list);
+    	
     	for (Task task : list) {
     		System.out.println(task.getId()+" : "+task.getDescription());
 		}
