@@ -6,19 +6,17 @@ import java.util.List;
 import junit.framework.Assert;
 
 import org.esupportail.formation.domain.beans.Task;
-import org.junit.Before;
 import org.junit.Test;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations="classpath*:META-INF/testApplicationContext.xml")
 public class DomainServiceTest {
+	@Autowired
 	DomainService domainService;
-	@Before
-    public void setUp() throws Exception {
-		String[] springFiles = { "classpath*:META-INF/testApplicationContext.xml" };
-	    ApplicationContext applicationContext = new ClassPathXmlApplicationContext(springFiles);
-	    domainService = (DomainService) applicationContext.getBean("domainService");
-    }
+	
 	@Test
 	public void testAddTask() {
 		Task t=new Task(true, "Test de tache", "Tache de test", new Date());
