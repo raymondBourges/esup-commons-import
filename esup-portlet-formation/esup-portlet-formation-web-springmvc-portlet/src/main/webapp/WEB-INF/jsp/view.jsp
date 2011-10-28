@@ -14,7 +14,7 @@
 
   <ul>
 	  <c:forEach var="task" items="${taskList}" >
-		<li>${task.id} - ${task.title} : ${task.description} (<a href="${urlTask}${task.id}">Détail</a></a>)</li>
+		<li>${task.id} - ${task.title} : ${task.description} (<a href="${urlTask}${task.id}">Détail</a>)</li>
 	  </c:forEach>
   </ul>
   </div>

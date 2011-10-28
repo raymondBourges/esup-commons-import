@@ -59,12 +59,12 @@ public class WebController extends AbastractExceptionController {
     	// Affichage dans les logs
     	System.out.println("Tâche de "+remoteUser);
     	for (Task task : list) {
-    		System.out.println(task.getId()+" : "+task.getDescription());
+    		System.out.println(task.getId()+" : "+task.getTitle());
 		}
     	System.out.println("Toutes les tâches");
     	List<Task> list2= domainService.getAllTasks(wsdl);
     	for (Task task : list2) {
-    		System.out.println(task.getId()+" : "+task.getDescription());
+    		System.out.println(task.getId()+" : "+task.getTitle());
 		}
     	
         return new ModelAndView("view", model);
