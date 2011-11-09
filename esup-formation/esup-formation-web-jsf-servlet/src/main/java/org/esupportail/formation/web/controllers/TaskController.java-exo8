@@ -5,12 +5,16 @@ import java.util.List;
 
 import org.esupportail.formation.domain.beans.Task;
 
+import org.esupportail.commons.services.logging.Logger;
+import org.esupportail.commons.services.logging.LoggerImpl;
+
 public class TaskController extends AbstractContextAwareController {
 
 	/**
 	 * VersionId
 	 */
 	private static final long serialVersionUID = -872218604638760392L;
+	private final Logger logger = new LoggerImpl(getClass());
 	
 	public String getTestDao(){
 		Task task=new Task();
@@ -21,7 +25,8 @@ public class TaskController extends AbstractContextAwareController {
 		
 		List<Task> liste=getDomainService().getTasks();
 		for (Task t : liste) {
-			System.out.println(t.getId()+" : "+t.getTitle());
+			if (logger.isDebugEnabled()) 
+  				logger.debug(t.getId()+" : "+t.getTitle());
 		}
 		
 		return "OK";

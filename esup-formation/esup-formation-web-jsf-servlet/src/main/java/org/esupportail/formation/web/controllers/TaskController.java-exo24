@@ -19,12 +19,16 @@ import org.esupportail.formation.utils.TaskTitleComparator;
 
 import org.esupportail.formation.web.exceptions.TaskException;
 
+import org.esupportail.commons.services.logging.Logger;
+import org.esupportail.commons.services.logging.LoggerImpl;
+
 public class TaskController extends AbstractContextAwareController {
 
 	/**
 	 * VersionId
 	 */
 	private static final long serialVersionUID = -872218604638760392L;
+	private final Logger logger = new LoggerImpl(getClass());
 	private List<Task> sortedTasks=null;
 	private Task currentTask=null;
 	private Task taskToEditOrDelete=null;
@@ -147,7 +151,8 @@ public class TaskController extends AbstractContextAwareController {
 		super.reset();
 		currentTask = new Task();
 		taskToEditOrDelete = new Task();
-		System.out.println("Reset task controller");
+		if (logger.isDebugEnabled())
+			logger.debug("Reset task controller");
 	}
 	
 }

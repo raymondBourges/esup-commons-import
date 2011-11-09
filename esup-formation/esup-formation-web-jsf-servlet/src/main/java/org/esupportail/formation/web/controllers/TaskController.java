@@ -16,6 +16,8 @@ import javax.faces.validator.ValidatorException;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 
+import org.esupportail.commons.services.logging.Logger;
+import org.esupportail.commons.services.logging.LoggerImpl;
 import org.esupportail.commons.services.smtp.SmtpService;
 import org.esupportail.commons.services.urlGeneration.UrlGenerator;
 import org.esupportail.formation.domain.beans.Task;
@@ -23,7 +25,6 @@ import org.esupportail.formation.domain.beans.User;
 import org.esupportail.formation.services.auth.Authenticator;
 import org.esupportail.formation.utils.TaskDateComparator;
 import org.esupportail.formation.utils.TaskTitleComparator;
-
 import org.esupportail.formation.web.exceptions.TaskException;
 
 public class TaskController extends AbstractContextAwareController {
@@ -32,6 +33,8 @@ public class TaskController extends AbstractContextAwareController {
 	 * VersionId
 	 */
 	private static final long serialVersionUID = -872218604638760392L;
+	private final Logger logger = new LoggerImpl(getClass());
+	
 	private List<Task> sortedTasks=null;
 	private Task currentTask=null;
 	private Task taskToEditOrDelete=null;
@@ -118,7 +121,8 @@ public class TaskController extends AbstractContextAwareController {
 	}
 	
 	public void addTask() {
-		System.out.println("ADD"+currentTask.getId());
+		if (logger.isDebugEnabled())
+			logger.debug("ADD"+currentTask.getId());
 		getDomainService().addTask(currentTask);
 		try {
 			smtpService.send(new InternetAddress("celine.didier@uhp-nancy.fr"),
@@ -248,7 +252,8 @@ public class TaskController extends AbstractContextAwareController {
 		super.reset();
 		currentTask = new Task();
 		taskToEditOrDelete = new Task();
-		System.out.println("Reset task controller");
+		if (logger.isDebugEnabled())
+			logger.debug("Reset task controller");
 	}
 
 	public SmtpService getSmtpService() {

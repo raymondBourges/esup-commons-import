@@ -10,12 +10,16 @@ import org.esupportail.formation.domain.beans.User;
 import org.esupportail.formation.utils.TaskDateComparator;
 import org.esupportail.formation.utils.TaskTitleComparator;
 
+import org.esupportail.commons.services.logging.Logger;
+import org.esupportail.commons.services.logging.LoggerImpl;
+
 public class TaskController extends AbstractContextAwareController {
 
 	/**
 	 * VersionId
 	 */
 	private static final long serialVersionUID = -872218604638760392L;
+	private final Logger logger = new LoggerImpl(getClass());
 	private List<Task> sortedTasks=null;
 	private Task currentTask=null;
 	
@@ -67,12 +71,12 @@ public class TaskController extends AbstractContextAwareController {
 	}
 
 	private void afficheTaches(List<Task> liste, String info) {
-		System.out.println("== Liste des tâches en base "+info+" == ");
+		logger.debug("== Liste des tâches en base "+info+" == ");
 		for (Task t : liste) {
 			if (t.getOwner()!=null)
-				System.out.println(t.getId()+" : "+t.getTitle()+" ( "+t.getOwner().getLogin()+" ) ");
+				logger.debug(t.getId()+" : "+t.getTitle()+" ( "+t.getOwner().getLogin()+" ) ");
 			else
-				System.out.println(t.getId()+" : "+t.getTitle());
+				logger.debug(t.getId()+" : "+t.getTitle());
 		}
 	}
 	
