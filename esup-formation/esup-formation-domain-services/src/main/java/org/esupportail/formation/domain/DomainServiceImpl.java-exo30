@@ -179,12 +179,14 @@ public class DomainServiceImpl implements DomainService, InitializingBean {
 	}
 
 	private void afficheTaches(List<Task> liste, String info) {
-		System.out.println("== Liste des tâches en base "+info+" == ");
-		for (Task t : liste) {
-			if (t.getOwner()!=null)
-				System.out.println(t.getId()+" : "+t.getTitle()+" ( "+t.getOwner().getLogin()+" ) ");
-			else
-				System.out.println(t.getId()+" : "+t.getTitle());
+		if (logger.isDebugEnabled()){
+			logger.debug("== Liste des tâches en base "+info+" == ");
+			for (Task t : liste) {
+				if (t.getOwner()!=null)
+					logger.debug(t.getId()+" : "+t.getTitle()+" ( "+t.getOwner().getLogin()+" ) ");
+				else
+					logger.debug(t.getId()+" : "+t.getTitle());
+			}
 		}
 	}
 	private void supprimeTout() {
