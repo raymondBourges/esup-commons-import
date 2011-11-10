@@ -6,6 +6,8 @@ import javax.portlet.PortletPreferences;
 import javax.portlet.RenderRequest;
 import javax.portlet.RenderResponse;
 
+import org.esupportail.commons.services.logging.Logger;
+import org.esupportail.commons.services.logging.LoggerImpl;
 import org.esupportail.formation.domain.Task;
 import org.esupportail.formation.portlet.domain.DomainService;
 import org.esupportail.formation.portlet.domain.beans.User;
@@ -18,6 +20,8 @@ import org.springframework.web.portlet.ModelAndView;
 
 @Controller
 public class WebController extends AbastractExceptionController {
+	
+	private final Logger logger = new LoggerImpl(this.getClass());
 
 	private static final String PREF_USERNAME = "usernamepref";
 	
@@ -57,16 +61,17 @@ public class WebController extends AbastractExceptionController {
     	model.put("urlTask", urlTask);
     	
     	// Affichage dans les logs
-    	System.out.println("Tâche de "+remoteUser);
-    	for (Task task : list) {
-    		System.out.println(task.getId()+" : "+task.getTitle());
-		}
-    	System.out.println("Toutes les tâches");
-    	List<Task> list2= domainService.getAllTasks(wsdl);
-    	for (Task task : list2) {
-    		System.out.println(task.getId()+" : "+task.getTitle());
-		}
-    	
+    	if (logger.isDebugEnabled()){
+			logger.debug("Tâche de "+remoteUser);
+	    	for (Task task : list) {
+	    		logger.debug(task.getId()+" : "+task.getTitle());
+			}
+	    	logger.debug("Toutes les tâches");
+	    	List<Task> list2= domainService.getAllTasks(wsdl);
+	    	for (Task task : list2) {
+	    		logger.debug(task.getId()+" : "+task.getTitle());
+			}
+    	}
         return new ModelAndView("view", model);
     }
 
