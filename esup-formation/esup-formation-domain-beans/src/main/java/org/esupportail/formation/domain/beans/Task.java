@@ -14,8 +14,6 @@ import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import org.esupportail.commons.web.controllers.Resettable;
-
 @Entity
 @NamedQueries({
 	@NamedQuery(
@@ -31,7 +29,7 @@ import org.esupportail.commons.web.controllers.Resettable;
     	    query="SELECT t FROM Task t WHERE t.owner.login = :userLogin ORDER BY t.date"
     ) 
 })
-public class Task implements Serializable, Resettable{
+public class Task implements Serializable{
 
 	/**
 	 * The serialization id.
@@ -113,14 +111,7 @@ public class Task implements Serializable, Resettable{
 	public void setOwner(User owner) {
 		this.owner = owner;
 	}
-	public void reset() {
-		this.title=null;
-		this.description=null;
-		this.date=null;
-		this.publicTask=false;
-		this.owner = null;
-		this.id=0;
-	}
+	
 	/* ***** Constructors ************ */
 	public Task(long id, boolean publicTask, String title, String description,Date date,User owner) {
 		super();

@@ -12,7 +12,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
-import org.esupportail.commons.web.controllers.Resettable;
 
 @Entity
 @NamedQueries({
@@ -29,7 +28,7 @@ import org.esupportail.commons.web.controllers.Resettable;
     	    query="SELECT t FROM Task t WHERE t.owner.login = :userLogin"
     )   
 })
-public class Task implements Serializable, Resettable{
+public class Task implements Serializable{
 
 	/**
 	 * The serialization id.
@@ -108,14 +107,7 @@ public class Task implements Serializable, Resettable{
 	public void setOwner(User owner) {
 		this.owner = owner;
 	}
-	public void reset() {
-		this.title=null;
-		this.description=null;
-		this.date=null;
-		this.publicTask=false;
-		this.owner = null;
-		this.id=0;
-	}
+	
 	/* ***** Constructors ************ */
 	public Task(long id, boolean publicTask, String title, String description,Date date,User owner) {
 		super();
