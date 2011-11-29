@@ -54,15 +54,8 @@ public class DomainServiceImpl implements DomainService, InitializingBean {
 
 	@Override
 	public User getUser(String uid) {
-		User user = null;
-		for (User userInList : getDaoService().getUsers()) {
-			if (userInList.getLogin().equals(uid)) {
-				user = userInList;
-				break;
-			}
-		}
-		
-		return user;
+			
+		return daoService.getUser(uid);
 	}
 	
 	public void addUser(User user){
