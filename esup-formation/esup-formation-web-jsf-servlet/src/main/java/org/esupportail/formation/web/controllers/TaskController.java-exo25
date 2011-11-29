@@ -132,7 +132,7 @@ public class TaskController extends AbstractContextAwareController {
 	}
 	
 	public void deleteTask() {
-		getDomainService().deleteTask(currentTask);
+		getDomainService().deleteTask(taskToEditOrDelete);
 		taskToEditOrDelete=new Task();
 		sortedTasks = getDomainService().getTasks();
 	}
