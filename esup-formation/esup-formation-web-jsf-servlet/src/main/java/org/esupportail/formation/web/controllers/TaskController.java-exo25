@@ -35,6 +35,7 @@ public class TaskController extends AbstractContextAwareController {
 	private List<Task> sortedTasks=null;
 	private Task currentTask=null;
 	private Task taskToEditOrDelete=null;
+	private SmtpService smtpService = null;
 	
 	@Override
 	public void afterPropertiesSetInternal() {
