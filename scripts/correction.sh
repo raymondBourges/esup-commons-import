@@ -52,19 +52,15 @@ if [ $1 == "raz" ]; then
     fi
     cp -f $i $old
   done
-
-  # on regénère le projet eclipse
-  echo " > Regénération du projet eclipse"
-  cd "$PROJECTDIR/$P1"
-  mvn eclipse:clean eclipse:eclipse >> /dev/null
-  cd $OLDPWD
-  cd "$PROJECTDIR/$P2"
-  mvn eclipse:clean eclipse:eclipse >> /dev/null
-  cd $OLDPWD
 else
   for i in `find "$CORRECTIONDIR" -type f -name "*-$EXO"`; do
-    correction=${i/-$EXO*/}
-    correction=${correction/-esup-formation*/}
+    dircorrection=`dirname $i`
+    correction=`basename $i`
+    c_name=${correction/.*-*/}
+    c_ext=${correction/$c_name/}
+    c_ext=${c_ext/-*/}
+    correction="$c_name$c_ext"
+    correction="$dircorrection/$correction"
     old=${correction//$CORRECTIONDIR/$PROJECTDIR}
     dirold="`dirname $old`"
     echo "Copie de \"$i\" vers \"$old\""
@@ -73,14 +69,5 @@ else
     fi
     cp -f $i $old
   done
-
-  # on regénère le projet eclipse
-  echo " > Regénération du projet eclipse"
-  cd "$PROJECTDIR/$P1"
-  mvn eclipse:clean eclipse:eclipse >> /dev/null
-  cd $OLDPWD
-  cd "$PROJECTDIR/$P2"
-  mvn eclipse:clean eclipse:eclipse >> /dev/null
-  cd $OLDPWD
 fi
 
