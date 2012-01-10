@@ -17,6 +17,7 @@ import org.esupportail.commons.services.logging.LoggerImpl;
 import org.esupportail.commons.utils.Assert;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.ldap.LdapTemplate;
+import org.springframework.ldap.support.filter.OrFilter;
 import org.springframework.ldap.support.filter.WhitespaceWildcardsFilter;
 import org.springframework.util.StringUtils;
 
@@ -120,10 +121,10 @@ public class SearchableLdapUserServiceImpl implements LdapUserService, Initializ
 	 */
 	@Override
 	public List<LdapUser> getLdapUsersFromToken(final String token) throws LdapException {
-		//OrFilter filter = new OrFilter();
-		//filter.or(new WhitespaceWildcardsFilter(searchAttribute, token));
-		//filter.or(new WhitespaceWildcardsFilter(service.getIdAttribute(), token));
-		WhitespaceWildcardsFilter filter = new WhitespaceWildcardsFilter(searchAttribute, token);
+		OrFilter filter = new OrFilter();
+		filter.or(new WhitespaceWildcardsFilter(searchAttribute, token));
+		filter.or(new WhitespaceWildcardsFilter(service.getIdAttribute(), token));
+		//WhitespaceWildcardsFilter filter = new WhitespaceWildcardsFilter(searchAttribute, token);
 		return getLdapUsersFromFilter(filter.encode());
 	}
 
