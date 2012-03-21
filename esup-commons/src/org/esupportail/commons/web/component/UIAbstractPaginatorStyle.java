@@ -269,7 +269,6 @@ public abstract class UIAbstractPaginatorStyle extends UIComponentBase {
 	 * @return Div
 	 */
 	protected Div makeDivPages(
-			@SuppressWarnings("unused")
 			final Application a) {
 		return null;
 	}

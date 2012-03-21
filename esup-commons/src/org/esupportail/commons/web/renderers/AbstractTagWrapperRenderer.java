@@ -45,7 +45,7 @@ public abstract class AbstractTagWrapperRenderer extends AbstractHtmlFormatRende
 	@Override
 	public void internalEncodeEnd(
 			final FacesContext facesContext, 
-			@SuppressWarnings("unused") final UIComponent component)
+		    final UIComponent component)
 	throws IOException {
 		ResponseWriter writer = facesContext.getResponseWriter();
 		writer.endElement(getTag());

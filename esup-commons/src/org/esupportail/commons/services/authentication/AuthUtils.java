@@ -33,6 +33,11 @@ public abstract class AuthUtils {
 	 * Type for Shibboleth authentication.
 	 */
 	public static final String SHIBBOLETH = "shibboleth";
+	
+	   /**
+     * Type for Liferat authentication.
+     */
+    public static final String LIFERAY = "liferay";
 
 	/**
 	 * Type for specific authentication.

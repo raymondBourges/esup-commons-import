@@ -94,11 +94,16 @@ public class UportalDefaultViewSelector implements DefaultViewSelector {
 	 */
 	private Map<String, String> getParams(
 			final RenderRequest renderRequest) {
-		ServletRequest servletRequest = getOriginalServletRequest(renderRequest);
-		if (servletRequest == null) {
-			return null;
-		}
-		String arg = servletRequest.getParameter(UportalUrlGeneratorImpl.ARGS_PARAM);
+	    
+	    String arg = renderRequest.getParameter(UportalUrlGeneratorImpl.ARGS_PARAM);
+	    if (arg == null) {
+    		ServletRequest servletRequest = getOriginalServletRequest(renderRequest);
+    		
+    		if (servletRequest == null) {
+    			return null;
+    		}
+    		arg = servletRequest.getParameter(UportalUrlGeneratorImpl.ARGS_PARAM);
+	    }
 		if (logger.isDebugEnabled()) {
 			logger.debug("getParams(): arg=[" + arg + "]");
 		}
@@ -116,7 +121,6 @@ public class UportalDefaultViewSelector implements DefaultViewSelector {
 	@Override
 	public String selectViewId(
 			final RenderRequest renderRequest, 
-			@SuppressWarnings("unused")
 			final RenderResponse renderResponse) {
 		return getRedirector().redirect(getParams(renderRequest));
 	}

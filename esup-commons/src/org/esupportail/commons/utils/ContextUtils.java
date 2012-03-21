@@ -109,6 +109,10 @@ public class ContextUtils {
 			return getHttpServletRequestFromMultipartPortletRequestWrapper(
 					(MultipartPortletRequestWrapper) portletRequest);
 		}
+		Object liferayRequest = portletRequest.getAttribute("com.liferay.portal.kernel.servlet.PortletServletRequest");
+		if (liferayRequest != null && liferayRequest instanceof HttpServletRequest) {
+		    return (HttpServletRequest) liferayRequest;
+		}
 		if (LOG.isDebugEnabled()) {
 			LOG.debug("portletRequest ('" + portletRequest.getClass().getName() 
 					+ "') is nor a ServletRequestWrapper neither a MultipartPortletRequestWrapper");

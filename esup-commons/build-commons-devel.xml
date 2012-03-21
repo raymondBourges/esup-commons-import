@@ -52,8 +52,6 @@
 
 	<import file="${basedir}/build.xml"/>
 
-	<!-- copying esup-commons.tld locally to get the tag completion -->
-	<copy file="${commons.webapp.dir}/WEB-INF/esup-commons.tld" todir="${webapp.dir}/WEB-INF" />
 
 	<target name="_commons-clean" >
 		<ant dir="${commons.basedir}" target="_clean" />
@@ -61,7 +59,7 @@
 	    <delete dir="${tmp.dir}"/>
 	</target>
 
-	<target name="_commons-print-application-properties" depends="check-log4j-batch-config,compile-batch" description="update the version number">
+	<target name="_commons-print-application-properties" depends="compile-batch" description="update the version number">
 		<java fork="true" dir="${build.dir}" classname="org.esupportail.commons.batch.PrintApplicationProperties">
 			<classpath refid="batch.classpath" />
 			<sysproperty key="log4j.configuration" value="file:${log4j.batch-config}" />
@@ -87,6 +85,8 @@
 	<target name="_commons-compile" />
 
 	<target name="_commons-deploy" />
+	
+	<target name="_liferay-commons-deploy" />
 
 	<target name="_commons-javadoc" depends="compile" >
 		<if>

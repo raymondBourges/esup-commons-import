@@ -1,7 +1,7 @@
 var debug = false;
 
 /**
-* Simule a click for a link.
+* Simulate a click for a link.
 */
 function simulateLinkClick(linkId) {
 	var fireOnThis = document.getElementById(linkId)
@@ -20,6 +20,12 @@ function simulateLinkClick(linkId) {
 		// IE 7
 		fireOnThis.click();
 	}
+}
+/**
+* Simulate a click for a link.
+*/
+function jqSimulateLinkClick(elementClicked,buttonToClickClass) {
+	jQuery(elementClicked.parentElement).find('.'+buttonToClickClass).click();
 }
 
 /** 

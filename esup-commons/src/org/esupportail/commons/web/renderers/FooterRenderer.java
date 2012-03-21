@@ -76,7 +76,7 @@ public class FooterRenderer extends AbstractHtmlFormatRenderer {
 	@Override
 	protected void internalEncodeEnd(
 			final FacesContext facesContext, 
-			@SuppressWarnings("unused") final UIComponent uiComponent) 
+			final UIComponent uiComponent) 
 	throws IOException {
 		encodeFooterEnd(facesContext);
 	}

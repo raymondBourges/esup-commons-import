@@ -11,7 +11,7 @@ import javax.faces.context.ResponseWriter;
 
 import org.apache.myfaces.renderkit.html.ext.HtmlButtonRenderer;
 import org.apache.myfaces.shared_impl.renderkit.html.HTML;
-import org.esupportail.commons.web.tags.PageTag;
+import org.esupportail.commons.utils.ContextUtils;
 import org.esupportail.commons.web.tags.config.TagsConfigurator;
 
 /**
@@ -22,6 +22,8 @@ public class MenuItemRenderer extends HtmlButtonRenderer {
 	 * The renderer type.
 	 */
 	public static final String RENDERER_TYPE = "org.esupportail.MenuItemRenderer";
+	
+    public static final String CURRENT_MENU_ITEM_ATTRIBUTE = MenuItemRenderer.class.getName() + ".menuItem";
 
 	/**
 	 * Constructor.
@@ -46,7 +48,7 @@ public class MenuItemRenderer extends HtmlButtonRenderer {
 			return false;
 		}
 		String shortId = idTokens[idTokens.length - 1];
-		return shortId.equals(PageTag.getCurrentMenuItem());
+		return shortId.equals((String) ContextUtils.getRequestAttribute(CURRENT_MENU_ITEM_ATTRIBUTE));
 	}
 	
 	/**

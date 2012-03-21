@@ -35,7 +35,6 @@ public class VoidDeepLinkingRedirectorImpl extends AbstractDeepLinkingRedirector
 	 */
 	@Override
 	public String redirect(
-			@SuppressWarnings("unused")
 			final Map<String, String> params) {
 		return null;
 	}

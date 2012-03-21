@@ -1,0 +1,228 @@
+<?xml version="1.0"?>
+<!DOCTYPE facelet-taglib PUBLIC
+  "-//Sun Microsystems, Inc.//DTD Facelet Taglib 1.0//EN"
+  "http://java.sun.com/dtd/facelet-taglib_1_0.dtd">
+
+<facelet-taglib>
+    <namespace>http://commons.esup-portail.org</namespace>
+
+<!-- 
+	/webapp/WEB-INF/esup-commons.taglib.xml
+	The facelets taglib of the ESUP-Portail customized tags.
+-->
+	<tag>
+		<tag-name>message</tag-name>
+		<component>
+            		<component-type>javax.faces.HtmlMessage</component-type>
+            		<renderer-type>javax.faces.Message</renderer-type>
+	        </component>
+    	</tag>
+	<!-- messages -->
+	<tag>
+		<tag-name>messages</tag-name>
+		<source>components/messages.jsp</source>
+    </tag>
+	<!-- page -->
+	<tag>
+		<tag-name>page</tag-name>
+		<handler-class>org.esupportail.commons.jsf.PageTagHandler</handler-class>
+	</tag>
+	<!-- outputLabel -->
+	<tag>
+		<tag-name>outputLabel</tag-name>
+		<component>
+            		<component-type>javax.faces.HtmlOutputLabel</component-type>
+            		<renderer-type>javax.faces.Label</renderer-type>
+	        </component>
+	</tag>
+	<!-- commandButton -->
+	<tag>
+		<tag-name>commandButton</tag-name>
+		<component>
+            		<component-type>javax.faces.HtmlCommandButton</component-type>
+            		<renderer-type>org.esupportail.CommandButtonRenderer</renderer-type>
+	        </component>
+	</tag>
+	<tag>
+		<tag-name>inputText</tag-name>
+		<component>
+            		<component-type>javax.faces.HtmlInputText</component-type>
+            		<renderer-type>javax.faces.Text</renderer-type>
+	        </component>
+	</tag>
+	<tag>
+		<tag-name>inputSecret</tag-name>
+		<component>
+            		<component-type>javax.faces.HtmlInputSecret</component-type>
+            		<renderer-type>javax.faces.Secret</renderer-type>
+	        </component>
+	</tag>
+	<tag>
+		<tag-name>inputFileUpload</tag-name>
+		<component>
+            		<component-type>org.apache.myfaces.HtmlInputFileUpload</component-type>
+            		<renderer-type>org.apache.myfaces.FileUpload</renderer-type>
+	        </component>
+	</tag>
+	<tag>
+		<tag-name>inputTextarea</tag-name>
+		<component>
+            		<component-type>org.apache.myfaces.HtmlInputTextarea</component-type>
+            		<renderer-type>org.apache.myfaces.Textarea</renderer-type>
+	        </component>
+	</tag>
+	<!-- selectOneMenu -->
+	<tag>
+		<tag-name>selectOneMenu</tag-name>
+		<component>
+            		<component-type>javax.faces.HtmlSelectOneMenu</component-type>
+            		<renderer-type>javax.faces.Menu</renderer-type>
+	        </component>
+	</tag>
+	<!-- selectBooleanCheckbox -->
+	<tag>
+		<tag-name>selectBooleanCheckbox</tag-name>
+		<component>
+            		<component-type>javax.faces.HtmlSelectBooleanCheckbox</component-type>
+            		<renderer-type>javax.faces.Checkbox</renderer-type>
+	        </component>
+	</tag>
+
+	<!-- dataTable -->
+	<tag>
+		<tag-name>dataTable</tag-name>
+		<component>
+            		<component-type>org.apache.myfaces.HtmlDataTable</component-type>
+            		<renderer-type>org.apache.myfaces.Table</renderer-type>
+	        </component>
+	</tag>
+
+	<!-- section -->
+	<tag>
+		<tag-name>section</tag-name>
+		<component>
+            		<component-type>javax.faces.HtmlOutputFormat</component-type>
+            		<renderer-type>org.esupportail.SectionRenderer</renderer-type>
+	        </component>
+	</tag>
+	<!-- subSection -->
+	<tag>
+		<tag-name>subSection</tag-name>
+		<component>
+            		<component-type>javax.faces.HtmlOutputFormat</component-type>
+            		<renderer-type>org.esupportail.SubSectionRenderer</renderer-type>
+	        </component>
+	</tag>
+	<!-- paragraph -->
+	<tag>
+		<tag-name>paragraph</tag-name>
+		<component>
+            		<component-type>javax.faces.HtmlOutputFormat</component-type>
+            		<renderer-type>org.esupportail.ParagraphRenderer</renderer-type>
+	        </component>
+	</tag>
+	<!-- bold -->
+	<tag>
+		<tag-name>bold</tag-name>
+		<source>components/bold.jsp</source>
+	</tag>
+	<!-- italic -->
+	<tag>
+		<tag-name>italic</tag-name>
+		<source>components/italic.jsp</source>
+	</tag>
+	<!-- ul -->
+	<tag>
+		<tag-name>ul</tag-name>
+		<source>components/ul.jsp</source>
+	</tag>
+	<!-- li -->
+	<tag>
+		<tag-name>li</tag-name>
+		<component>
+            		<component-type>javax.faces.HtmlOutputFormat</component-type>
+            		<renderer-type>org.esupportail.LiRenderer</renderer-type>
+	        </component>
+	</tag>
+	<!-- text -->
+	<tag>
+		<tag-name>text</tag-name>
+		<component>
+            		<component-type>javax.faces.HtmlOutputFormat</component-type>
+            		<renderer-type>org.esupportail.TextRenderer</renderer-type>
+	        </component>
+	</tag>
+	<!-- selectManyCheckbox -->
+	<tag>
+		<tag-name>selectManyCheckbox</tag-name>
+		<component>
+            		<component-type>org.apache.myfaces.HtmlSelectManyCheckbox</component-type>
+            		<renderer-type>org.apache.myfaces.Checkbox</renderer-type>
+	        </component>
+	</tag>
+	<!-- panelNavigation2 -->
+	<tag>
+		<tag-name>panelNavigation</tag-name>
+		<component>
+            		<component-type>org.apache.myfaces.HtmlPanelNavigationMenu</component-type>
+            		<renderer-type>org.apache.myfaces.NavigationMenu</renderer-type>
+	        </component>
+	</tag>
+	<!-- footer -->
+	<tag>
+		<tag-name>footer</tag-name>
+		<component>
+            		<component-type>javax.faces.HtmlOutputFormat</component-type>
+            		<renderer-type>org.esupportail.FooterRenderer</renderer-type>
+	        </component>
+	</tag>
+	<!-- panelGrid -->
+	<tag>
+		<tag-name>panelGrid</tag-name>
+		<component>
+            		<component-type>org.apache.myfaces.HtmlPanelGrid</component-type>
+            		<renderer-type>org.apache.myfaces.Grid</renderer-type>
+	        </component>
+	</tag>
+	<!-- emptyMenu -->
+	<tag>
+		<tag-name>emptyMenu</tag-name>
+		<component>
+            		<component-type>javax.faces.HtmlOutputFormat</component-type>
+            		<renderer-type>org.esupportail.FooterRenderer</renderer-type>
+	        </component>
+	</tag>
+	<tag>
+		<tag-name>menu</tag-name>
+ 		<source>components/menu.jsp</source>
+	</tag>
+	<tag>
+		<tag-name>menuItem</tag-name>
+ 		<component>
+            		<component-type>javax.faces.HtmlCommandButton</component-type>
+            		<renderer-type>org.esupportail.MenuItemRenderer</renderer-type>
+	        </component>
+	</tag>
+	<!-- selectOneRadio -->
+	<tag>
+		<tag-name>selectOneRadio</tag-name>
+ 		<component>
+            		<component-type>javax.faces.HtmlSelectOneRadio</component-type>
+            		<renderer-type>javax.faces.Radio</renderer-type>
+	        </component>
+	</tag>
+	<tag>
+		<tag-name>paginator</tag-name>
+ 		<component>
+            		<component-type>org.esupportail.commons.component.paginator</component-type>
+	        </component>
+	</tag>
+   <!-- form -->
+   <tag>
+      	<tag-name>form</tag-name>
+ 		<component>
+            		<component-type>org.esupportail.commons.component.form</component-type>
+            		<renderer-type>javax.faces.Form</renderer-type>
+	        </component>
+   </tag>
+</facelet-taglib>

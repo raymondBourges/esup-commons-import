@@ -78,7 +78,6 @@ public class TransientTreeStateBase extends TreeStateBase {
 	 */
 	@Override
 	public void setTransient(
-			@SuppressWarnings("unused")
 			final boolean trans) {
 		// must always be transient
 	}

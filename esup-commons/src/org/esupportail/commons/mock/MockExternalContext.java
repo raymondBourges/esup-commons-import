@@ -85,7 +85,7 @@ public class MockExternalContext extends ExternalContext {
 	 */
 	@Override
 	public Object getSession(
-			@SuppressWarnings("unused") final boolean create) {
+			final boolean create) {
 		throw new UnsupportedOperationException();
 	}
 
@@ -109,7 +109,7 @@ public class MockExternalContext extends ExternalContext {
 	 * @param request
 	 */
 	public void setRequest(
-			@SuppressWarnings("unused") final Object request) {
+			final Object request) {
 		throw new UnsupportedOperationException();
 	}
 
@@ -125,7 +125,6 @@ public class MockExternalContext extends ExternalContext {
 	 * @param response
 	 */
 	public void setResponse(
-			@SuppressWarnings("unused") 
 			final Object response) {
 		throw new UnsupportedOperationException();
 	}
@@ -134,7 +133,6 @@ public class MockExternalContext extends ExternalContext {
 	 * @param encoding
 	 */
 	public void setResponseCharacterEncoding(
-			@SuppressWarnings("unused") 
 			final String encoding) {
 		throw new UnsupportedOperationException();
 	}
@@ -210,7 +208,7 @@ public class MockExternalContext extends ExternalContext {
 	/**
 	 * @param encoding
 	 */
-	public void setRequestCharacterEncoding(@SuppressWarnings("unused") final String encoding) {
+	public void setRequestCharacterEncoding(final String encoding) {
 		throw new UnsupportedOperationException();
 	}
 
@@ -357,7 +355,6 @@ public class MockExternalContext extends ExternalContext {
 	@Override
 	@SuppressWarnings("rawtypes")
 	public Set getResourcePaths(
-			@SuppressWarnings("unused")
 			final String path) {
 		throw new UnsupportedOperationException();
 	}
@@ -365,7 +362,6 @@ public class MockExternalContext extends ExternalContext {
 	/**
 	 * @see javax.faces.context.ExternalContext#getResource(java.lang.String)
 	 */
-	@SuppressWarnings("unused")
 	@Override
 	public URL getResource(final String path) throws MalformedURLException {
 		throw new UnsupportedOperationException();
@@ -376,7 +372,6 @@ public class MockExternalContext extends ExternalContext {
 	 */
 	@Override
 	public InputStream getResourceAsStream(
-			@SuppressWarnings("unused")
 			final String path) {
 		throw new UnsupportedOperationException();
 	}
@@ -386,7 +381,6 @@ public class MockExternalContext extends ExternalContext {
 	 */
 	@Override
 	public String encodeActionURL(
-			@SuppressWarnings("unused")
 			final String sb) {
 		throw new UnsupportedOperationException();
 	}
@@ -396,7 +390,6 @@ public class MockExternalContext extends ExternalContext {
 	 */
 	@Override
 	public String encodeResourceURL(
-			@SuppressWarnings("unused")
 			final String sb) {
 		throw new UnsupportedOperationException();
 	}
@@ -406,7 +399,6 @@ public class MockExternalContext extends ExternalContext {
 	 */
 	@Override
 	public String encodeNamespace(
-			@SuppressWarnings("unused")
 			final String aValue) {
 		throw new UnsupportedOperationException();
 	}
@@ -416,7 +408,6 @@ public class MockExternalContext extends ExternalContext {
 	 */
 	@Override
 	public void dispatch(
-			@SuppressWarnings("unused")
 			final String requestURI) throws FacesException {
 		throw new UnsupportedOperationException();
 	}
@@ -426,7 +417,6 @@ public class MockExternalContext extends ExternalContext {
 	 */
 	@Override
 	public void redirect(
-			@SuppressWarnings("unused")
 			final String requestURI) {
 		throw new UnsupportedOperationException();
 	}

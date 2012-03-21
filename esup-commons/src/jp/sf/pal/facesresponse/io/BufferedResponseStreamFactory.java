@@ -36,7 +36,7 @@ import jp.sf.pal.facesresponse.util.FacesResponseUtil;
 public class BufferedResponseStreamFactory {
     public static void init(RenderRequest request, RenderResponse response) {
         String outputEncoding = response.getCharacterEncoding();
-//        if (FacesResponseUtil.isMyFacesFacesContext(request)) {
+        if (FacesResponseUtil.isMyFacesFacesContext(request)) {
             // for MyFaces
             // MyFaces needs this workaround code because of the implementation
             // issue..
@@ -64,15 +64,15 @@ public class BufferedResponseStreamFactory {
                         FacesResponseConstants.BUFFERED_RESPONSE_STREAM,
                         bufferedResponseStream);
             }
-//        } else {
-//            // for JSF implementation whice does not pass FacesContext from
-//            // processAction to render
-//            BufferedResponseStream bufferedResponseStream = new BufferedResponseStream(
-//                    outputEncoding);
-//            request.setAttribute(
-//                    FacesResponseConstants.BUFFERED_RESPONSE_STREAM,
-//                    bufferedResponseStream);
-//        }
+        } else {
+            // for JSF implementation whice does not pass FacesContext from
+            // processAction to render
+            BufferedResponseStream bufferedResponseStream = new BufferedResponseStream(
+                    outputEncoding);
+            request.setAttribute(
+                    FacesResponseConstants.BUFFERED_RESPONSE_STREAM,
+                    bufferedResponseStream);
+        }
     }
 
     public static BufferedResponseStream getBufferedResponseStream() {
@@ -81,52 +81,45 @@ public class BufferedResponseStreamFactory {
             throw new IllegalStateException("FacesContext is null.");
         }
 
-        BufferedResponseStream s = null;
-//        if (FacesResponseUtil.isMyFacesFacesContext()) {
+        if (FacesResponseUtil.isMyFacesFacesContext()) {
             // for MyFaces
             // MyFaces needs this workaround code because of the implementation
             // issue..
-            s = (BufferedResponseStream) context.getExternalContext()
-            .getSessionMap().get(
-                    FacesResponseConstants.BUFFERED_RESPONSE_STREAM);
-//            return (BufferedResponseStream) context.getExternalContext()
-//            .getSessionMap().get(
-//                    FacesResponseConstants.BUFFERED_RESPONSE_STREAM);
-//        } else {
-//            // for JSF implementation whice does not pass FacesContext from
-//            // processAction to render        	
-//            s = (BufferedResponseStream) context.getExternalContext()
-//            .getRequestMap().get(
-//                    FacesResponseConstants.BUFFERED_RESPONSE_STREAM);
-////            return (BufferedResponseStream) context.getExternalContext()
-////            .getRequestMap().get(
-////                    FacesResponseConstants.BUFFERED_RESPONSE_STREAM);
-//        }
-    	return s;
+            return (BufferedResponseStream) context.getExternalContext()
+                    .getSessionMap().get(
+                            FacesResponseConstants.BUFFERED_RESPONSE_STREAM);
+        } else {
+            // for JSF implementation whice does not pass FacesContext from
+            // processAction to render
+            return (BufferedResponseStream) context.getExternalContext()
+                    .getRequestMap().get(
+                            FacesResponseConstants.BUFFERED_RESPONSE_STREAM);
+        }
     }
 
     public static BufferedResponseStream getBufferedResponseStream(
             PortletRequest request) {
-        BufferedResponseStream s = null;
-//        if (FacesResponseUtil.isMyFacesFacesContext(request)) {
+        /* garpinc commented per http://palab.blogspot.com/2007/01/tomahawk-bridge-091-released.html
+        if (FacesResponseUtil.isMyFacesFacesContext(request)) {
             // for MyFaces
             // MyFaces needs this workaround code because of the implementation
             // issue..
-        	s = (BufferedResponseStream) request.getPortletSession()
-            .getAttribute(
-                    FacesResponseConstants.BUFFERED_RESPONSE_STREAM);
-//            return (BufferedResponseStream) request.getPortletSession()
-//            .getAttribute(
-//                    FacesResponseConstants.BUFFERED_RESPONSE_STREAM);
-//        } else {
-//            // for JSF implementation whice does not pass FacesContext from
-//            // processAction to render
-//        	s = (BufferedResponseStream) request
-//                .getAttribute(FacesResponseConstants.BUFFERED_RESPONSE_STREAM);
-////            return (BufferedResponseStream) request
-////            .getAttribute(FacesResponseConstants.BUFFERED_RESPONSE_STREAM);
-//        }
-    	return s;
+            return (BufferedResponseStream) request.getPortletSession()
+                    .getAttribute(
+                            FacesResponseConstants.BUFFERED_RESPONSE_STREAM);
+        } else {
+            // for JSF implementation whice does not pass FacesContext from
+            // processAction to render
+            return (BufferedResponseStream) request
+                    .getAttribute(FacesResponseConstants.BUFFERED_RESPONSE_STREAM);
+        }
+        */
+        BufferedResponseStream stream = (BufferedResponseStream) request.getPortletSession() .getAttribute(FacesResponseConstants.BUFFERED_RESPONSE_STREAM);
+
+        if (stream != null)
+        return stream;
+
+        return (BufferedResponseStream) request .getAttribute(FacesResponseConstants.BUFFERED_RESPONSE_STREAM);
     }
 
     public static void render(RenderRequest request, RenderResponse response)
@@ -159,18 +152,18 @@ public class BufferedResponseStreamFactory {
         }
 
         // cleanup
-//        if (FacesResponseUtil.isMyFacesFacesContext(request)) {
+        if (FacesResponseUtil.isMyFacesFacesContext(request)) {
             // for MyFaces
             // MyFaces needs this workaround code because of the implementation
             // issue..
             // request.getPortletSession().removeAttribute(
             // FacesResponseConstants.BUFFERED_RESPONSE_STREAM);
-//        } else {
-//            // for JSF implementation whice does not pass FacesContext from
-//            // processAction to render
-//            request
-//                    .removeAttribute(FacesResponseConstants.BUFFERED_RESPONSE_STREAM);
-//        }
+        } else {
+            // for JSF implementation whice does not pass FacesContext from
+            // processAction to render
+            request
+                    .removeAttribute(FacesResponseConstants.BUFFERED_RESPONSE_STREAM);
+        }
     }
 
 }

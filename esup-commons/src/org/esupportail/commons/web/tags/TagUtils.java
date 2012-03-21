@@ -9,7 +9,6 @@ import javax.faces.component.UIComponentBase;
 import javax.faces.context.FacesContext;
 import javax.faces.el.ValueBinding;
 import javax.faces.webapp.UIComponentTag;
-import javax.servlet.jsp.tagext.Tag;
 
 import org.esupportail.commons.services.logging.Logger;
 import org.esupportail.commons.services.logging.LoggerImpl;
@@ -129,21 +128,6 @@ public class TagUtils {
 		return "#{" + param + "}";
 	}
 	
-	/**
-	 * Recursive method that returns the StringVar attribute of the upper PageTag.
-	 * Stop condition: cNew is a PageTage or cNew.getParent == null.
-	 * @param cNew
-	 * @return String
-	 */
-	public static String getStringsVarInPageTag(
-			final Tag cNew) {
-		if (cNew instanceof PageTag) {
-			PageTag page = (PageTag) cNew;
-			return page.getStringsVar();
-		} else if (cNew.getParent() == null) {
-			return null;
-		}
-		return getStringsVarInPageTag(cNew.getParent());
-	}
+
 
 }

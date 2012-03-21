@@ -33,7 +33,7 @@ public final class HtmlToTextParserCallBack extends HTMLEditorKit.ParserCallback
 	@Override
 	public void handleText(
 			final char[] data, 
-			@SuppressWarnings("unused") final int unusedPos) {      
+			final int unusedPos) {      
 		textResult.append(data);
 		}    
 	

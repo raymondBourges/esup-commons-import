@@ -104,7 +104,6 @@ public class MockFacesContext extends FacesContext {
 	@SuppressWarnings("rawtypes")
 	@Override
 	public Iterator getMessages(
-			@SuppressWarnings("unused")
 			final String arg0) {
 		return null;
 	}
@@ -146,7 +145,6 @@ public class MockFacesContext extends FacesContext {
 	 */
 	@Override
 	public void setResponseStream(
-			@SuppressWarnings("unused")
 			final ResponseStream arg0) {
 		// do nothing
 	}
@@ -164,7 +162,6 @@ public class MockFacesContext extends FacesContext {
 	 */
 	@Override
 	public void setResponseWriter(
-			@SuppressWarnings("unused")
 			final ResponseWriter arg0) {
 		// do nothing
 	}
@@ -190,9 +187,7 @@ public class MockFacesContext extends FacesContext {
 	 */
 	@Override
 	public void addMessage(
-			@SuppressWarnings("unused")
 			final String arg0, 
-			@SuppressWarnings("unused")
 			final FacesMessage arg1) {
 		// do nothing
 	}

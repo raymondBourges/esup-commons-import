@@ -6,15 +6,14 @@ package org.esupportail.commons.web.component;
 import java.io.IOException;
 import java.util.List;
 
-import javax.faces.application.Application;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
+import javax.faces.el.ValueBinding;
 
 import org.apache.myfaces.component.html.ext.HtmlGraphicImage;
 import org.apache.myfaces.component.html.ext.HtmlOutputText;
 import org.apache.myfaces.custom.div.Div;
-import org.apache.myfaces.shared_impl.renderkit.JSFAttr;
-import org.apache.myfaces.shared_tomahawk.renderkit.RendererUtils;
+import org.apache.myfaces.shared_impl.renderkit.html.HTML;
 
 
 /**
@@ -42,12 +41,30 @@ public class UIForm extends javax.faces.component.UIForm {
 	 */
 	public static final String SUBMIT_POPUP_IMAGE = "submitPopupImage";
 	
+	 private String _showSubmitPopupText;
+	 private String _showSubmitPopupImage;
+	 private String _freezeScreenOnSubmit;
+	
 	/**
 	 * Constructor.
 	 */
 	public UIForm() {
 		super();
 	}
+	
+    /**
+     * @param localValue
+     * @param valueBindingName
+     * @return the value
+     */
+    private Object getLocalOrValueBindingValue(Object localValue,
+                    String valueBindingName)
+    {
+        if (localValue != null)
+            return localValue;
+        ValueBinding vb = getValueBinding(valueBindingName);
+        return vb != null ? vb.getValue(getFacesContext()) : null;
+    }
 
 	/**
 	 * @return true if the form already has a submit popup.
@@ -68,7 +85,6 @@ public class UIForm extends javax.faces.component.UIForm {
 	 */
 	@SuppressWarnings("unchecked")
 	protected void addSubmitPopupIfNeeded(final FacesContext context) {
-		Application application = context.getApplication();
 		// add a div
 		Div div = new Div();
 		div.setId("submitPopup");
@@ -79,19 +95,28 @@ public class UIForm extends javax.faces.component.UIForm {
 		// add the image to the div
 		HtmlGraphicImage img = new HtmlGraphicImage();
 		img.setId("submitPopupImage");
-		img.setValue(getAttributes().get(SUBMIT_POPUP_IMAGE));
 		img.setStyle("visibility: hidden");
 		img.setRendered(true);
 		div.getChildren().add(img);
 		// add the text to the div
 		HtmlOutputText text = new HtmlOutputText();
 		text.setId("submitPopupText");
-		text.setValueBinding(JSFAttr.VALUE_ATTR,  
-				application.createValueBinding(
-						getAttributes().get(SUBMIT_POPUP_TEXT).toString()));
 		text.setStyle("visibility: hidden");
 		text.setRendered(true);
 		div.getChildren().add(text);
+	    String theOnsubmit = "";
+	    Object onsubmit = getAttributes().get(HTML.ONSUMBIT_ATTR);
+        if (onsubmit != null) {
+            theOnsubmit += "{ " + onsubmit + " }; ";
+        }
+        theOnsubmit += "if (typeof(onFormSubmit2) == 'function') { onFormSubmit2(this, ";
+        theOnsubmit += getFreezeScreenOnSubmit();
+        theOnsubmit += ", ";
+        theOnsubmit += getShowSubmitPopupText();
+        theOnsubmit += ", ";
+        theOnsubmit += getShowSubmitPopupImage();
+        theOnsubmit += "); } else onFormSubmit();";
+        getAttributes().put(HTML.ONSUMBIT_ATTR,theOnsubmit);
 	}
 
 	/**
@@ -105,20 +130,41 @@ public class UIForm extends javax.faces.component.UIForm {
 		super.encodeBegin(context);
 	}
 
-	/**
-	 * @see javax.faces.component.UIComponentBase#getRendersChildren()
-	 */
-	@Override
-	public boolean getRendersChildren() {
-		return true;
-	}
 
-	/**
-	 * @see javax.faces.component.UIComponentBase#encodeChildren(javax.faces.context.FacesContext)
-	 */
-	@Override
-	public void encodeChildren(final FacesContext context) throws IOException {
-		RendererUtils.renderChildren(context, this);
-	}
+	
+
+    public String getShowSubmitPopupText()
+    {
+        return (String) getLocalOrValueBindingValue(_showSubmitPopupText, "showSubmitPopupText" );
+    }
+
+
+    public void setShowSubmitPopupText(String showSubmitPopupText)
+    {
+        _showSubmitPopupText = showSubmitPopupText;
+    }
+    
+
+    public String getShowSubmitPopupImage()
+    {
+        return (String) getLocalOrValueBindingValue(_showSubmitPopupImage, "showSubmitPopupImage" );
+    }
+
+
+    public void setShowSubmitPopupImage(String showSubmitPopupImage)
+    {
+        _showSubmitPopupImage = showSubmitPopupImage;
+    }
+    
+    public String getFreezeScreenOnSubmit()
+    {
+        return (String) getLocalOrValueBindingValue(_freezeScreenOnSubmit, "freezeScreenOnSubmit" );
+    }
+
+
+    public void setFreezeScreenOnSubmit(String freezeScreenOnSubmit)
+    {
+        _freezeScreenOnSubmit = freezeScreenOnSubmit;
+    }
 	
 }

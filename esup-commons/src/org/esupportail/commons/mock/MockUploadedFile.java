@@ -5,6 +5,7 @@ package org.esupportail.commons.mock;
 
 import java.io.InputStream;
 
+import org.apache.myfaces.custom.fileupload.StorageStrategy;
 import org.apache.myfaces.custom.fileupload.UploadedFile;
 
 /**
@@ -79,5 +80,11 @@ public class MockUploadedFile implements UploadedFile {
 	public long getSize() {
 		return 0;
 	}
+
+    @Override
+    public StorageStrategy getStorageStrategy() {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
 }
